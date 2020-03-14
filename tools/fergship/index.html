@@ -1,0 +1,50 @@
+<html>
+
+<head>
+
+    <link rel="stylesheet" type="text/css" href="ship.css">
+    Shipping Calculator
+
+</head>
+
+<body>
+
+
+    <div class="enjoy-css">
+        <div>Zipcode: <input type="text" id="zipcode" value="92882"></div>
+
+        <div>Weight: <input type="text" id="weightlb" value="0"></div>
+
+        <div>Jobsite: <input type="checkbox" id="jobsitebox"></div>
+
+        <div>Pipe:<input type="checkbox" id="pipeon"> </div>
+
+        <div>Water Heater: <input type="checkbox" id="heateron">Today: <input type="checkbox" id="todayheater"></div>
+
+        <div>Breakable China: <input type="checkbox" id="breakables"></div>
+
+        <div>Mapp Gas: <input type="checkbox" id="mappgas"></div>
+
+        <div>Chemicals: <input type="checkbox" id="chemicalscements"></div>
+
+        <div>Incomplete Order: <input type="checkbox" id="incompleteorder"></div>
+
+    </div>
+
+
+    <br>
+
+    <div class="enjoy-css"> <span id="myspan"> Results will be here. </span></div>
+
+
+
+</body>
+<script>
+    window.setInterval(function () {
+        initialize()
+    }, 500);
+</script>
+<script src="ship.js"></script>
+
+
+</html>
