@@ -36,6 +36,7 @@
 <svelte:head>
   <title>Brenden Ferguson</title>
 </svelte:head>
+
 <p>
   <strong>
     <h1>Hello! I'm Brenden.</h1>
