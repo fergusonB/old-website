@@ -100,19 +100,19 @@ const posts = [
 		
 		
 		
-		<pre class="wp-block-code"><code>mkdir runelite</code></pre>
+		<pre ><code>mkdir runelite</code></pre>
 		
 		
 		
-		<pre class="wp-block-code"><code>cd runelite</code></pre>
+		<pre ><code>cd runelite</code></pre>
 		
 		
 		
-		<pre class="wp-block-code"><code>wget https://github.com/runelite/launcher/releases/download/1.6.2/RuneLite.jar</code></pre>
+		<pre ><code>wget https://github.com/runelite/launcher/releases/download/1.6.2/RuneLite.jar</code></pre>
 		
 		
 		
-		<pre class="wp-block-code"><code>cat &gt; run.sh</code></pre>
+		<pre ><code>cat &gt; run.sh</code></pre>
 		
 		
 		
@@ -120,7 +120,7 @@ const posts = [
 		
 		
 		
-		<pre class="wp-block-code"><code>java -jar RuneLite.jar --mode=OFF</code></pre>
+		<pre ><code>java -jar RuneLite.jar --mode=OFF</code></pre>
 		
 		
 		
@@ -132,11 +132,11 @@ const posts = [
 		
 		
 		
-		<pre class="wp-block-code"><code>cd runelite</code></pre>
+		<pre><code>cd runelite</code></pre>
 		
 		
 		
-		<pre class="wp-block-code"><code>sh run.sh</code></pre>
+		<pre><code>sh run.sh</code></pre>
 		
 		
 		

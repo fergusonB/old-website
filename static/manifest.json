@@ -4,7 +4,7 @@
   "name": "Brenden Ferguson",
   "short_name": "Ferguson",
   "display": "fullscreen",
-  "start_url": "/",
+  "start_url": "/blog",
   "icons": [
     {
       "src": "logo-192.png",

@@ -49,10 +49,13 @@
 </p>
 
 <p>
-  <a href="https://github.com/fergusonB" target="_blank">
+  <a href="https://github.com/fergusonB" rel="noreferrer" target="_blank">
     <img style="width:64px" src="./assets/gh.png" alt="GitHub" />
   </a>
-  <a href="https://www.linkedin.com/in/brendenferguson/" target="_blank">
+  <a
+    href="https://www.linkedin.com/in/brendenferguson/"
+    rel="noreferrer"
+    target="_blank">
     <img style="width:64px" src="./assets/li.png" alt="LinkedIn" />
   </a>
 </p>
@@ -60,3 +63,5 @@
 <figure>
   <img alt="my face" src="./assets/face.jpg" />
 </figure>
+
+<a hidden href="magicmirror">magicmirror</a>
