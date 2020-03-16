@@ -1,6 +1,5 @@
 <style>
   h1,
-  figure,
   p {
     text-align: center;
     margin: 0 auto;
@@ -10,10 +9,6 @@
     font-size: 2.8em;
     font-weight: 700;
     margin: 0 0 0.5em 0;
-  }
-
-  figure {
-    margin: 0 0 1em 0;
   }
 
   img {
@@ -59,9 +54,5 @@
     <img style="width:64px" src="./assets/li.png" alt="LinkedIn" />
   </a>
 </p>
-
-<figure>
-  <img alt="my face" src="./assets/face.jpg" />
-</figure>
 
 <a hidden href="magicmirror">magicmirror</a>

@@ -1,10 +1,20 @@
+<style>
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>
+
 <svelte:head>
   <title>About</title>
 </svelte:head>
-
 <h1>About</h1>
 
 <p>My name is Brenden Ferguson.</p>
+<figure>
+  <img alt="my face" src="./assets/face.jpg" />
+</figure>
 
 <p>
   I've been making simple websites for the last fifteen years for fun.
@@ -33,10 +43,7 @@
   (PWA).
   <br />
   <br />
-  <img
-    style="display:block;margin-left:auto;margin-right:auto;"
-    src="./assets/about/lighthouse.png"
-    alt="lighthouse" />
+  <img src="./assets/about/lighthouse.png" alt="lighthouse" />
 
 </p>
 <p>
