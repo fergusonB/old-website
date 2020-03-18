@@ -6,6 +6,7 @@
     "Enter your script here, and the application will check for blacklisted and demonetized words and point them out.";
 
   let output = "";
+
   onMount(async () => {
     let res = await atob(string)
       .toLowerCase()
@@ -22,6 +23,17 @@
   textarea {
     width: 99%;
     height: 30vh;
+    padding: 0.5em 0.6em;
+    display: inline-block;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: inset 0 1px 3px #ddd;
+    box-shadow: inset 0 1px 3px #ddd;
+    border-radius: 4px;
+    vertical-align: middle;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 1em;
+    font-family: Arial, Helvetica, sans-serif;
   }
 </style>
 
@@ -35,12 +47,17 @@
     href="https://docs.google.com/spreadsheets/d/1ozg1Cnm6SdtM4M5rATkANAi07xAzYWaKL7HKxyvoHzk/htmlview?sle=true#">
     Source for list (Google Docs link)
   </a>
-
+  <br />
+  Last updated 3/17/20
 </p>
 
 <textarea bind:value={script} />
 
-{#each script.split(' ') as item}
+{#each script
+  .replace(/\r?\n/g, ' ')
+  .replace(/(~|`|!|@|#|$|%|^|&|\*|\(|\)|{|}|\[|\]|;|:|\"|<|,|\.|>|\?|\\|\||_|\+|=)/g, ' |')
+  .toLowerCase()
+  .split(' ') as item}
   {#if decoded.includes(item)}
     <strong class="blacklist">{`${item} `}</strong>
   {:else}{`${item} `}{/if}
