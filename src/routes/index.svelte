@@ -1,5 +1,6 @@
 <style>
   h1,
+  h2,
   p {
     text-align: center;
     margin: 0 auto;
@@ -26,13 +27,11 @@
   <title>Brenden Ferguson</title>
 </svelte:head>
 
-<p>
-  <strong>
-    <h1>Hello! I'm Brenden.</h1>
-    <h3>
-      I've been making websites for 15 years for fun.
-      <br />
-      Recently I decided to do it professionally.
-    </h3>
-  </strong>
-</p>
+<h1>Hello! I'm Brenden.</h1>
+<h2>
+  <p>
+    I've been making websites for 15 years for fun.
+    <br />
+    Recently I decided to do it professionally.
+  </p>
+</h2>
