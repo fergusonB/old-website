@@ -48,6 +48,11 @@
     padding: 1em 0.5em;
     display: block;
   }
+
+  img {
+    height: 32px;
+    float: right;
+  }
 </style>
 
 <nav>
@@ -82,5 +87,20 @@
       </a>
     </li>
 
+    <li>
+      <a href="https://github.com/fergusonB" target="_blank" rel="noreferrer">
+        <img alt="github" src="./github.svg" />
+      </a>
+    </li>
+    <li>
+
+      <a
+        href="https://www.linkedin.com/in/brendenferguson/"
+        rel="noreferrer"
+        target="_blank">
+        <img alt="linkedin" src="./linkedin.svg" />
+      </a>
+    </li>
   </ul>
+
 </nav>

@@ -11,12 +11,6 @@
     margin: 0 0 0.5em 0;
   }
 
-  img {
-    width: 100%;
-    max-width: 400px;
-    margin: 0 0 1em 0;
-  }
-
   p {
     margin: 1em auto;
   }
@@ -41,16 +35,4 @@
       Recently I decided to do it professionally.
     </h3>
   </strong>
-</p>
-
-<p>
-  <a href="https://github.com/fergusonB" rel="noreferrer" target="_blank">
-    <img style="width:64px" src="./assets/gh.png" alt="GitHub" />
-  </a>
-  <a
-    href="https://www.linkedin.com/in/brendenferguson/"
-    rel="noreferrer"
-    target="_blank">
-    <img style="width:64px" src="./assets/li.png" alt="LinkedIn" />
-  </a>
 </p>
