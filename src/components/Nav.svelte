@@ -63,7 +63,10 @@
       </a>
     </li>
     <li>
-      <a aria-current={segment === 'about' ? 'page' : undefined} href="about">
+      <a
+        rel="prefetch"
+        aria-current={segment === 'about' ? 'page' : undefined}
+        href="about">
         About
       </a>
     </li>
@@ -81,6 +84,7 @@
 
     <li>
       <a
+        rel="prefetch"
         aria-current={segment === 'projects' ? 'page' : undefined}
         href="projects">
         Projects

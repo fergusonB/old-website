@@ -13,6 +13,10 @@
       .split("\n");
     decoded = await res;
   });
+
+  const resetter = () => {
+    script = " ";
+  };
 </script>
 
 <style>
@@ -51,7 +55,7 @@
   Last updated 3/17/20
 </p>
 
-<textarea bind:value={script} />
+<textarea on:focus|once={resetter} bind:value={script} />
 
 {#each script
   .replace(/\r?\n/g, ' ')
