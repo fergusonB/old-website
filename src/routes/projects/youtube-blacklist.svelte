@@ -41,6 +41,9 @@
   }
 </style>
 
+<svelte:head>
+  <title>Youtube Demonetized / Blacklisted Word Finder</title>
+</svelte:head>
 <h1>Youtube Demonetized / Blacklisted Word Finder</h1>
 
 <p />
