@@ -54,6 +54,3 @@
     <img style="width:64px" src="./assets/li.png" alt="LinkedIn" />
   </a>
 </p>
-
-<a hidden href="magicmirror">magicmirror</a>
-<a hidden href="yt">yt</a>

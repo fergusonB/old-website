@@ -73,5 +73,14 @@
         Blog
       </a>
     </li>
+
+    <li>
+      <a
+        aria-current={segment === 'projects' ? 'page' : undefined}
+        href="projects">
+        Projects
+      </a>
+    </li>
+
   </ul>
 </nav>

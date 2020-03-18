@@ -9,7 +9,7 @@
 
 const posts = [
 	{
-		title: 'RuneLite on Android',
+		title: '8/1/19 | RuneLite on Android',
 		slug: 'runelite-on-android',
 		html: `
 		<article>
