@@ -35,3 +35,4 @@
     Recently I decided to do it professionally.
   </p>
 </h2>
+<a hidden href="/magicmirror">mm hidden</a>
