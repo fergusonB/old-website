@@ -1,5 +1,4 @@
 <script>
-
   // BLOCK 1
   //variable initialization
   let attack = "99";
@@ -47,6 +46,20 @@
     0.25;
   //END BLOCK 1
   //block2
+
+  //initialize variables for melee max hit calculation
+  let strengthBonus = 0;
+  let combatStyle = 0;
+  let attackStyle = 3;
+  let attackBonus = 0;
+  let otherBonus = 1;
+
+  $: effectiveStrength = Math.floor(modStrength * otherBonus) + attackStyle;
+  $: baseDamage =
+    1.3 +
+    effectiveStrength / 10 +
+    strengthBonus / 80 +
+    (effectiveStrength * strengthBonus) / 640;
 </script>
 
 <style>
@@ -60,6 +73,10 @@
     text-align: center;
   }
 </style>
+
+<svelte:head>
+  <title>OSRS DPS Calculator</title>
+</svelte:head>
 
 <h1>OSRS DPS Calculator</h1>
 <div class="section">
@@ -127,6 +144,7 @@
       <option value={3 + Math.floor(0.1 * strengthNum)}>Strength</option>
       <option value={5 + Math.floor(0.15 * strengthNum)}>S. Str</option>
       <option value={6 + Math.floor(0.16 * strengthNum)}>Ovl+</option>
+
     </select>
     <br />
     <select bind:value={defencePotSelected}>
@@ -222,22 +240,56 @@
 </div>
 <div class="section">
   <p>
-    <strong>Slot</strong>
-    Per item coming soon
-  </p>
-  <p>
-    <strong>Item</strong>
-    per item coming soon
-  </p>
-  <p>
-    <strong>Attack</strong>
+    <strong>Combat Style</strong>
     <br />
-    Enter Attack bonus
+    <select bind:value={combatStyle}>
+      <option value={0}>Melee</option>
+      <option value={1}>Magic</option>
+      <option value={2}>Ranged</option>
+    </select>
     <br />
-    Select attack style
+    {#if combatStyle === 0}
+      <select bind:value={attackStyle}>
+        <option value={3}>Aggressive</option>
+        <option value={1}>Controled</option>
+        <option value={0}>Acc/Def</option>
+      </select>
+      <br />
+      <select bind:value={otherBonus}>
+        <option value={1}>Other Boosts</option>
+        <option value={1.1}>Void Melee</option>
+        <option value={1.16}>Slayer Helm</option>
+        <option value={1.15}>Salve</option>
+        <option value={1.2}>Salve e</option>
+      </select>
+    {:else if combatStyle === 1}
+      magic options future
+    {:else}ranged options future{/if}
+
   </p>
   <p>
-    <strong>Strength</strong>
+    <strong>Attack Bonus</strong>
+    <input type="number" bind:value={attackBonus} />
+  </p>
+  <p>
+
+    {#if combatStyle === 0}
+      <strong>Strength Bonus</strong>
+      <br />
+      <input type="number" bind:value={strengthBonus} />
+      <br />
+      Max Hit: {Math.floor(baseDamage)}
+    {:else if combatStyle === 1}
+      <strong>Magic Str</strong>
+      <br />
+    {:else}
+      <strong>Range Str</strong>
+      <br />
+    {/if}
+
+  </p>
+  <p>
+    <strong>Monster Bonus</strong>
     <br />
     Enter Strength bonus
   </p>
