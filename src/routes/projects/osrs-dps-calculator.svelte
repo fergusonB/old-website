@@ -22,19 +22,21 @@
   let magicPotSelected = 0;
   let rangedPotSelected = 0;
 
-  let attackPrayer = 0;
-  let strengthPrayer = 0;
-  let defencePrayer = 0;
-  let magicPrayer = 0;
-  let rangedPrayer = 0;
+  let attackPrayer = 1;
+  let strengthPrayer = 1;
+  let defencePrayer = 1;
+  let magicPrayer = 1;
+  let rangedPrayer = 1;
 
-  $: modAttack = attackPotSelected + attackNum;
-  $: modStrength = strengthPotSelected + strengthNum;
-  $: modDefence = defencePotSelected + defenceNum;
-  $: modMagic = magicPotSelected + magicNum;
-  $: modRanged = rangedPotSelected + rangedNum;
+  //calculate final invisible levels
 
-  //
+  $: modAttack = Math.floor((attackPotSelected + attackNum) * attackPrayer);
+  $: modStrength = Math.floor(
+    (strengthPotSelected + strengthNum) * strengthPrayer
+  );
+  $: modDefence = Math.floor((defencePotSelected + defenceNum) * defencePrayer);
+  $: modMagic = Math.floor((magicPotSelected + magicNum) * magicPrayer);
+  $: modRanged = Math.floor((rangedPotSelected + rangedNum) * rangedPrayer);
 
   //combat
   $: combatLevel =
@@ -132,22 +134,22 @@
       <option value={6 + Math.floor(0.16 * defenceNum)}>Ovl+</option>
       <option value={2 + Math.floor(0.2 * defenceNum)}>SaraBrew</option>
     </select>
-    /*/
+
     <br />
     <select bind:value={magicPotSelected}>
       <option value={0}>None</option>
       <option value={4}>Magic</option>
-      <option value={0.1}>Imbued H</option>
-      <option value={0.15}>S. Magic</option>
-      <option value={0.16}>Overload</option>
+      <option value={1 + Math.floor(0.1 * magicNum)}>Imbued H</option>
+      <option value={5 + Math.floor(0.15 * magicNum)}>S. Magic</option>
+      <option value={6 + Math.floor(0.16 * magicNum)}>Ovl+</option>
     </select>
 
     <br />
     <select bind:value={rangedPotSelected}>
       <option value={0}>None</option>
-      <option value={0.1}>Ranging</option>
-      <option value={0.15}>S.Range</option>
-      <option value={0.16}>Overload</option>
+      <option value={4 + Math.floor(0.1 * rangedNum)}>Ranging</option>
+      <option value={5 + Math.floor(0.15 * rangedNum)}>S.Range</option>
+      <option value={6 + Math.floor(0.16 * rangedNum)}>Ovl+</option>
     </select>
   </p>
   <p>
@@ -155,48 +157,48 @@
     <strong>Prayers</strong>
     <br />
     <select bind:value={attackPrayer}>
-      <option value={0}>None</option>
-      <option value={0.05}>5%</option>
-      <option value={0.1}>10%</option>
-      <option value={0.15}>15%/Chiv</option>
-      <option value={0.2}>20%/Piety</option>
+      <option value={1}>None</option>
+      <option value={1.05}>5%</option>
+      <option value={1.1}>10%</option>
+      <option value={1.15}>15%/Chiv</option>
+      <option value={1.2}>20%/Piety</option>
 
     </select>
 
     <br />
     <select bind:value={strengthPrayer}>
-      <option value={0}>None</option>
-      <option value={0.05}>5%</option>
-      <option value={0.1}>10%</option>
-      <option value={0.15}>15%</option>
-      <option value={0.18}>18%/Chiv</option>
-      <option value={0.23}>23%/Piety</option>
+      <option value={1}>None</option>
+      <option value={1.05}>5%</option>
+      <option value={1.1}>10%</option>
+      <option value={1.15}>15%</option>
+      <option value={1.18}>18%/Chiv</option>
+      <option value={1.23}>23%/Piety</option>
     </select>
     <br />
     <select bind:value={defencePrayer}>
-      <option value={0}>None</option>
-      <option value={0.05}>5%</option>
-      <option value={0.1}>10%</option>
-      <option value={0.15}>15%</option>
-      <option value={0.2}>20%/Chiv</option>
-      <option value={0.25}>25%/P/R/A</option>
+      <option value={1}>None</option>
+      <option value={1.05}>5%</option>
+      <option value={1.1}>10%</option>
+      <option value={1.15}>15%</option>
+      <option value={1.2}>20%/Chiv</option>
+      <option value={1.25}>25%/P/R/A</option>
     </select>
     <br />
     <select bind:value={magicPrayer}>
-      <option value={0}>None</option>
-      <option value={0.05}>5%</option>
-      <option value={0.1}>10%</option>
-      <option value={0.15}>15%</option>
-      <option value={0.25}>25%/Aug</option>
+      <option value={1}>None</option>
+      <option value={1.05}>5%</option>
+      <option value={1.1}>10%</option>
+      <option value={1.15}>15%</option>
+      <option value={1.25}>25%/Rig</option>
     </select>
 
     <br />
     <select bind:value={rangedPrayer}>
-      <option value={0}>None</option>
-      <option value={0.05}>5%</option>
-      <option value={0.1}>10%</option>
-      <option value={0.15}>15%</option>
-      <option value={0.2}>20%/23%s/A</option>
+      <option value={1}>None</option>
+      <option value={1.05}>5%</option>
+      <option value={1.1}>10%</option>
+      <option value={1.15}>15%</option>
+      <option value={1.2}>20%/23%s/A</option>
     </select>
 
   </p>
