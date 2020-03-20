@@ -1,4 +1,6 @@
 <script>
+  import body from "./_body.js";
+  // BLOCK 1
   //variable initialization
   let attack = "99";
   let strength = "99";
@@ -43,25 +45,28 @@
       Number(hitpoints) +
       Math.floor(Number(prayer) * 0.5)) *
     0.25;
-  //
+  //END BLOCK 1
+  //block2
+  let selectedBody;
 </script>
 
 <style>
-  .content {
+  .section {
     display: grid;
     grid-template-columns: repeat(4, 1fr) auto;
   }
 
-  input {
+  input,
+  strong {
     text-align: center;
   }
 </style>
 
 <h1>OSRS DPS Calculator</h1>
-<div class="content">
+<div class="section">
 
   <p>
-    <strong>Combat: {combatLevel.toFixed(1)}</strong>
+    <strong>{combatLevel.toFixed(1)}</strong>
     <br />
     <img
       src="assets/projects/osrs-dps-calculator/attack.png"
@@ -215,4 +220,143 @@
     {modRanged}
   </p>
 
+</div>
+<div class="section">
+  <p>
+    <strong>Slot</strong>
+    <br />
+    Weapon
+    <br />
+    Combat
+    <br />
+    Spell
+    <br />
+    Ammo
+    <br />
+    Head
+    <br />
+    Cape
+    <br />
+    Amulet
+    <br />
+    Chest
+    <br />
+    Legs
+    <br />
+    Shield
+    <br />
+    Gloves
+    <br />
+    Boots
+    <br />
+    Ring
+    <br />
+    Custom
+    <br />
+    Total
+  </p>
+  <p>
+    <strong>Item</strong>
+    <br />
+    Weapon
+    <br />
+    Combat
+    <br />
+    Spell
+    <br />
+    Ammo
+    <br />
+    Head
+    <br />
+    Cape
+    <br />
+    Amulet
+    <br />
+    <select bind:value={selectedBody}>
+      {#each body as bodyItem}
+        <option value={bodyItem}>{bodyItem.Name}</option>
+      {/each}
+
+    </select>
+    <br />
+    Legs
+    <br />
+    Shield
+    <br />
+    Gloves
+    <br />
+    Boots
+    <br />
+    Ring
+    <br />
+    Custom
+    <br />
+    Total
+  </p>
+  <p>
+    <strong>Attack</strong>
+    <br />
+    Weapon
+    <br />
+    Combat
+    <br />
+    Spell
+    <br />
+    Ammo
+    <br />
+    Head
+    <br />
+    Cape
+    <br />
+    Amulet
+    <br />
+    Chest
+    <br />
+    Legs
+    <br />
+    Shield
+    <br />
+    Gloves
+    <br />
+    Boots
+    <br />
+    Ring
+    <br />
+    Custom
+    <br />
+    Total
+  </p>
+  <p>
+    <strong>Strength</strong>
+    <br />
+    Weapon
+    <br />
+    Combat
+    <br />
+    Spell
+    <br />
+    Ammo
+    <br />
+    Head
+    <br />
+    Cape
+    <br />
+    Amulet
+    <br />
+    Chest
+    <br />
+    Legs
+    <br />
+    Shield
+    <br />
+    Gloves
+    <br />
+    Boots
+    <br />
+    Ring
+    <br />
+    Custom
+    <br />
+    Total
+  </p>
 </div>
