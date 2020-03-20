@@ -50,16 +50,42 @@
   //initialize variables for melee max hit calculation
   let strengthBonus = 0;
   let combatStyle = 0;
-  let attackStyle = 3;
+
   let attackBonus = 0;
   let otherBonus = 1;
 
-  $: effectiveStrength = Math.floor(modStrength * otherBonus) + attackStyle;
+  let attackStyle = 0;
+
+  $: attackStyleStrength = attackStyle === 0 ? 3 : attackStyle === 1 ? 1 : 0;
+  $: attackStyleAttack = attackStyle === 2 ? 3 : attackStyle === 1 ? 1 : 0;
+  $: attackStyleDefence = attackStyle === 3 ? 3 : attackStyle === 1 ? 1 : 0;
+  //melee
+  $: effectiveStrength =
+    Math.floor(modStrength * otherBonus) + attackStyleStrength;
   $: baseDamage =
     1.3 +
     effectiveStrength / 10 +
     strengthBonus / 80 +
     (effectiveStrength * strengthBonus) / 640;
+
+  //ranged
+  let rangedStrength = 0;
+  let rangedStyleBonus = 0;
+  let rangedOtherBonus = 1;
+  let rangedAttackBonus = 0;
+
+  $: rangedEffectiveStrength =
+    Math.floor(modRanged * rangedOtherBonus) + rangedStyleBonus;
+  $: rangedBaseDamage =
+    1.3 +
+    rangedEffectiveStrength / 10 +
+    rangedStrength / 80 +
+    (rangedEffectiveStrength * rangedStrength) / 640;
+
+  //enemy defence
+  let enemyDefence = 1;
+  let enemyMagic = 1;
+  let enemyTypeResistance = 0;
 </script>
 
 <style>
@@ -248,28 +274,47 @@
       <option value={2}>Ranged</option>
     </select>
     <br />
+    <br />
     {#if combatStyle === 0}
       <select bind:value={attackStyle}>
-        <option value={3}>Aggressive</option>
-        <option value={1}>Controled</option>
-        <option value={0}>Acc/Def</option>
-      </select>
-      <br />
-      <select bind:value={otherBonus}>
-        <option value={1}>Other Boosts</option>
-        <option value={1.1}>Void Melee</option>
-        <option value={1.16}>Slayer Helm</option>
-        <option value={1.15}>Salve</option>
-        <option value={1.2}>Salve e</option>
+        <option value={0}>Aggr</option>
+        <option value={1}>Cont</option>
+        <option value={2}>Acc</option>
+        <option value={3}>Def</option>
       </select>
     {:else if combatStyle === 1}
       magic options future
-    {:else}ranged options future{/if}
+    {:else}
+      <select bind:value={rangedStyleBonus}>
+        <option value={0}>Rapid</option>
+        <option value={3}>Accurate</option>
+        <option value={0}>LongRange</option>
+      </select>
+    {/if}
 
   </p>
   <p>
-    <strong>Attack Bonus</strong>
-    <input type="number" bind:value={attackBonus} />
+    {#if combatStyle === 0}
+      <strong>Attack Bonus</strong>
+      <br />
+      <input type="number" bind:value={attackBonus} />
+    {:else if combatStyle === 1}
+      <strong>Magic Attack</strong>
+      <br />
+      Enemy Magic Level:
+      <input type="number" bind:value={enemyMagic} />
+      <br />
+    {:else}
+      <strong>Ranged Attack</strong>
+      <br />
+      <input type="number" bind:value={rangedAttackBonus} />
+    {/if}
+    <br />
+    Enemy Defence Level:
+    <input type="number" bind:value={enemyDefence} />
+    <br />
+    Enemy Armor vs Attack Style
+    <input type="number" bind:value={enemyTypeResistance} />
   </p>
   <p>
 
@@ -278,6 +323,15 @@
       <br />
       <input type="number" bind:value={strengthBonus} />
       <br />
+
+      <select bind:value={otherBonus}>
+        <option value={1}>Other Boosts</option>
+        <option value={1.1}>Void Melee</option>
+        <option value={1.16}>Slayer Helm</option>
+        <option value={1.15}>Salve</option>
+        <option value={1.2}>Salve e</option>
+      </select>
+      <br />
       Max Hit: {Math.floor(baseDamage)}
     {:else if combatStyle === 1}
       <strong>Magic Str</strong>
@@ -285,12 +339,23 @@
     {:else}
       <strong>Range Str</strong>
       <br />
+      <input type="number" bind:value={rangedStrength} />
+
+      <br />
+      <select bind:value={rangedOtherBonus}>
+        <option value={1}>Other Boosts</option>
+        <option value={1.1}>Void</option>
+        <option value={1.125}>Elite Void</option>
+        <option value={1.2}>Salve e</option>
+      </select>
+      <br />
+      Ranged Max Hit: {Math.floor(rangedBaseDamage)}
     {/if}
 
   </p>
   <p>
-    <strong>Monster Bonus</strong>
+    <strong>DPS</strong>
     <br />
-    Enter Strength bonus
+    DPS will be calculated here.
   </p>
 </div>
