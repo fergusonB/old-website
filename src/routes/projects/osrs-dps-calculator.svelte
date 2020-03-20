@@ -8,42 +8,38 @@
   let hitpoints = "99";
   let prayer = "99";
 
-  $: attstr = Number(attack) + Number(strength);
+  $: attackNum = Number(attack);
+  $: strengthNum = Number(strength);
+  $: defenceNum = Number(defence);
+  $: magicNum = Number(magic);
+  $: rangedNum = Number(ranged);
 
-  let attackPotSelected;
-  let strengthPotSelected;
-  let defencePotSelected;
-  let magicPotSelected;
-  let rangedPotSelected;
+  $: attstr = attackNum + strengthNum;
 
-  let attackPrayer;
-  let strengthPrayer;
-  let defencePrayer;
-  let magicPrayer;
-  let rangedPrayer;
+  let attackPotSelected = 0;
+  let strengthPotSelected = 0;
+  let defencePotSelected = 0;
+  let magicPotSelected = 0;
+  let rangedPotSelected = 0;
 
-  $: modAttack = attackPotSelected
-    ? Number(attack) * attackPotSelected + Number(attack)
-    : Number(attack);
-  $: modStrength = strengthPotSelected
-    ? Number(strength) * strengthPotSelected + Number(strength)
-    : Number(strength);
-  $: modDefence = defencePotSelected
-    ? Number(defence) * defencePotSelected + Number(defence)
-    : Number(defence);
-  $: modMagic = magicPotSelected
-    ? Number(magic) * magicPotSelected + Number(magic)
-    : Number(magic);
-  $: modRanged = rangedPotSelected
-    ? Number(ranged) * rangedPotSelected + Number(ranged)
-    : Number(ranged);
+  let attackPrayer = 0;
+  let strengthPrayer = 0;
+  let defencePrayer = 0;
+  let magicPrayer = 0;
+  let rangedPrayer = 0;
+
+  $: modAttack = attackPotSelected + attackNum;
+  $: modStrength = strengthPotSelected + strengthNum;
+  $: modDefence = defencePotSelected + defenceNum;
+  $: modMagic = magicPotSelected + magicNum;
+  $: modRanged = rangedPotSelected + rangedNum;
 
   //
 
   //combat
   $: combatLevel =
-    (Math.max(attstr, Number(magic) * 1.5, Number(ranged) * 1.5) * 1.3 +
-      Number(defence) +
+    (Math.max(attstr, magicNum * 1.5, rangedNum * 1.5) * 1.3 +
+      defenceNum +
       Number(hitpoints) +
       Math.floor(Number(prayer) * 0.5)) *
     0.25;
@@ -53,12 +49,11 @@
 <style>
   .content {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr auto;
+    grid-template-columns: repeat(4, 1fr) auto;
   }
 
   input {
     text-align: center;
-    float: left;
   }
 </style>
 
@@ -68,25 +63,46 @@
   <p>
     <strong>Combat: {combatLevel.toFixed(1)}</strong>
     <br />
-    Attack
+    <img
+      src="assets/projects/osrs-dps-calculator/attack.png"
+      alt="attack icon"
+      height="21px" />
     <input bind:value={attack} type="text" maxlength="2" size="2" />
     <br />
-    Strength
+    <img
+      src="assets/projects/osrs-dps-calculator/strength.png"
+      alt="strength icon"
+      height="21px" />
     <input bind:value={strength} type="text" maxlength="2" size="2" />
     <br />
-    Defence
+    <img
+      src="assets/projects/osrs-dps-calculator/defence.png"
+      alt="defence icon"
+      height="21px" />
     <input bind:value={defence} type="text" maxlength="2" size="2" />
     <br />
-    Magic
+    <img
+      src="assets/projects/osrs-dps-calculator/magic.png"
+      alt="magic icon"
+      height="21px" />
     <input bind:value={magic} type="text" maxlength="2" size="2" />
     <br />
-    Ranged
+    <img
+      src="assets/projects/osrs-dps-calculator/ranged.png"
+      alt="ranged icon"
+      height="21px" />
     <input bind:value={ranged} type="text" maxlength="2" size="2" />
     <br />
-    Hitpoints
+    <img
+      src="assets/projects/osrs-dps-calculator/hitpoints.png"
+      alt="hitpoints icon"
+      height="21px" />
     <input bind:value={hitpoints} type="text" maxlength="2" size="2" />
     <br />
-    Prayer
+    <img
+      src="assets/projects/osrs-dps-calculator/prayer.png"
+      alt="prayer icon"
+      height="21px" />
     <input bind:value={prayer} type="text" maxlength="2" size="2" />
   </p>
 
@@ -94,30 +110,32 @@
     <strong>Potions</strong>
     <br />
     <select bind:value={attackPotSelected}>
-      <option>None</option>
-      <option value={0.1}>Attack</option>
-      <option value={0.15}>S. Atk</option>
-      <option value={0.16}>Ovl/Zam</option>
+      <option value={0}>None</option>
+      <option value={3 + Math.floor(0.1 * attackNum)}>Attack</option>
+      <option value={5 + Math.floor(0.15 * attackNum)}>S. Atk</option>
+      <option value={6 + Math.floor(0.16 * attackNum)}>Ovl+</option>
+      <option value={2 + Math.floor(0.2 * attackNum)}>ZamBrew</option>
     </select>
 
     <br />
     <select bind:value={strengthPotSelected}>
-      <option>None</option>
-      <option value={0.1}>Strength</option>
-      <option value={0.15}>S. Str</option>
-      <option value={0.16}>Overload</option>
+      <option value={0}>None</option>
+      <option value={3 + Math.floor(0.1 * strengthNum)}>Strength</option>
+      <option value={5 + Math.floor(0.15 * strengthNum)}>S. Str</option>
+      <option value={6 + Math.floor(0.16 * strengthNum)}>Ovl+</option>
     </select>
     <br />
     <select bind:value={defencePotSelected}>
-      <option>None</option>
-      <option value={0.1}>Defence</option>
-      <option value={0.15}>S. Def</option>
-      <option value={0.16}>Overload</option>
-      <option value={0.2}>SaraBrew</option>
+      <option value={0}>None</option>
+      <option value={3 + Math.floor(0.1 * defenceNum)}>Defence</option>
+      <option value={5 + Math.floor(0.15 * defenceNum)}>S. Def</option>
+      <option value={6 + Math.floor(0.16 * defenceNum)}>Ovl+</option>
+      <option value={2 + Math.floor(0.2 * defenceNum)}>SaraBrew</option>
     </select>
+    /*/
     <br />
     <select bind:value={magicPotSelected}>
-      <option>None</option>
+      <option value={0}>None</option>
       <option value={4}>Magic</option>
       <option value={0.1}>Imbued H</option>
       <option value={0.15}>S. Magic</option>
@@ -126,7 +144,7 @@
 
     <br />
     <select bind:value={rangedPotSelected}>
-      <option>None</option>
+      <option value={0}>None</option>
       <option value={0.1}>Ranging</option>
       <option value={0.15}>S.Range</option>
       <option value={0.16}>Overload</option>
@@ -136,48 +154,54 @@
 
     <strong>Prayers</strong>
     <br />
-    <select bind:value={attackPotSelected}>
-      <option>None</option>
-      <option value={0.1}>Attack</option>
-      <option value={0.15}>Super Attack</option>
-      <option value={0.16}>Overload / Zamorak</option>
+    <select bind:value={attackPrayer}>
+      <option value={0}>None</option>
+      <option value={0.05}>5%</option>
+      <option value={0.1}>10%</option>
+      <option value={0.15}>15%/Chiv</option>
+      <option value={0.2}>20%/Piety</option>
+
     </select>
 
     <br />
-    <select bind:value={strengthPotSelected}>
-      <option>None</option>
-      <option value={0.1}>Strength</option>
-      <option value={0.15}>Super Strength</option>
-      <option value={0.16}>Overload</option>
+    <select bind:value={strengthPrayer}>
+      <option value={0}>None</option>
+      <option value={0.05}>5%</option>
+      <option value={0.1}>10%</option>
+      <option value={0.15}>15%</option>
+      <option value={0.18}>18%/Chiv</option>
+      <option value={0.23}>23%/Piety</option>
     </select>
     <br />
-    <select bind:value={defencePotSelected}>
-      <option>None</option>
-      <option value={0.1}>Defence</option>
-      <option value={0.15}>Super Defence</option>
-      <option value={0.16}>Overload</option>
-      <option value={0.2}>Saradomin Brew</option>
+    <select bind:value={defencePrayer}>
+      <option value={0}>None</option>
+      <option value={0.05}>5%</option>
+      <option value={0.1}>10%</option>
+      <option value={0.15}>15%</option>
+      <option value={0.2}>20%/Chiv</option>
+      <option value={0.25}>25%/P/R/A</option>
     </select>
     <br />
-    <select bind:value={magicPotSelected}>
-      <option>None</option>
-      <option value={4}>Magic</option>
-      <option value={0.1}>Imbued Heart</option>
-      <option value={0.15}>Super Magic</option>
-      <option value={0.16}>Overload</option>
+    <select bind:value={magicPrayer}>
+      <option value={0}>None</option>
+      <option value={0.05}>5%</option>
+      <option value={0.1}>10%</option>
+      <option value={0.15}>15%</option>
+      <option value={0.25}>25%/Aug</option>
     </select>
 
     <br />
-    <select bind:value={rangedPotSelected}>
-      <option>None</option>
-      <option value={0.1}>Ranging</option>
-      <option value={0.15}>Super Ranging</option>
-      <option value={0.16}>Overload</option>
+    <select bind:value={rangedPrayer}>
+      <option value={0}>None</option>
+      <option value={0.05}>5%</option>
+      <option value={0.1}>10%</option>
+      <option value={0.15}>15%</option>
+      <option value={0.2}>20%/23%s/A</option>
     </select>
 
   </p>
 
-  <p>
+  <p style="text-align:center;">
     <strong>Invisible Level</strong>
     <br />
     {modAttack}

@@ -19,6 +19,12 @@
 				waiting for the 'click' event -->
 
   <li>
+    <a rel="prefetch" href="projects/osrs-dps-calculator">
+      OSRS DPS Calculator
+    </a>
+  </li>
+
+  <li>
     <a rel="prefetch" href="projects/youtube-blacklist">
       Youtube Blacklisted / Demonetized Word Finder
     </a>
