@@ -99,7 +99,7 @@
           CORONA
         </a>
       </div>
-      <div />
+      <div class="div3" />
       <div class="div4" />
     </div>
   </div>
