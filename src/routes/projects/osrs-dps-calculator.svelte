@@ -1,5 +1,5 @@
 <script>
-  import body from "./_body.js";
+
   // BLOCK 1
   //variable initialization
   let attack = "99";
@@ -47,7 +47,6 @@
     0.25;
   //END BLOCK 1
   //block2
-  let selectedBody;
 </script>
 
 <style>
@@ -224,139 +223,22 @@
 <div class="section">
   <p>
     <strong>Slot</strong>
-    <br />
-    Weapon
-    <br />
-    Combat
-    <br />
-    Spell
-    <br />
-    Ammo
-    <br />
-    Head
-    <br />
-    Cape
-    <br />
-    Amulet
-    <br />
-    Chest
-    <br />
-    Legs
-    <br />
-    Shield
-    <br />
-    Gloves
-    <br />
-    Boots
-    <br />
-    Ring
-    <br />
-    Custom
-    <br />
-    Total
+    Per item coming soon
   </p>
   <p>
     <strong>Item</strong>
-    <br />
-    Weapon
-    <br />
-    Combat
-    <br />
-    Spell
-    <br />
-    Ammo
-    <br />
-    Head
-    <br />
-    Cape
-    <br />
-    Amulet
-    <br />
-    <select bind:value={selectedBody}>
-      {#each body as bodyItem}
-        <option value={bodyItem}>{bodyItem.Name}</option>
-      {/each}
-
-    </select>
-    <br />
-    Legs
-    <br />
-    Shield
-    <br />
-    Gloves
-    <br />
-    Boots
-    <br />
-    Ring
-    <br />
-    Custom
-    <br />
-    Total
+    per item coming soon
   </p>
   <p>
     <strong>Attack</strong>
     <br />
-    Weapon
+    Enter Attack bonus
     <br />
-    Combat
-    <br />
-    Spell
-    <br />
-    Ammo
-    <br />
-    Head
-    <br />
-    Cape
-    <br />
-    Amulet
-    <br />
-    Chest
-    <br />
-    Legs
-    <br />
-    Shield
-    <br />
-    Gloves
-    <br />
-    Boots
-    <br />
-    Ring
-    <br />
-    Custom
-    <br />
-    Total
+    Select attack style
   </p>
   <p>
     <strong>Strength</strong>
     <br />
-    Weapon
-    <br />
-    Combat
-    <br />
-    Spell
-    <br />
-    Ammo
-    <br />
-    Head
-    <br />
-    Cape
-    <br />
-    Amulet
-    <br />
-    Chest
-    <br />
-    Legs
-    <br />
-    Shield
-    <br />
-    Gloves
-    <br />
-    Boots
-    <br />
-    Ring
-    <br />
-    Custom
-    <br />
-    Total
+    Enter Strength bonus
   </p>
 </div>
