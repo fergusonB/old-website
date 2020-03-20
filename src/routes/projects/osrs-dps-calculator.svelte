@@ -14,8 +14,6 @@
   $: magicNum = Number(magic);
   $: rangedNum = Number(ranged);
 
-  $: attstr = attackNum + strengthNum;
-
   let attackPotSelected = 0;
   let strengthPotSelected = 0;
   let defencePotSelected = 0;
@@ -40,7 +38,7 @@
 
   //combat
   $: combatLevel =
-    (Math.max(attstr, magicNum * 1.5, rangedNum * 1.5) * 1.3 +
+    (Math.max(attackNum + strengthNum, magicNum * 1.5, rangedNum * 1.5) * 1.3 +
       defenceNum +
       Number(hitpoints) +
       Math.floor(Number(prayer) * 0.5)) *
