@@ -68,6 +68,11 @@
     strengthBonus / 80 +
     (effectiveStrength * strengthBonus) / 640;
 
+  //atk
+
+  $: effectiveAttack = modAttack + attackStyleAttack + 8;
+  $: maxAttackRoll =
+    Math.floor(effectiveAttack * (attackBonus + 64)) * otherBonus;
   //ranged
   let rangedStrength = 0;
   let rangedStyleBonus = 0;
@@ -86,6 +91,22 @@
   let enemyDefence = 1;
   let enemyMagic = 1;
   let enemyTypeResistance = 0;
+
+  $: enemyEffectiveDefence = enemyDefence + 9;
+  $: maxDefenceRoll = Math.floor(
+    enemyEffectiveDefence * (enemyTypeResistance + 64)
+  );
+
+  //accuracy calc
+
+  $: accuracyMelee =
+    maxAttackRoll > maxDefenceRoll
+      ? 1 - (maxDefenceRoll + 2) / (2 * (maxAttackRoll + 1))
+      : maxAttackRoll / (2 * maxDefenceRoll + 1);
+
+  //dps calc
+  let attackSpeed = 2.4;
+  $: dpsMelee = (accuracyMelee * (Math.floor(baseDamage) / 2)) / attackSpeed;
 </script>
 
 <style>
@@ -282,6 +303,23 @@
         <option value={2}>Acc</option>
         <option value={3}>Def</option>
       </select>
+      <br />
+      Attack Speed:
+      <label>
+        <input
+          type="number"
+          bind:value={attackSpeed}
+          min="1.8"
+          max="5.4"
+          step="0.6" />
+        <input
+          type="range"
+          bind:value={attackSpeed}
+          min="1.8"
+          max="5.4"
+          step="0.6" />
+      </label>
+      {Math.floor(attackSpeed / 0.6)} Ticks
     {:else if combatStyle === 1}
       magic options future
     {:else}
@@ -298,6 +336,8 @@
       <strong>Attack Bonus</strong>
       <br />
       <input type="number" bind:value={attackBonus} />
+      <br />
+      Attack Roll: {maxAttackRoll}
     {:else if combatStyle === 1}
       <strong>Magic Attack</strong>
       <br />
@@ -315,6 +355,9 @@
     <br />
     Enemy Armor vs Attack Style
     <input type="number" bind:value={enemyTypeResistance} />
+    Defense Roll: {maxDefenceRoll}
+    <br />
+    Accuracy: {(accuracyMelee * 100).toFixed(2)}%
   </p>
   <p>
 
@@ -327,7 +370,7 @@
       <select bind:value={otherBonus}>
         <option value={1}>Other Boosts</option>
         <option value={1.1}>Void Melee</option>
-        <option value={1.16}>Slayer Helm</option>
+        <option value={7 / 6}>Slayer Helm</option>
         <option value={1.15}>Salve</option>
         <option value={1.2}>Salve e</option>
       </select>
@@ -356,6 +399,7 @@
   <p>
     <strong>DPS</strong>
     <br />
-    DPS will be calculated here.
+    {#if combatStyle === 0}{dpsMelee.toFixed(4)}{/if}
+
   </p>
 </div>
