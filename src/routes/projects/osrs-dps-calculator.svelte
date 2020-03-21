@@ -112,10 +112,11 @@
 <style>
   .section {
     display: grid;
-    grid-template-columns: repeat(4, 1fr) auto;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
 
   input,
+  p,
   strong {
     text-align: center;
   }
@@ -128,53 +129,37 @@
 <h1>OSRS DPS Calculator</h1>
 <div class="section">
 
-  <p>
+  <p class="card">
     <strong>{combatLevel.toFixed(1)}</strong>
     <br />
-    <img
-      src="assets/projects/osrs-dps-calculator/attack.png"
-      alt="attack icon"
-      height="21px" />
+    Attack
     <input bind:value={attack} type="text" maxlength="2" size="2" />
+    {modAttack}
     <br />
-    <img
-      src="assets/projects/osrs-dps-calculator/strength.png"
-      alt="strength icon"
-      height="21px" />
+    Strength
     <input bind:value={strength} type="text" maxlength="2" size="2" />
+    {modStrength}
     <br />
-    <img
-      src="assets/projects/osrs-dps-calculator/defence.png"
-      alt="defence icon"
-      height="21px" />
+    Defence
     <input bind:value={defence} type="text" maxlength="2" size="2" />
+    {modDefence}
     <br />
-    <img
-      src="assets/projects/osrs-dps-calculator/magic.png"
-      alt="magic icon"
-      height="21px" />
+    Magic
     <input bind:value={magic} type="text" maxlength="2" size="2" />
+    {modMagic}
     <br />
-    <img
-      src="assets/projects/osrs-dps-calculator/ranged.png"
-      alt="ranged icon"
-      height="21px" />
+    Ranged
     <input bind:value={ranged} type="text" maxlength="2" size="2" />
+    {modRanged}
     <br />
-    <img
-      src="assets/projects/osrs-dps-calculator/hitpoints.png"
-      alt="hitpoints icon"
-      height="21px" />
+    Hitpoints
     <input bind:value={hitpoints} type="text" maxlength="2" size="2" />
     <br />
-    <img
-      src="assets/projects/osrs-dps-calculator/prayer.png"
-      alt="prayer icon"
-      height="21px" />
+    Prayer
     <input bind:value={prayer} type="text" maxlength="2" size="2" />
   </p>
 
-  <p>
+  <p class="card">
     <strong>Potions</strong>
     <br />
     <select bind:value={attackPotSelected}>
@@ -219,7 +204,7 @@
       <option value={6 + Math.floor(0.16 * rangedNum)}>Ovl+</option>
     </select>
   </p>
-  <p>
+  <p class="card">
 
     <strong>Prayers</strong>
     <br />
@@ -270,23 +255,7 @@
 
   </p>
 
-  <p style="text-align:center;">
-    <strong>Invisible Level</strong>
-    <br />
-    {modAttack}
-    <br />
-    {modStrength}
-    <br />
-    {modDefence}
-    <br />
-    {modMagic}
-    <br />
-    {modRanged}
-  </p>
-
-</div>
-<div class="section">
-  <p>
+  <p class="card">
     <strong>Combat Style</strong>
     <br />
     <select bind:value={combatStyle}>
@@ -305,24 +274,28 @@
       </select>
       <br />
       Attack Speed:
+      <br />
       <label>
         <input
           type="number"
           bind:value={attackSpeed}
-          min="1.8"
+          min="1.2"
           max="5.4"
           step="0.6" />
+        <br />
         <input
           type="range"
           bind:value={attackSpeed}
-          min="1.8"
+          min="1.2"
           max="5.4"
           step="0.6" />
       </label>
+      <br />
       {Math.floor(attackSpeed / 0.6)} Ticks
     {:else if combatStyle === 1}
-      magic options future
+      magic is incomplete
     {:else}
+      ranged is incomplete
       <select bind:value={rangedStyleBonus}>
         <option value={0}>Rapid</option>
         <option value={3}>Accurate</option>
@@ -331,17 +304,26 @@
     {/if}
 
   </p>
-  <p>
+  <p class="card">
     {#if combatStyle === 0}
       <strong>Attack Bonus</strong>
       <br />
       <input type="number" bind:value={attackBonus} />
       <br />
-      Attack Roll: {maxAttackRoll}
+      Attack Roll:
+      <br />
+      {Math.floor(maxAttackRoll)}
+      <br />
+      Defense Roll:
+      <br />
+      {maxDefenceRoll}
+      <br />
+      Accuracy: {(accuracyMelee * 100).toFixed(2)}%
     {:else if combatStyle === 1}
       <strong>Magic Attack</strong>
       <br />
       Enemy Magic Level:
+      <br />
       <input type="number" bind:value={enemyMagic} />
       <br />
     {:else}
@@ -351,15 +333,15 @@
     {/if}
     <br />
     Enemy Defence Level:
+    <br />
     <input type="number" bind:value={enemyDefence} />
     <br />
     Enemy Armor vs Attack Style
-    <input type="number" bind:value={enemyTypeResistance} />
-    Defense Roll: {maxDefenceRoll}
     <br />
-    Accuracy: {(accuracyMelee * 100).toFixed(2)}%
+    <input type="number" bind:value={enemyTypeResistance} />
+
   </p>
-  <p>
+  <p class="card">
 
     {#if combatStyle === 0}
       <strong>Strength Bonus</strong>
@@ -376,6 +358,10 @@
       </select>
       <br />
       Max Hit: {Math.floor(baseDamage)}
+      <br />
+      <strong>DPS</strong>
+      <br />
+      {dpsMelee.toFixed(4)}
     {:else if combatStyle === 1}
       <strong>Magic Str</strong>
       <br />
@@ -396,10 +382,5 @@
     {/if}
 
   </p>
-  <p>
-    <strong>DPS</strong>
-    <br />
-    {#if combatStyle === 0}{dpsMelee.toFixed(4)}{/if}
 
-  </p>
 </div>
