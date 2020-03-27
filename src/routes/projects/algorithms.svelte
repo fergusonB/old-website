@@ -2,13 +2,22 @@
   import TwoFactorSum from "../../components/algorithms/TwoFactorSum.svelte";
   import ThreeFactorSum from "../../components/algorithms/ThreeFactorSum.svelte";
 
-  let selector = 0;
+  let state = "";
+
+  const setState = value => {
+    state = value;
+  };
 </script>
 
-<button on:click={(selector = 1)} />
+<button on:click={() => setState('TwoFactorSum')}>Two Factor Sum</button>
+<button on:click={() => setState('ThreeFactorSum')}>Three Factor Sum</button>
 
-{#if selector === 1}
-  <TwoFactorSum />
-{:else if selector === 2}
-  <ThreeFactorSum />
-{:else}Waiting for selection.{/if}
+<p>
+  {#if state == 'TwoFactorSum'}
+    <TwoFactorSum />
+  {:else if state == 'ThreeFactorSum'}
+    <ThreeFactorSum />
+  {:else}
+    <!-- else content here -->
+  {/if}
+</p>
