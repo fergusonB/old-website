@@ -19,6 +19,12 @@
 				waiting for the 'click' event -->
 
   <li>
+    <a rel="prefetch" href="projects/pet-ranching-osrs-april-fools">
+      OSRS April Fools DECKS
+    </a>
+  </li>
+
+  <li>
     <a rel="prefetch" href="projects/osrs-dps-calculator">
       OSRS DPS Calculator
     </a>
