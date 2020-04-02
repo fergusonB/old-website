@@ -7,7 +7,7 @@
 <style>
   main {
     position: relative;
-    max-width: 56em;
+    max-width: 95em;
 
     padding: 2em;
     margin: 0 auto;
@@ -18,7 +18,7 @@
 <Nav {segment} />
 
 <main>
-  <div class="card">
+  <div>
     <slot />
   </div>
 </main>

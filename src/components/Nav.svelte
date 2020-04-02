@@ -4,11 +4,11 @@
 
 <style>
   nav {
-    border-bottom: 1px solid #039be5;
+
     font-weight: 300;
     padding: 0 1em;
-    background-color: white;
-    box-shadow: 3px 3px 10px #039be5;
+    background-color: #214761;
+
   }
 
   ul {
@@ -38,7 +38,7 @@
     content: "";
     width: calc(100% - 1em);
     height: 2px;
-    background-color: #0277bd;
+    background-color: #CB7723;
     display: block;
     bottom: -1px;
   }
