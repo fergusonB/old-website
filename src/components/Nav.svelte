@@ -5,7 +5,7 @@
 <style>
   nav {
 
-    font-weight: 300;
+    font-weight: 400;
     padding: 0 1em;
     background-color: #214761;
 
