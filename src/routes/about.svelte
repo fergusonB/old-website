@@ -5,40 +5,37 @@
     margin-right: auto;
     max-width: 100%;
     height: auto;
+    filter: drop-shadow(4px 4px 4px #121212);
+    border-radius: 4px;
   }
 </style>
 
 <svelte:head>
   <title>About</title>
 </svelte:head>
-<h1>About</h1>
+<h1>About Me</h1>
 
-<p>My name is Brenden Ferguson.</p>
-<figure>
-  <img alt="my face" src="./assets/face.jpg" />
-</figure>
+<p>I'm Brenden.</p>
+
 
 <p>
-  I've been making simple websites for the last fifteen years for fun.
-  <br />
-  I got my start with geocities, then worked with Dreamweaver, before finally
-  settling on plain HTML with javascript snippets I found on the web.
+  I've been creating websites and tools for 15 years. 
+  <br>
+  What started as just some simple drag and drop editing on Geocities led me to Dreamweaver, Wordpress, and finally to working with raw HTML and javascript.
+
 </p>
 
 <p>
-  Last year, I decided to introduce myself to real coding by taking a python
-  course to bring more value to my employer and loved it.
-  <br />
-  I decided to dive in and become a programmer.
-  <br />
-  I've always loved the internet and building things, so this became the natural
-  place to bring my newly forged programming ability.
+  I've always loved the internet and building things.
 </p>
 
-<h2>What do I like right now?</h2>
+<p>I have a BBA in Entrepreneurial and Small Business Operations from CSUF, and was an account manager for the largest plumbing wholesaler in the nation for three years. While there I developed tools to improve sales efficiency, including logistics tools and sales calculators.</p>
+
+<h2>About This Site</h2>
 <p>
-  This website is statically generated with Svelte and Sapper, hosted on GitHub,
-  and is protected by Cloudflare.
+  This website is static; all interactive elements are built with javascript. It is hosted on GitHub, and is accelerated and protected by Cloudflare.
+  <br>
+  I write everything on this site in Svelte, and VSCode is my editor of choice.
   <br />
   The entire website including images (at the time of writing) is under 100kB,
   has a perfect Lighthouse score, and also functions as a progressive web app
@@ -47,9 +44,4 @@
   <br />
   <img src="./assets/about/lighthouse.png" alt="lighthouse" />
 
-</p>
-<p>
-  My favorite language right now is python. It started this journey and I find
-  it incredibly intuitive. Comprehensions make me happy, and python is so easy
-  to read.
 </p>

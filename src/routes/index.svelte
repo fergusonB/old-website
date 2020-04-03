@@ -30,9 +30,10 @@
 <h1>Hello! I'm Brenden.</h1>
 <h2>
   <p>
-    I've been making websites for 15 years for fun.
+    I've been making websites for 15 years.
     <br />
-    Recently I decided to do it professionally.
+    <br>
+    <a class="card" rel="prefetch" href="/about">About Me</a>
   </p>
 </h2>
 <a hidden href="/magicmirror">mm hidden</a>
