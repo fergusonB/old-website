@@ -48,6 +48,9 @@
     padding: 1em 0.5em;
     display: block;
   }
+  a:hover{
+    background-color: #375970;
+  }
 
   img {
     height: 32px;
