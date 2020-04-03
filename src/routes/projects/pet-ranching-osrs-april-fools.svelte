@@ -90,10 +90,11 @@
 
     height: 24px;
     width: 21px;
+    animation:bounce 1s infinite; 
     -webkit-animation: bounce 1s infinite;
   }
 
-  @-webkit-keyframes bounce {
+  @keyframes bounce {
     0% {
       bottom: 5px;
     }
