@@ -7,8 +7,9 @@
 
 
     let summary;
+
     let state = ''
-    let countrydata
+
  
 
 
@@ -16,14 +17,10 @@
 	onMount(async () => {
 		const res = await fetch(`https://api.covid19api.com/summary`);
         summary = await res.json();
-
         
     });
     
-    const currentCountry = async (state) =>{
-		const res = await fetch(`https://api.covid19api.com/${state}/status/confirmed`);
-        countrydata = await res.json();
-    }
+
 
     
 
@@ -33,13 +30,13 @@
 
 
 
-<p>Select a Country</p>
-<button on:click={()=>{state=`Algeria`}}>state test</button>
+
+
 {#if summary && state ===''}
 
 <h2>Global</h2>
 <p>
-     Total Cases: {JSON.stringify(summary.Global.TotalConfirmed)}
+     Total Cases: {JSON.stringify(summary.Global.TotalConfirmed)} (Estimated {((JSON.stringify(summary.Global.TotalConfirmed)/7713468000)*100).toFixed(4)}% of global population.)
      <br>
           New Cases: {JSON.stringify(summary.Global.NewConfirmed)} (Change of +{((summary.Global.NewConfirmed/summary.Global.TotalConfirmed)*100).toFixed(2)}%)
      <br>
@@ -56,7 +53,7 @@ New Recoveries: {JSON.stringify(summary.Global.NewRecovered)} (Change of +{((sum
 
 
 {:else if  state !== ``}
-
+nothing
 
 {:else}
      Getting data from covid19api.com ...
