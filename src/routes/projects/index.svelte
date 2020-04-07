@@ -36,4 +36,10 @@
     </a>
   </li>
 
+    <li>
+    <a rel="prefetch" href="projects/rock-paper-scissors">
+      Rock, Paper, Scissors
+    </a>
+  </li>
+
 </ul>
