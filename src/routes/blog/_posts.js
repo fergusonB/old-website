@@ -8,6 +8,83 @@
 // underscore tells Sapper not to do that.
 
 const posts = [
+{
+	title:'4/7/20 | Developing in Linux, on Windows',
+	slug: 'linux-vscode-windows',
+	html:`
+	
+	<article>
+	<p>I am writing this article because I've seen through my normal social channels that many programmers aren't aware or don't want to invest time in learning how they can develop in a linux environment on windows.
+		<br>
+		Today I will go over how you can set up a brand new, clean developing environment that will closely mirror the system that you will end up deploying to.
+	</p>
+	<h2>Getting Started</h2>
+	<h3>Requirements</h3>
+	<p>The only requirements here are a computer running Windows 10, an internet connection, and about 30 minutes of free time.</p>
+	<h3>Installation of WSL</h3>
+	<p>
+		The first thing we need to get started on is installing Windows Subsystem Linux (which I will refer to as WSL from here forward).
+		<br>
+		The full instructions can be found <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10" target="_blank">here</a>, but I'll go over the important bits:
+		<br>
+		<ul>
+			<li>
+				Open PowerShell as Administrator
+			</li>
+			<li>Enter <code>Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux</code></li>
+			<li>Restart the computer</li>
+			<li>
+				Open Microsoft Store
+			</li>
+			<li>
+				Search for Linux and 'Get' your preferred distro. I'm using Ubuntu, but you may want to use what you will be deploying to in production.
+			</li>
+			<li>*Note: If this doesn't work for you, there are PowerShell options as well, please see the Microsoft link above.</li>
+			<li>Launch the distro once to initialize it; you can do this by launching it from the Start Menu.</li>
+			<li>Create a new user account, and update + upgrade</li>
+			
+		</ul>
+		Awesome! Now you have a Linux terminal from your comfy Win10 environment. But it gets better.
+	</p>
+	<h2>
+	Integrating into Visual Studio Code
+	</h2>
+	<p>
+		<h3>
+			VSCode Installation
+		</h3>
+		Optional: I recommend taking this time to install <a href="https://code.visualstudio.com/insiders/" target="_blank">Visual Studio Code Insiders</a>, as this will present you with a fresh copy of VSCode and gives you access to features like settings Sync.
+		<br>
+		I use the insiders build as well as github to develop from any computer with close to zero downtime switching between environments.
+	</p>
+	<h3>VSCode Setup</h3>
+	<p>
+		On first launch, VSCode should prompt you to install the "Remote-WSL" package. Do this.
+		<br>
+		If you do not see this prompt, go into the extensions tab and install it there.
+		<br>
+		We're almost done, just follow these steps:
+		<ul>
+			<li>
+				Click on the 'Remote Explorer' Tab.
+			</li>
+			<li>
+				You will see Ubuntu as a WSL target, right click and 'Connect to WSL'
+			</li>
+			<li>
+				VSCode will launch a new Window that is in a linux environment. Press <code>CTRL + ~</code> to open the terminal and verify Linux is running.
+			</li>
+			
+		</ul>
+		You're done, you can start a new project within your Linux VSCode. <br>
+		<br>
+		You can also import existing projects fairly easily.
+		<br>
+		For example, install node and npm, set your github name and username, clone the project you're working on and log in, and <code>npm i</code> to install the packages. All done!
+	</p>
+	`
+},
+
 	{
 		title: '8/1/19 | RuneLite on Android',
 		slug: 'runelite-on-android',
