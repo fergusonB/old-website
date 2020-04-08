@@ -41,5 +41,9 @@
       Rock, Paper, Scissors
     </a>
   </li>
-
+    <li>
+    <a rel="prefetch" href="projects/tic-tac-toe">
+      Tic Tac Toe
+    </a>
+  </li>
 </ul>
