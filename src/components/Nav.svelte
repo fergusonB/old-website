@@ -55,6 +55,8 @@
     display:flex;
     height:auto;
     width:24px;
+    filter:invert(1)
+    
 
   }
 
