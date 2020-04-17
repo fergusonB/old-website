@@ -1,2 +1,1 @@
-three factor sum
- 
+sdfs

@@ -51,11 +51,14 @@
   a:hover{
     background-color: #375970;
   }
+  img{
+    display:flex;
+    height:auto;
+    width:24px;
 
-  img {
-    height: 32px;
-    float: right;
   }
+
+
 </style>
 
 <nav>
