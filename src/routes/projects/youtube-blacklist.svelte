@@ -21,8 +21,9 @@
 
 <style>
   .blacklist {
-    background-color: black;
+    background-color: red;
     color: white;
+    text-shadow: 1px 1px 1px black;
   }
   textarea {
     width: 99%;
