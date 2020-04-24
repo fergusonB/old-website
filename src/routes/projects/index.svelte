@@ -11,6 +11,13 @@
 
 <h1>Recent Projects</h1>
 
+<h2>Projects</h2>
+<ul>
+<li>Nothing here.... yet.</li>
+</ul>
+
+
+<h2>Exercises</h2>
 <ul>
 
   <!-- we're using the non-standard `rel=prefetch` attribute to
