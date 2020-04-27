@@ -18,7 +18,7 @@
 <Nav {segment} />
 
 <main>
-  <div class="darkcard">
+  <div class>
     <slot />
   </div>
 </main>

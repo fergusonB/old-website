@@ -7,7 +7,9 @@
 
     font-weight: 400;
     padding: 0 1em;
-    background-color: #214761;
+    background-color: #121212;
+    color:white;
+    box-shadow: 1px 1px 4px 1px rgba(51,51,51,.2);
 
   }
 
@@ -37,8 +39,8 @@
     position: absolute;
     content: "";
     width: calc(100% - 1em);
-    height: 2px;
-    background-color: #CB7723;
+    height: 3px;
+    background-color: white;
     display: block;
     bottom: -1px;
   }
@@ -49,7 +51,7 @@
     display: block;
   }
   a:hover{
-    background-color: #375970;
+    background-color: black;
   }
   img{
     display:flex;
