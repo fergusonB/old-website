@@ -26,6 +26,12 @@
 				waiting for the 'click' event -->
 
   <li>
+    <a rel="prefetch" href="projects/statistics">
+      Quick Statistics Reference
+    </a>
+  </li>
+
+  <li>
     <a rel="prefetch" href="projects/pet-ranching-osrs-april-fools">
       OSRS April Fools DECKS
     </a>
