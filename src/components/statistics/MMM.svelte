@@ -13,6 +13,8 @@ $: median = length % 2 === 0 ? (fArr[(length/2)-1] + fArr[(length/2)]) / 2: fArr
 
 $: mode = modeF(fArr)
 
+$: standardDeviation = Math.sqrt(fArr.map(x=>(x-mean)**2).reduce((a,b)=>a+b)/length)
+
 //mode function
 const modeF = arr =>{
     let numMapping = {};
@@ -51,3 +53,5 @@ Assessing: [{fArr}]
 
 
 <h3>Mode: {mode} </h3>
+
+<h3>Standard Deviation : {standardDeviation}</h3>
