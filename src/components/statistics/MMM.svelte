@@ -32,6 +32,7 @@ const modeF = arr =>{
 }
 
 
+
 </script>
 <h2>Mean, Median, Mode</h2>
 <p>
