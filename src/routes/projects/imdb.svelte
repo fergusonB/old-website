@@ -1,5 +1,5 @@
 <svelte:head>
-  <title>Projects</title>
+  <title>IMDB Ratings</title>
 </svelte:head>
 
 <style>
