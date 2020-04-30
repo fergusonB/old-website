@@ -54,9 +54,9 @@
 <p>
 Please paste the contents from 'out.json' here and press go to generate a new chart.
 <br>
-Click <a href='Copy Breaking Bad Data' on:click|preventDefault={()=>copyToClipboard()} on:click={()=>alert('Copied!')}>here</a> to copy example data for Breaking Bad data to your clipboard.
+Click <button on:click|preventDefault={()=>copyToClipboard()} on:click={()=>alert('Copied!')}>here</button> to copy example data for Breaking Bad to your clipboard.
 <br>
-<input type="text" bind:value={userData}> <button on:click={()=>data = JSON.parse(userData)}>Go</button>
+<input type="text" on:click={()=>userData = ''} bind:value={userData}> <button on:click={()=>data = JSON.parse(userData)}>Generate</button>
 
 </p>
 
