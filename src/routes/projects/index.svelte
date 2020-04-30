@@ -13,7 +13,12 @@
 
 <h2>Projects</h2>
 <ul>
-<li>Nothing here.... yet.</li>
+  <li>
+    <a rel="prefetch" href="projects/imdb">
+      IMDB Ratings Table Generator 
+    </a>
+  </li>
+
 </ul>
 
 
