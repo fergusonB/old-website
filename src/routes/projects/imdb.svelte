@@ -8,6 +8,13 @@
     align-items:center;
     
 }
+.seasonBox{
+  padding:10px;
+  border:1px solid white;
+}
+.seasonBox:hover{
+  border:1px solid black;
+}
 .episode{
     border:1px solid white;
     padding: 10px;
@@ -66,7 +73,9 @@ Click <button on:click|preventDefault={()=>copyToClipboard()} on:click={()=>aler
 
 {#each Object.keys(data) as season,i}
     <div class="season">
+    <div class="seasonBox">
     {i < 9 ? season.replace('season','S0'): season.replace('season','S')}
+    </div>
     {#each data[season] as episode}
          <div class="episode tooltip" style={`background-color:${colors[Math.round(episode.rating)]};`}>
          {episode.rating.toFixed(1)}
@@ -86,6 +95,8 @@ Click <button on:click|preventDefault={()=>copyToClipboard()} on:click={()=>aler
 
 
 <script>
+
+
 
 let colors = {
     0:`#FFFFFF`,
