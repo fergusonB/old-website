@@ -5,11 +5,12 @@
 <style>
 .season{
     display:flex;
+    align-items:center;
     
 }
 .episode{
-    padding: 10px;
     border:1px solid white;
+    padding: 10px;
     
 }
 .episode:hover{
@@ -37,7 +38,6 @@
   z-index: 1;
     top:100%;
     left:50%;
-    margin-left:-125px;
 }
 
 /* Show the tooltip text when you mouse over the tooltip container */
@@ -49,23 +49,24 @@
 
 <h1>IMDB Show Ratings</h1>
 
-<p>This takes output from my project <a href="https://github.com/fergusonB/Puppeteer-IMDB-Scraper"> here</a>. It requires node, npm, and Puppeteer</p>
+<p>This takes output from my project <a target="_blank" href="https://github.com/fergusonB/Puppeteer-IMDB-Scraper"> here</a>. It requires node, npm, and Puppeteer</p>
 
 <p>
 Please paste the contents from 'out.json' here and press go to generate a new chart.
 <br>
-Click <button on:click|preventDefault={()=>copyToClipboard()} on:click={()=>alert('Copied!')}>here</button> to copy example data for Breaking Bad to your clipboard.
+Click <button on:click|preventDefault={()=>copyToClipboard()} on:click={()=>alert('Copied! \n Now paste it in the textbox below and press Generate.')}>here</button> to copy example data for Breaking Bad to your clipboard.
 <br>
+</p>
+<p>
 <input type="text" on:click={()=>userData = ''} bind:value={userData}> <button on:click={()=>data = JSON.parse(userData)}>Generate</button>
 
 </p>
 
 
 
-{#each Object.keys(data) as season}
+{#each Object.keys(data) as season,i}
     <div class="season">
-    {season.replace('s','S')}
-    
+    {i < 9 ? season.replace('season','S0'): season.replace('season','S')}
     {#each data[season] as episode}
          <div class="episode tooltip" style={`background-color:${colors[Math.round(episode.rating)]};`}>
          {episode.rating.toFixed(1)}
@@ -77,6 +78,7 @@ Click <button on:click|preventDefault={()=>copyToClipboard()} on:click={()=>aler
             </span>
          </div>
     {/each}
+    
     </div>
 {/each}
 
