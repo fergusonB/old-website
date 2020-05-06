@@ -1,5 +1,7 @@
 <script>
 
+
+
 class Food {
   constructor(quantity, item, expires, price) {
     this.Quantity = quantity;
@@ -33,10 +35,42 @@ const foodFunction = () =>{
 
 </script>
 
+<style>
+.titlediv{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    
+}
+.small{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+</style>
+
 <h2 style="text-align:center;">Food</h2>
 
+<div class="titlediv">
+<div>
+<h3>New</h3>
+Quantity: <input type="number" bind:value={inputQty}>
+<br>
+Item: <input type="text" on:click={()=>inputItem=''} bind:value={inputItem}>
+<br>
+Expiration: <input type="date" bind:value={inputDate}>
+<br>
+Price: <input type="number" bind:value={inputPrice}>
+<br>
+<button on:click={foodFunction} >Add</button>
+</div>
+
+<div>
+<h3>Trip Stats</h3>
+</div>
+</div>
+
+<div class="small">
 {#each foods as food,i}
-     <div class="card">
+     <div class="card" >
     {#each Object.keys(food) as key}
         {key}: {food[key]}
         <br>
@@ -50,16 +84,4 @@ const foodFunction = () =>{
 </div>
 
 {/each}
-<div class="card">
-<h3>New</h3>
-Quantity: <input type="number" bind:value={inputQty}>
-<br>
-Item: <input type="text" on:click={()=>inputItem=''} bind:value={inputItem}>
-<br>
-Expiration: <input type="date" bind:value={inputDate}>
-<br>
-Price: <input type="number" bind:value={inputPrice}>
-<br>
-<button on:click={foodFunction} >Add</button>
 </div>
-
