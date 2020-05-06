@@ -30,10 +30,9 @@
 <h1>Hello! I'm Brenden.</h1>
 <h2>
   <p>
-    I've been making websites for 15 years.
+    Please check out some of my <a class="card" rel="prefetch" href="/projects">projects</a> or my <a class="card" rel="prefetch" href="/blog">blog</a>.
     <br />
     <br>
-    <a class="card" rel="prefetch" href="/about">About Me</a>
   </p>
 </h2>
 <a hidden href="/magicmirror">mm hidden</a>
