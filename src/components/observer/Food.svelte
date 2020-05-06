@@ -12,7 +12,6 @@ class Food {
 
 // master list
 let foods = [];
-let id = []
 
 $: jsonOutput = JSON.stringify(foods)
 
