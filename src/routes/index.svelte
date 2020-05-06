@@ -30,7 +30,7 @@
 <h1>Hello! I'm Brenden.</h1>
 <h2>
   <p>
-    Please check out some of my <a class="card" rel="prefetch" href="/projects">projects</a> or my <a class="card" rel="prefetch" href="/blog">blog</a>.
+    Please check out some of my <a rel="prefetch" href="/projects">projects</a> or my <a rel="prefetch" href="/blog">blog</a>.
     <br />
     <br>
   </p>
