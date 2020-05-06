@@ -13,7 +13,9 @@ class Food {
 // master list
 let foods = [];
 
-$: jsonOutput = JSON.stringify(foods)
+if (process.browser && localStorage.foods){
+    foods = JSON.parse(localStorage.foods)
+}
 
 // example
 let inputQty = 1
@@ -25,6 +27,7 @@ let inputPrice = 0.00
 const foodFunction = () =>{
     foods.push(new Food(inputQty,inputItem,inputDate,inputPrice))
     foods = foods
+    localStorage.foods = JSON.stringify(foods)
 }
 
 
@@ -41,6 +44,7 @@ const foodFunction = () =>{
      <button on:click={()=>{
          foods.splice(i,1)
          foods = foods
+         localStorage.foods = JSON.stringify(foods)
     }}>Delete</button>
 
 </div>
@@ -56,7 +60,6 @@ Expiration: <input type="date" bind:value={inputDate}>
 <br>
 Price: <input type="number" bind:value={inputPrice}>
 <br>
-<button on:click={foodFunction}>Add</button>
+<button on:click={foodFunction} >Add</button>
 </div>
 
-{jsonOutput}
