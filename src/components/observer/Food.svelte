@@ -3,11 +3,13 @@
 
 
 class Food {
-  constructor(quantity, item, expires, price) {
+  constructor(quantity, item, expires, price, location, tripid) {
     this.Quantity = quantity;
     this.Item = item;
     this.Expires = expires;
     this.Price = price
+    this.Location = location
+    this.TripID = tripid
   }
 }
 
@@ -24,10 +26,12 @@ let inputQty = 1
 let inputItem = 'Item'
 let inputDate = '2100-01-01'
 let inputPrice = 0.00
+let inputLocation = 'Costco'
+let inputTripID = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 
 // add food
 const foodFunction = () =>{
-    foods.push(new Food(inputQty,inputItem,inputDate,inputPrice))
+    foods.push(new Food(inputQty,inputItem,inputDate,inputPrice,inputLocation,inputTripID))
     foods = foods
     localStorage.foods = JSON.stringify(foods)
 }
@@ -45,6 +49,7 @@ const foodFunction = () =>{
     display:grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
+
 </style>
 
 <h2 style="text-align:center;">Food</h2>
@@ -60,21 +65,26 @@ Expiration: <input type="date" bind:value={inputDate}>
 <br>
 Price: <input type="number" bind:value={inputPrice}>
 <br>
+Location: <input type="text" bind:value={inputPrice}>
+<br>
 <button on:click={foodFunction} >Add</button>
 </div>
 
 <div>
 <h3>Trip Stats</h3>
+<p>Trip will be reset on page refresh.</p>
 </div>
 </div>
 
 <div class="small">
 {#each foods as food,i}
      <div class="card" >
-    {#each Object.keys(food) as key}
-        {key}: {food[key]}
-        <br>
-     {/each}
+    Quantity: {food.Quantity}
+    <br>
+    Item: {food.Item}
+    <br>
+    Expiration: {food.Expires}
+    <br>
      <button on:click={()=>{
          foods.splice(i,1)
          foods = foods
