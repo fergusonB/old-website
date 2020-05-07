@@ -67,6 +67,9 @@ import FoodTrip from "../../components/observer/FoodTrip.svelte";
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
+  h3{
+      text-align: center;
+  }
 </style>
 
 <h2 style="text-align:center;">Food</h2>
@@ -95,12 +98,9 @@ import FoodTrip from "../../components/observer/FoodTrip.svelte";
     <button on:click={foodFunction}>Add</button>
   </div>
 
-  <div>
-    <FoodTrip currentTrip = {inputTripID} data = {foods}/>
 
-  </div>
 </div>
-
+<h3>Inventory</h3>
 <div class="small">
   {#each foods as food, i}
     <div class="card">
@@ -123,3 +123,9 @@ import FoodTrip from "../../components/observer/FoodTrip.svelte";
     </div>
   {/each}
 </div>
+
+  <div>
+  <h3>Trip Stats</h3>
+    <FoodTrip currentTrip = {inputTripID} data = {foods}/>
+
+  </div>
