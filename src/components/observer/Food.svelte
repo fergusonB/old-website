@@ -16,6 +16,7 @@ class Food {
 
 // master list
 let foods = [];
+$: foodFollow = foods
 
 if (process.browser && localStorage.foods){
     foods = JSON.parse(localStorage.foods)
@@ -65,7 +66,7 @@ Expiration: <input type="date" bind:value={inputDate}>
 <br>
 Price: <input type="number" bind:value={inputPrice}>
 <br>
-Location: <input type="text" bind:value={inputPrice}>
+Location: <input type="text" bind:value={inputLocation}>
 <br>
 <button on:click={foodFunction} >Add</button>
 </div>
@@ -73,6 +74,10 @@ Location: <input type="text" bind:value={inputPrice}>
 <div>
 <h3>Trip Stats</h3>
 <p>Trip will be reset on page refresh.</p>
+<ul>
+    <li>Total: {process.browser && foodFollow.length > 0 ? '$'+foodFollow.map(x=>x.TripID === inputTripID ? Number(x.Price) : 0).reduce((a,b)=>a+b).toFixed(2) : `Calculating`} 
+    <li>APPM: 
+</ul>
 </div>
 </div>
 
