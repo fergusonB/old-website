@@ -3,8 +3,8 @@ export let data;
 export let currentTrip;
 
 $: trips = [...new Set(data.map(x=>x.TripID).filter(x=>x!==currentTrip))];
-$: tripTotal = process.browser ? data.map(x=> x.TripID === selectedTrip ? x.Price : 0).reduce((a,b)=>a+b).toFixed(2) : 'Waiting...'
-$: tripAverage = process.browser ? Number(tripTotal) / (data.filter(x=>x.TripID===selectedTrip).length) : 'Waiting...'
+$: tripTotal = process.browser ? data.map(x=> x.TripID === selectedTrip ? x.Price : 0).reduce((a,b)=>a+b,0).toFixed(2) : 'Waiting...'
+$: tripAverage = process.browser ? Number(tripTotal) / (data.filter(x=>x.TripID===selectedTrip,0).length) : 'Waiting...'
 
 let selectedTrip
 
@@ -29,6 +29,7 @@ Selected (showing data for selected):
 </p>
 
 <p>
+<br>
 Trip Total: ${tripTotal}
 <br>
 Item Average: ${tripAverage && process.browser ? tripAverage.toFixed(2) : '0.00'}
