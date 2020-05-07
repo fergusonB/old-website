@@ -19,6 +19,12 @@
     </a>
   </li>
 
+    <li>
+    <a rel="prefetch" href="projects/observer">
+      The Observer (WIP)
+    </a>
+  </li>
+
 </ul>
 
 
