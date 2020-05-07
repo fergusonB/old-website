@@ -1,4 +1,6 @@
 <script>
+import FoodTrip from "../../components/observer/FoodTrip.svelte";
+
   class Food {
     constructor(quantity, item, expires, price, location, tripid) {
       this.Quantity = quantity;
@@ -94,17 +96,8 @@
   </div>
 
   <div>
-    <h3>Trip Stats</h3>
-    <p>Trip will be reset on page refresh.</p>
-    <ul>
-      <li>
-        Total: {process.browser && foodFollow.length > 0 ? '$' + foodFollow
-              .map((x) => (x.TripID === inputTripID ? Number(x.Price) : 0))
-              .reduce((a, b) => a + b)
-              .toFixed(2) : `Waiting for trip to start.`}
-      </li>
-      <li>APPM:</li>
-    </ul>
+    <FoodTrip currentTrip = {inputTripID} data = {foods}/>
+
   </div>
 </div>
 
