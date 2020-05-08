@@ -1,14 +1,16 @@
 <script>
-import FoodTrip from "../../components/observer/FoodTrip.svelte";
+  import FoodTrip from "../../components/observer/FoodTrip.svelte";
+  import FoodLifeTime from "../../components/observer/FoodLifetime.svelte";
 
   class Food {
-    constructor(quantity, item, expires, price, location, tripid) {
+    constructor(quantity, item, expires, price, location, tripid, date) {
       this.Quantity = quantity;
       this.Item = item;
       this.Expires = expires;
       this.Price = price;
       this.Location = location;
       this.TripID = tripid;
+      this.Date = date
     }
   }
 
@@ -16,16 +18,16 @@ import FoodTrip from "../../components/observer/FoodTrip.svelte";
   let foods = [];
   $: foodFollow = foods;
 
-  let date = new Date
-  let month = date.getMonth() + 1
-  let day = date.getDate()
-  if (day < 10){
-      day = '0' + day
+  let date = new Date();
+  let month = date.getMonth() + 1;
+  let day = date.getDate();
+  if (day < 10) {
+    day = "0" + day;
   }
-  if (month <10){
-      month = '0' + month
+  if (month < 10) {
+    month = "0" + month;
   }
-  date = `${date.getFullYear()}-${month}-${day}`
+  date = `${date.getFullYear()}-${month}-${day}`;
 
   if (process.browser && localStorage.foods) {
     foods = JSON.parse(localStorage.foods);
@@ -50,7 +52,8 @@ import FoodTrip from "../../components/observer/FoodTrip.svelte";
         inputDate,
         inputPrice,
         inputLocation,
-        inputTripID
+        inputTripID,
+        date
       )
     );
     foods = foods;
@@ -67,8 +70,8 @@ import FoodTrip from "../../components/observer/FoodTrip.svelte";
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
-  h3{
-      text-align: center;
+  h3 {
+    text-align: center;
   }
 </style>
 
@@ -98,34 +101,51 @@ import FoodTrip from "../../components/observer/FoodTrip.svelte";
     <button on:click={foodFunction}>Add</button>
   </div>
 
-
 </div>
 <h3>Inventory</h3>
 <div class="small">
   {#each foods as food, i}
-    <div class="card">
-      Quantity: {food.Quantity}
-      <br />
-      Item: {food.Item}
-      <br />
-      Expiration: {food.Expires}
-      <br />
-      <button
-        on:click={() => {
-          foods.splice(i, 1);
-          foods = foods;
-          localStorage.foods = JSON.stringify(foods);
-        }}>
-        Delete
-      </button>
-      
+    {#if !food.Hidden}
+      <div class="card">
+        Quantity: {food.Quantity}
+        <br />
+        Item: {food.Item}
+        <br />
+        Expiration: {food.Expires}
+        <br />
+        <button
+          on:click={() => {
+            let hide = prompt(`Are you sure you would like to ARCHIVE? Data will still be represented in the stats but it will no longer be visible. (y = yes / n = no)`)
+            if (hide === 'y' || hide === 'Y'){
+                food.Hidden = 1;
+            }
+            
+          }}>
+          Archive
+        </button>
+        <button
+          on:click={() => {
+            let del = prompt(`Are you sure you would like to DELETE? This will remove all data for ${food.Item}(y = yes / n = no)`);
+            if (del === 'y' || del === 'Y') {
+              foods.splice(i, 1);
+              foods = foods;
+              localStorage.foods = JSON.stringify(foods);
+            }
+          }}>
+          Delete
+        </button>
 
-    </div>
+      </div>
+    {/if}
   {/each}
 </div>
+<div>
+  <h3>Lifetime Stats</h3>
+  <FoodLifeTime data={foods} />
+</div>
 
-  <div>
+<div>
   <h3>Trip Stats</h3>
-    <FoodTrip currentTrip = {inputTripID} data = {foods}/>
+  <FoodTrip currentTrip={inputTripID} data={foods} />
 
-  </div>
+</div>
