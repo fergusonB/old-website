@@ -73,6 +73,14 @@
   h3 {
     text-align: center;
   }
+
+  .red{
+    background-color:#ff7043
+  }
+
+  .yellow{
+    background-color:#fff176;
+  }
 </style>
 
 <h2 style="text-align:center;">Food</h2>
@@ -106,7 +114,7 @@
 <div class="small">
   {#each foods as food, i}
     {#if !food.Hidden}
-      <div class="card">
+      <div class="card {new Date(food.Expires).getTime() - new Date(food.Date).getTime() < 604800000 ? `red`: new Date(food.Expires).getTime() - new Date(food.Date).getTime() < 2404800000 ? `yellow`: `temp`}">
         Quantity: {food.Quantity}
         <br />
         Item: {food.Item}
