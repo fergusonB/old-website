@@ -29,6 +29,9 @@ Selected (showing data for selected):
 </p>
 
 <p>
+Date: 
+<br>
+Location: 
 <br>
 Trip Total: ${tripTotal}
 <br>
