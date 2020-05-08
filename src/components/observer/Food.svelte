@@ -139,6 +139,7 @@
             let hide = prompt(`Are you sure you would like to ARCHIVE? Data will still be represented in the stats but it will no longer be visible. (y = yes / n = no)`)
             if (hide === 'y' || hide === 'Y'){
                 food.Hidden = 1;
+                localStorage.foods = JSON.stringify(foods);
             }
             
           }}>
