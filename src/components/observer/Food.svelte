@@ -10,7 +10,7 @@
       this.Price = price;
       this.Location = location;
       this.TripID = tripid;
-      this.Date = date
+      this.Date = date;
     }
   }
 
@@ -74,18 +74,17 @@
     text-align: center;
   }
 
-  .red{
-    background-color:#ff7043
+  .red {
+    background-color: #ff7043;
   }
 
-  .yellow{
-    background-color:#fff176;
+  .yellow {
+    background-color: #fff176;
   }
 
-  .shadows{
-    filter: drop-shadow(5px 0px  red)
+  .shadows {
+    filter: drop-shadow(5px 0px red);
   }
-
 </style>
 
 <h2 style="text-align:center;">Food</h2>
@@ -114,20 +113,18 @@
     <button on:click={foodFunction}>Add</button>
 
   </div>
-    <div>
-  <h3>Lifetime Stats</h3>
-  <FoodLifeTime data={foods} />
-</div>
-
-
-
+  <div>
+    <h3>Lifetime Stats</h3>
+    <FoodLifeTime data={foods} />
+  </div>
 
 </div>
 <h3>Inventory</h3>
 <div class="small">
   {#each foods as food, i}
     {#if !food.Hidden}
-      <div class="shadows card {new Date(food.Expires).getTime() - new Date(food.Date).getTime() < 604800000 ? `red`: new Date(food.Expires).getTime() - new Date(food.Date).getTime() < 2404800000 ? `yellow`: `temp`}">
+      <div
+        class="shadows card {new Date(food.Expires).getTime() - new Date(food.Date).getTime() < 604800000 ? `red` : new Date(food.Expires).getTime() - new Date(food.Date).getTime() < 2404800000 ? `yellow` : `temp`}">
         Quantity: {food.Quantity}
         <br />
         Item: {food.Item}
@@ -136,12 +133,11 @@
         <br />
         <button
           on:click={() => {
-            let hide = prompt(`Are you sure you would like to ARCHIVE? Data will still be represented in the stats but it will no longer be visible. (y = yes / n = no)`)
-            if (hide === 'y' || hide === 'Y'){
-                food.Hidden = 1;
-                localStorage.foods = JSON.stringify(foods);
+            let hide = prompt(`Are you sure you would like to ARCHIVE? Data will still be represented in the stats but it will no longer be visible. (y = yes / n = no)`);
+            if (hide === 'y' || hide === 'Y') {
+              food.Hidden = 1;
+              localStorage.foods = JSON.stringify(foods);
             }
-            
           }}>
           Archive
         </button>
@@ -156,12 +152,11 @@
           }}>
           Delete
         </button>
-        <div class="bar"></div>
+        <div class="bar" />
       </div>
     {/if}
   {/each}
 </div>
-
 
 <div>
   <h3>Trip Stats</h3>
