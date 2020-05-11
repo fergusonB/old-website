@@ -82,9 +82,16 @@
     background-color: #fff176;
   }
 
-  .shadows {
-    filter: drop-shadow(5px 0px red);
+  .colorContainer{
+    display:flex;
+    justify-content:space-between;
+
   }
+  .picker{
+    border:1px solid black;padding:5px;
+  }
+
+
 </style>
 
 <h2 style="text-align:center;">Food</h2>
@@ -124,10 +131,12 @@
   {#each foods as food, i}
     {#if !food.Hidden}
       <div
-        class="shadows card {new Date(food.Expires).getTime() - new Date(food.Date).getTime() < 604800000 ? `red` : new Date(food.Expires).getTime() - new Date(food.Date).getTime() < 2404800000 ? `yellow` : `temp`}">
-        Quantity: {food.Quantity}
-        <br />
+        class="card {new Date(food.Expires).getTime() - new Date(food.Date).getTime() < 604800000 ? `red` : new Date(food.Expires).getTime() - new Date(food.Date).getTime() < 2404800000 ? `yellow` : `temp`}"
+        style="filter: drop-shadow(5px 0px {food.Color});">
+
         Item: {food.Item}
+        <br />
+                Quantity: {food.Quantity}
         <br />
         Expiration: {food.Expires}
         <br />
@@ -152,6 +161,31 @@
           }}>
           Delete
         </button>
+        <br>
+        <br>
+        <div class="colorContainer">
+        <div class='picker' style='background-color:white;' on:click={()=>{
+          food.Color='white'
+          foods = foods
+          localStorage.foods = JSON.stringify(foods);
+          }}> </div>
+          <div class='picker' style='background-color:#1565C0;' on:click={()=>{
+          food.Color='#1565C0'
+          foods = foods
+          localStorage.foods = JSON.stringify(foods);
+          }}> </div>
+          <div class='picker' style='background-color:#EF6C00;' on:click={()=>{
+          food.Color='#EF6C00'
+          foods = foods
+          localStorage.foods = JSON.stringify(foods);
+          }}> </div>
+          <div class='picker' style='background-color:black;' on:click={()=>{
+          food.Color='black'
+          foods = foods
+          localStorage.foods = JSON.stringify(foods);
+          }}> </div>
+          </div>
+        
         <div class="bar" />
       </div>
     {/if}
