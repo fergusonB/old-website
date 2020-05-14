@@ -35,4 +35,3 @@
     <br>
   </p>
 </h2>
-<a hidden href="/magicmirror">mm hidden</a>
