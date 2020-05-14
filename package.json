@@ -1,7 +1,7 @@
 {
   "name": "BrendenFerguson",
-  "description": "Personal Website",
-  "version": "0.0.1",
+  "description": "Brenden Ferguson's Website",
+  "version": "1.10.20",
   "scripts": {
     "dev": "sapper dev",
     "build": "sapper build --legacy",
