@@ -14,8 +14,7 @@ const posts = [
 	html:`
 	
 	<article>
-	<p>I am writing this article because I've seen through my normal social channels that many programmers aren't aware or don't want to invest time in learning how they can develop in a linux environment on windows.
-		<br>
+	<p>
 		Today I will go over how you can set up a brand new, clean developing environment that will closely mirror the system that you will end up deploying to.
 	</p>
 	<h2>Getting Started</h2>
