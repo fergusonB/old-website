@@ -1,5 +1,7 @@
 <script>
 import MMM from "../../components/statistics/MMM.svelte";
+import Binomial from "../../components/statistics/Binomial.svelte";
+import Probability from "../../components/statistics/Probability.svelte";
 </script>
 
 <svelte:head>
@@ -10,4 +12,7 @@ import MMM from "../../components/statistics/MMM.svelte";
 
 <MMM/>
 
+<Probability/>
+
+<Binomial/>
 
