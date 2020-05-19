@@ -136,7 +136,13 @@
       <div
         class="card {new Date(food.Expires).getTime() - new Date(food.Date).getTime() < 604800000 ? `red` : new Date(food.Expires).getTime() - new Date(food.Date).getTime() < 2404800000 ? `yellow` : `temp`}"
         style="filter: drop-shadow(5px 0px {food.Color});">
-        Item: {food.Item}
+        Item:
+        <span
+          contenteditable="true"
+          on:blur={save}
+          bind:textContent={food.Item}>
+          {food.Item}
+        </span>
         <br />
         Quantity:
         <span
