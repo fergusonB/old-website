@@ -1,7 +1,7 @@
 <script>
   import FoodTrip from "../../components/observer/FoodTrip.svelte";
   import FoodLifeTime from "../../components/observer/FoodLifetime.svelte";
-import { select_multiple_value } from "svelte/internal";
+
 
   class Food {
     constructor(quantity, item, expires, price, location, tripid, date) {
