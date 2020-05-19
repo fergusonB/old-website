@@ -2,7 +2,6 @@
   import FoodTrip from "../../components/observer/FoodTrip.svelte";
   import FoodLifeTime from "../../components/observer/FoodLifetime.svelte";
 
-
   class Food {
     constructor(quantity, item, expires, price, location, tripid, date) {
       this.Quantity = quantity;
@@ -97,14 +96,23 @@
     padding: 5px;
   }
   [contenteditable] {
-    background-color: rgba(255,255,255,0.5);
-    padding-left:10px;
-    padding-right:10px;
+    background-color: rgba(255, 255, 255, 0.5);
+text-align:center;
+    padding-right: 10px;
   }
-  [contenteditable]:hover{
+  [contenteditable]:hover {
     cursor: pointer;
-    background-color:white;
+    background-color: white;
+
   }
+  .text {
+  display:inline-block;
+  width: 100px;
+  height:1.5em;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 </style>
 
 <h2 style="text-align:center;">Food</h2>
@@ -147,7 +155,7 @@
         class="card {new Date(food.Expires).getTime() - new Date(food.Date).getTime() < 604800000 ? `red` : new Date(food.Expires).getTime() - new Date(food.Date).getTime() < 2404800000 ? `yellow` : `temp`}"
         style="filter: drop-shadow(5px 0px {food.Color});">
         Item:
-        <span
+        <span class="text"
           contenteditable="true"
           on:blur={save}
           bind:textContent={food.Item}>
@@ -155,11 +163,12 @@
         </span>
         <br />
         Quantity:
-        <span
+        <span class="text"
           contenteditable="true"
-          on:blur={()=>{
-            food.Quantity = Number(food.Quantity)
-            save()}}
+          on:blur={() => {
+            food.Quantity = Number(food.Quantity);
+            save();
+          }}
           bind:textContent={food.Quantity}>
           {food.Quantity}
         </span>

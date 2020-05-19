@@ -28,7 +28,7 @@ Selected (showing data for selected):
 <select bind:value={selectedTrip}>
     <option value={currentTrip}>{currentTrip}</option>
 {#each trips as trip}
-     <option value={trip}>{trip}</option>
+     <option contenteditable=true value={trip}>{trip}</option>
 {/each}
 </select>
 
