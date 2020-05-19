@@ -1,6 +1,7 @@
 <script>
   import FoodTrip from "../../components/observer/FoodTrip.svelte";
   import FoodLifeTime from "../../components/observer/FoodLifetime.svelte";
+import { select_multiple_value } from "svelte/internal";
 
   class Food {
     constructor(quantity, item, expires, price, location, tripid, date) {
@@ -95,6 +96,13 @@
     border: 1px solid black;
     padding: 5px;
   }
+  [contenteditable] {
+    background-color: rgba(255,255,255,0.5);
+  }
+  [contenteditable]:hover{
+    cursor: pointer;
+    background-color:white;
+  }
 </style>
 
 <h2 style="text-align:center;">Food</h2>
@@ -147,7 +155,9 @@
         Quantity:
         <span
           contenteditable="true"
-          on:blur={save}
+          on:blur={()=>{
+            food.Quantity = Number(food.Quantity)
+            save()}}
           bind:textContent={food.Quantity}>
           {food.Quantity}
         </span>
@@ -182,28 +192,28 @@
             style="background-color:white;"
             on:click={() => {
               food.Color = 'white';
-              save()
+              save();
             }} />
           <div
             class="picker"
             style="background-color:#1565C0;"
             on:click={() => {
               food.Color = '#1565C0';
-              save()
+              save();
             }} />
           <div
             class="picker"
             style="background-color:#EF6C00;"
             on:click={() => {
               food.Color = '#EF6C00';
-              save()
+              save();
             }} />
           <div
             class="picker"
             style="background-color:black;"
             on:click={() => {
               food.Color = 'black';
-              save()
+              save();
             }} />
         </div>
 
