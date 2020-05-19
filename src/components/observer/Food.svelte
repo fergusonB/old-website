@@ -98,6 +98,8 @@
   }
   [contenteditable] {
     background-color: rgba(255,255,255,0.5);
+    padding-left:10px;
+    padding-right:10px;
   }
   [contenteditable]:hover{
     cursor: pointer;
