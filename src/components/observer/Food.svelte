@@ -59,6 +59,11 @@
     foods = foods;
     localStorage.foods = JSON.stringify(foods);
   };
+
+  const save = () => {
+    foods = foods;
+    localStorage.foods = JSON.stringify(foods);
+  };
 </script>
 
 <style>
@@ -133,7 +138,13 @@
         style="filter: drop-shadow(5px 0px {food.Color});">
         Item: {food.Item}
         <br />
-        Quantity: {food.Quantity}
+        Quantity:
+        <span
+          contenteditable="true"
+          on:blur={save}
+          bind:textContent={food.Quantity}>
+          {food.Quantity}
+        </span>
         <br />
         Expiration: {food.Expires}
         <br />
@@ -152,8 +163,7 @@
             let del = prompt(`Are you sure you would like to DELETE? This will remove all data for ${food.Item}(y = yes / n = no)`);
             if (del === 'y' || del === 'Y') {
               foods.splice(i, 1);
-              foods = foods;
-              localStorage.foods = JSON.stringify(foods);
+              save();
             }
           }}>
           Delete
@@ -166,32 +176,28 @@
             style="background-color:white;"
             on:click={() => {
               food.Color = 'white';
-              foods = foods;
-              localStorage.foods = JSON.stringify(foods);
+              save()
             }} />
           <div
             class="picker"
             style="background-color:#1565C0;"
             on:click={() => {
               food.Color = '#1565C0';
-              foods = foods;
-              localStorage.foods = JSON.stringify(foods);
+              save()
             }} />
           <div
             class="picker"
             style="background-color:#EF6C00;"
             on:click={() => {
               food.Color = '#EF6C00';
-              foods = foods;
-              localStorage.foods = JSON.stringify(foods);
+              save()
             }} />
           <div
             class="picker"
             style="background-color:black;"
             on:click={() => {
               food.Color = 'black';
-              foods = foods;
-              localStorage.foods = JSON.stringify(foods);
+              save()
             }} />
         </div>
 
