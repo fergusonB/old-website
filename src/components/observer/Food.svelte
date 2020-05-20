@@ -71,6 +71,9 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
+  .titlediv input{
+    width:130px;
+  }
   .small {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -119,23 +122,28 @@
 <div class="titlediv">
   <div>
     <h3>New</h3>
-    Quantity:
+    
     <input type="number" bind:value={inputQty} />
+    Quantity
     <br />
-    Item:
+    
     <input
       type="text"
       on:click={() => (inputItem = '')}
       bind:value={inputItem} />
+      Item
     <br />
-    Expiration:
+    
     <input type="date" bind:value={inputDate} />
+    Expiration
     <br />
-    Price:
+    
     <input type="number" bind:value={inputPrice} />
+    Price
     <br />
-    Location:
+    
     <input type="text" bind:value={inputLocation} />
+    Location
     <br />
     <button on:click={foodFunction}>Add</button>
 

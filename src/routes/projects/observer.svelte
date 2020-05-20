@@ -10,7 +10,7 @@ import Food from "../../components/observer/Food.svelte";
 <style>
 .container{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
 }
 </style>
 
