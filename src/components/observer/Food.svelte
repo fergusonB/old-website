@@ -97,22 +97,21 @@
   }
   [contenteditable] {
     background-color: rgba(255, 255, 255, 0.5);
-text-align:center;
+    text-align: center;
     padding-right: 10px;
   }
   [contenteditable]:hover {
     cursor: pointer;
     background-color: white;
-
   }
   .text {
-  display:inline-block;
-  width: 100px;
-  height:1.5em;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
+    display: inline-block;
+    width: 100px;
+    height: 1.5em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
 </style>
 
 <h2 style="text-align:center;">Food</h2>
@@ -155,7 +154,8 @@ text-align:center;
         class="card {new Date(food.Expires).getTime() - new Date(food.Date).getTime() < 604800000 ? `red` : new Date(food.Expires).getTime() - new Date(food.Date).getTime() < 2404800000 ? `yellow` : `temp`}"
         style="filter: drop-shadow(5px 0px {food.Color});">
         Item:
-        <span class="text"
+        <span
+          class="text"
           contenteditable="true"
           on:blur={save}
           bind:textContent={food.Item}>
@@ -163,7 +163,8 @@ text-align:center;
         </span>
         <br />
         Quantity:
-        <span class="text"
+        <span
+          class="text"
           contenteditable="true"
           on:blur={() => {
             food.Quantity = Number(food.Quantity);
