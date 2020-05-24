@@ -48,9 +48,9 @@
   </p>
 
   <p>
-    <input min=1 bind:value={x} type="number" />
+    <input min=1 max={n} bind:value={x} type="number" />
     <br />
-    <input min=1 bind:value={n} type="number" />
+    <input min={1} max={9999} bind:value={n} type="number" />
     <br />
     <input min=0 max=1 bind:value={p} type="number" /> {p*100}%
     <br />
