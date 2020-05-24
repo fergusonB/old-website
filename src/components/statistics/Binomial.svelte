@@ -60,8 +60,8 @@
 <br />
 <h3>Results</h3>
 <br />
-Less than {x}: {massArr.length > 1 ? (massArr.reduce((a, b) => a + b) * 100).toFixed(4) : `Invalid Input`}%
+Less than {x}: {massArr.length > 0 ? (massArr.reduce((a, b) => a + b) * 100).toFixed(4) : `Invalid Input`}%
 <br />
 Exactly {x} : {(results * 100).toFixed(4)}%
 <br />
-Greater than {x}: {massArr.length > 1 ? ((1 - (massArr.reduce((a, b) => a + b) + results)) * 100).toFixed(4) : `Invalid Input`}%
+Greater than {x}: {massArr.length > 0 ? ((1 - (massArr.reduce((a, b) => a + b) + results)) * 100).toFixed(4) : `Invalid Input`}%
