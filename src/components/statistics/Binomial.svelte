@@ -42,7 +42,7 @@
   <p>
     Number of successes, x :
     <br />
-    Number of trials, n :
+    Number of trials, n (limit 9999) :
     <br />
     Probability of success on a single trial, p :
   </p>
