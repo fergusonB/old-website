@@ -1,7 +1,7 @@
 <script>
-  let x = 1; // number of successes
-  let n = 1; // total number of trials
-  let p = 0.5; // probability of success on one trial
+  let x = 5; // number of successes
+  let n = 7; // total number of trials
+  let p = 0.65; // probability of success on one trial
   let q = 1 - p;
 
   const fac = (n) => (n ? n * fac(n - 1) : 1);
@@ -11,6 +11,19 @@
     return (fac(n) / (fac(x) * fac(n - x))) * p ** x * q ** (n - x);
   };
 
+let massArr = []
+
+  const massEa = (x,n,p)=>{
+      x = Number(x)
+      n = Number(n)
+      p = Number(p)
+      for (let i=0;i<=x-1;i++){
+          massArr = [...massArr,probabilityMassFunction(i,n,p)]
+      }
+  }
+
+  massEa(x,n,p)
+ 
   let results = probabilityMassFunction(Number(x), Number(n), Number(p));
 </script>
 
@@ -43,15 +56,23 @@
   </p>
 </div>
 <button
-  on:click={() => (results = probabilityMassFunction(Number(x), Number(n), Number(p)))}>
+  on:click={() =>{
+      massArr = []
+
+   results = probabilityMassFunction(Number(x), Number(n), Number(p))
+   
+   massEa(x,n,p)
+
+   
+   }}>
   Calculate
 </button>
 <br>
 <h3>Results</h3>
 <br>
-Less than {x}: 
+Less than {x}: {massArr.length > 1 ? (massArr.reduce((a,b)=>a+b)*100).toFixed(4) : `Invalid Input` }%
 <br>
 Exactly {x} : {(results * 100).toFixed(4)}%
 <br>
-Greater than {x}: 
+Greater than {x}: {massArr.length > 1 ? ((1 - (massArr.reduce((a,b)=>a+b) + results))*100).toFixed(4) : `Invalid Input` }%
 
