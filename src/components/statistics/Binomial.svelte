@@ -25,8 +25,33 @@
     }
   };
 
+let less =  `waiting`
+const lessThan = (massArr)=>{
+  try{
+    less = (massArr.slice(0,x).reduce((a,b)=>a+b)*100).toFixed(4)
+  }
+  catch{
+    less = 'invalid input'
+  }
+  
+}
 
-massEa(x,n,p)
+
+let greater = `waiting`
+const greaterThan = (massArr)=>{
+  try{
+    greater = (massArr.slice(x+1,n+1).reduce((a,b)=>a+b)*100).toFixed(4)
+
+  }
+  catch{
+    greater = 'invalid input'
+  }
+  
+
+}
+  let exactly = `waiting`
+  let xValue = x
+
 </script>
 
 <style>
@@ -49,7 +74,7 @@ massEa(x,n,p)
   </p>
 
   <p>
-    <input min=1 max={n} bind:value={x} type="number" />
+    <input min=1 max={n-1} bind:value={x} type="number" />
     <br />
     <input min={1} max={9999} bind:value={n} type="number" />
     <br />
@@ -58,13 +83,19 @@ massEa(x,n,p)
   </p>
 </div>
 
-<button on:click={()=>massEa(x,n,p)}>Calculate</button>
+<button on:click={()=>{
+  massEa(x,n,p)
+  lessThan(massArr)
+  greaterThan(massArr)
+  exactly = (massArr[x]*100).toFixed(4)
+  xValue = x
+  }}>Calculate</button>
 
 <br />
 <h3>Results</h3>
 <br />
-Less than {x}: {process.browser ?( massArr.slice(0,x).reduce((a,b)=>a+b)*100).toFixed(4):'waiting'}%
+Less than {xValue}: {less}%
 <br />
-Exactly {x} : {(massArr[x]*100).toFixed(4)}%
+Exactly {xValue} : {exactly}
 <br />
-Greater than {x}: {process.browser ? (massArr.slice(x+1,n+1).reduce((a,b)=>a+b)*100).toFixed(4) : 'waiting'}%
+Greater than {xValue}: {greater}%
