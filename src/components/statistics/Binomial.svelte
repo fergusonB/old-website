@@ -1,6 +1,4 @@
 <script>
-
-
   let x = 5; // number of successes
   let n = 7; // total number of trials
   let p = 0.65; // probability of success on one trial
@@ -25,33 +23,27 @@
     }
   };
 
-let less =  `waiting`
-const lessThan = (massArr)=>{
-  try{
-    less = (massArr.slice(0,x).reduce((a,b)=>a+b)*100).toFixed(4)
-  }
-  catch{
-    less = 'invalid input'
-  }
-  
-}
+  let less = `waiting`;
+  const lessThan = (massArr) => {
+    try {
+      less = (massArr.slice(0, x).reduce((a, b) => a + b) * 100).toFixed(4);
+    } catch {
+      less = "invalid input";
+    }
+  };
 
-
-let greater = `waiting`
-const greaterThan = (massArr)=>{
-  try{
-    greater = (massArr.slice(x+1,n+1).reduce((a,b)=>a+b)*100).toFixed(4)
-
-  }
-  catch{
-    greater = 'invalid input'
-  }
-  
-
-}
-  let exactly = `waiting`
-  let xValue = x
-
+  let greater = `waiting`;
+  const greaterThan = (massArr) => {
+    try {
+      greater = (
+        massArr.slice(x + 1, n + 1).reduce((a, b) => a + b) * 100
+      ).toFixed(4);
+    } catch {
+      greater = "invalid input";
+    }
+  };
+  let exactly = `waiting`;
+  let xValue = x;
 </script>
 
 <style>
@@ -61,8 +53,18 @@ const greaterThan = (massArr)=>{
   .box input {
     text-align: center;
   }
+
+  .cols {
+    display: flex;
+    background-color: yellowgreen;
+    border: 1px solid white;
+    overflow: visible;
+    color: black;
+    white-space: nowrap;
+    padding: 0.5em;
+  }
 </style>
-                                                                                                                       
+
 <h2>Binomial Distribution</h2>
 <div class="box">
   <p>
@@ -74,28 +76,42 @@ const greaterThan = (massArr)=>{
   </p>
 
   <p>
-    <input min=1 max={n-1} bind:value={x} type="number" />
+    <input min="1" max={n - 1} bind:value={x} type="number" />
     <br />
     <input min={1} max={9999} bind:value={n} type="number" />
     <br />
-    <input min=0 max=1 bind:value={p} type="number" /> {p*100}%
+    <input min="0" max="1" bind:value={p} type="number" />
+    {p * 100}%
     <br />
   </p>
 </div>
 
-<button on:click={()=>{
-  massEa(x,n,p)
-  lessThan(massArr)
-  greaterThan(massArr)
-  exactly = (massArr[x]*100).toFixed(4)
-  xValue = x
-  }}>Calculate</button>
-
+<button
+  on:click={() => {
+    massEa(x, n, p);
+    lessThan(massArr);
+    greaterThan(massArr);
+    exactly = (massArr[x] * 100).toFixed(4);
+    xValue = x;
+  }}>
+  Calculate
+</button>
+<p />
 <br />
 <h3>Results</h3>
 <br />
 Less than {xValue}: {less}%
 <br />
-Exactly {xValue} : {exactly}
+Exactly {xValue} : {exactly}%
 <br />
 Greater than {xValue}: {greater}%
+<p />
+<h3>Individual Values (x, %):</h3>
+
+{#each massArr as column, i}
+  {#if column > 0.005}
+    <div class="cols" style="width:{Math.floor(column * 100)}em;">
+      {i}: {(column * 100).toFixed(4)}%
+    </div>
+  {/if}
+{/each}
