@@ -1,4 +1,6 @@
 <script>
+
+
   let x = 5; // number of successes
   let n = 7; // total number of trials
   let p = 0.65; // probability of success on one trial
@@ -18,14 +20,13 @@
     x = Number(x);
     n = Number(n);
     p = Number(p);
-    for (let i = 0; i <= x - 1; i++) {
+    for (let i = 0; i <= n; i++) {
       massArr = [...massArr, probabilityMassFunction(i, n, p)];
     }
   };
 
-  $: massEa(x, n, p);
 
-  $: results = probabilityMassFunction(Number(x), Number(n), Number(p));
+massEa(x,n,p)
 </script>
 
 <style>
@@ -36,7 +37,7 @@
     text-align: center;
   }
 </style>
-
+                                                                                                                       
 <h2>Binomial Distribution</h2>
 <div class="box">
   <p>
@@ -57,11 +58,13 @@
   </p>
 </div>
 
+<button on:click={()=>massEa(x,n,p)}>Calculate</button>
+
 <br />
 <h3>Results</h3>
 <br />
-Less than {x}: {massArr.length > 0 ? (massArr.reduce((a, b) => a + b) * 100).toFixed(4) : `Invalid Input`}%
+Less than {x}: {process.browser ?( massArr.slice(0,x).reduce((a,b)=>a+b)*100).toFixed(4):'waiting'}%
 <br />
-Exactly {x} : {(results * 100).toFixed(4)}%
+Exactly {x} : {(massArr[x]*100).toFixed(4)}%
 <br />
-Greater than {x}: {massArr.length > 0 ? ((1 - (massArr.reduce((a, b) => a + b) + results)) * 100).toFixed(4) : `Invalid Input`}%
+Greater than {x}: {process.browser ? (massArr.slice(x+1,n+1).reduce((a,b)=>a+b)*100).toFixed(4) : 'waiting'}%
