@@ -1,4 +1,5 @@
 <script>
+
   let x = 5; // number of successes
   let n = 7; // total number of trials
   let p = 0.65; // probability of success on one trial
@@ -17,6 +18,19 @@
     massArr = [];
     x = Number(x);
     n = Number(n);
+    try{
+    if ([...p].includes('/')){
+      p = p.split('/')
+      p = Number(p[0]) / Number(p[1])
+    }
+    }
+    catch{
+
+    }
+
+    if (Number(p) > 1){
+        p = Number(p)/100
+    }
     p = Number(p);
     for (let i = 0; i <= n; i++) {
       massArr = [...massArr, probabilityMassFunction(i, n, p)];
@@ -80,8 +94,7 @@
     <br />
     <input min={1} max={9999} bind:value={n} type="number" />
     <br />
-    <input min="0" max="1" bind:value={p} type="number" />
-    {p * 100}%
+    <input min="0" max="1" bind:value={p} type="string" />
     <br />
   </p>
 </div>
