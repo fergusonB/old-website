@@ -4,6 +4,7 @@ export let valid = false
 export let display
 
 
+
 let emeralds = 0
 
 
@@ -25,6 +26,7 @@ const modEmeralds = (emer)=>{
         temp[0] = JSON.stringify(temp[0])
         temp = temp.join('\n')
         localStorage.dungeons = temp
+
 
     }
     else{
