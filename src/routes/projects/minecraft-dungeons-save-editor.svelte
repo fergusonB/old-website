@@ -68,4 +68,4 @@ The edits will update this text area. You can simply paste it back over the save
 
 
 
-<Items {display}/>
+<Items {valid} {display} bind:data/>

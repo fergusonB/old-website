@@ -1,6 +1,32 @@
 <script>
 
 export let display = []
+export let valid
+export let data
+let col='white'
+let powerSet = []
+
+const save = (i) => {
+    if (process.browser && valid){
+        let temp = localStorage.dungeons
+        temp = temp.split('\n')
+        temp[0] = JSON.parse(temp[0])
+
+
+        temp[0].items[i].power = 5
+
+        
+        temp[0] = JSON.stringify(temp[0])
+        temp = temp.join('\n')
+        localStorage.dungeons = temp
+        data = localStorage.dungeons
+        col = '#17dd62'
+        setTimeout(() => {  col='white'; }, 500);
+    }
+    else{
+        alert('Error, please refresh the page.')
+    }
+}
 
 </script>
 
@@ -29,6 +55,9 @@ export let display = []
             {item.rarity}
             <br>
             Approx. Power: {Math.round(9.98633 * item.power - 9.39419)}
+    
+            <br>
+
             <br> 
             {#if item.enchantments}
                 {#each item.enchantments as enchants,i}
@@ -40,7 +69,7 @@ export let display = []
 
             {/if}
 
-            <button style="float:right;">Save</button>
+            <button on:click|preventDefault={()=>save(i)} style="float:right;">Save</button>
         </div>
         {/each}
     </div>
