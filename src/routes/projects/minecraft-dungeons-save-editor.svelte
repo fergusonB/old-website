@@ -48,7 +48,7 @@ To begin, paste the <strong>contents</strong> of a character file below (e.g. Ch
 <br>
 
 
-<textarea bind:value={data}/>
+<textarea style="width:50%;height:5em;" bind:value={data}/>
 <br>
 The edits will update this text area. You can simply paste it back into the save file once you have made your changes.
 <br>

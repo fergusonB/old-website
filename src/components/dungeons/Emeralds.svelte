@@ -35,7 +35,7 @@ const modEmeralds = (emer)=>{
 
     }
     else{
-        alert('Please enter valid save data first')
+        alert('Please enter valid save data first.')
     }
 }
 
@@ -44,9 +44,6 @@ $:emer = emeralds
 </script>
 
 <h2>Emeralds</h2>
-
-
-<br>
 <input style="background-color:{col}" bind:value={emer} type="number">
 <button on:click={modEmeralds(emer)} >Edit</button>
 
