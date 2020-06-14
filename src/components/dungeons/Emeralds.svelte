@@ -6,6 +6,7 @@ export let data
 
 
 let emeralds = 0
+let col='white'
 
 
 
@@ -27,6 +28,8 @@ const modEmeralds = (emer)=>{
         temp = temp.join('\n')
         localStorage.dungeons = temp
         data = localStorage.dungeons
+        col = '#17dd62'
+        setTimeout(() => {  col='white'; }, 500);
 
 
 
@@ -44,6 +47,6 @@ $:emer = emeralds
 
 
 <br>
-<input bind:value={emer} type="number">
-<button on:click={modEmeralds(emer)}>Edit</button>
+<input style="background-color:{col}" bind:value={emer} type="number">
+<button on:click={modEmeralds(emer)} >Edit</button>
 
