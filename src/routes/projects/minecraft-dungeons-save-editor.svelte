@@ -1,5 +1,8 @@
 <script>
+
+
 import Emeralds from "../../components/dungeons/Emeralds.svelte";
+
 
 let data = []
 let valid = false
@@ -54,6 +57,6 @@ The edits will update this text area. You can simply paste it back into the save
 </p>
 
 
-<Emeralds {valid} {display}  />
+<Emeralds {valid} {display} bind:data  />
 
 

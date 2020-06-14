@@ -2,7 +2,7 @@
 
 export let valid = false
 export let display
-
+export let data
 
 
 let emeralds = 0
@@ -26,6 +26,8 @@ const modEmeralds = (emer)=>{
         temp[0] = JSON.stringify(temp[0])
         temp = temp.join('\n')
         localStorage.dungeons = temp
+        data = localStorage.dungeons
+
 
 
     }
