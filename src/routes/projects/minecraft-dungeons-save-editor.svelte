@@ -50,6 +50,8 @@ Do not bring any items you make here online, I haven't integrated any kind of le
 <p>
 To begin, paste the <strong>contents</strong> of a character file below (e.g. Character174B9BB908D803BDD4E3EE64BB9A4F84)
 <br>
+To get this file from the Switch, you need to have a hacked console, and a data tool like JKSV. There are plenty of resources online so I will not go into them here.
+<br>
 
 
 <textarea style="width:50%;height:5em;" bind:value={data}/>
