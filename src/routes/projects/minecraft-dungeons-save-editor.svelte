@@ -3,6 +3,8 @@
 
 import Emeralds from "../../components/dungeons/Emeralds.svelte";
 
+import Melee from "../../components/dungeons/Melee.svelte";
+
 
 let data = []
 let valid = false
@@ -41,6 +43,8 @@ $: if (process.browser){
 This editor was designed for the Switch version of the game.
 <br>
 It's likely that it will also work on console versions of the game. It will not work for the PC version.
+<br>
+Do not bring any items you make here online, I haven't integrated any kind of legality checking. This is for testing / Min-Maxing only.
 </p>
 
 <p>
@@ -57,6 +61,9 @@ The edits will update this text area. You can simply paste it back into the save
 </p>
 
 
+<Melee/>
+
 <Emeralds {valid} {display} bind:data  />
+
 
 
