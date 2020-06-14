@@ -3,7 +3,7 @@
 
 import Emeralds from "../../components/dungeons/Emeralds.svelte";
 
-import Melee from "../../components/dungeons/Melee.svelte";
+import Items from "../../components/dungeons/Items.svelte";
 
 
 let data = []
@@ -63,9 +63,9 @@ The edits will update this text area. You can simply paste it back over the save
 </p>
 
 
-<Melee/>
 
 <Emeralds {valid} {display} bind:data  />
 
 
 
+<Items {display}/>
