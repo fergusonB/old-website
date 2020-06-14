@@ -28,13 +28,16 @@ export let display = []
             <br>
             {item.rarity}
             <br>
-            Approx. Power: {Math.round(9.98633 * item.power - 9.39419)}  | {item.power}
-            <br>
+            Approx. Power: {Math.round(9.98633 * item.power - 9.39419)}
+            <br> 
             {#if item.enchantments}
-                {#each item.enchantments as enchant}
-                {enchant.id}{enchant.value}
-                <br>
+                {#each item.enchantments as enchants,i}
+                    {#if enchants.level > 0}
+                         {enchants.id} {enchants.level}
+                         <br>
+                    {/if}
                 {/each}
+
             {/if}
 
             <button style="float:right;">Save</button>
