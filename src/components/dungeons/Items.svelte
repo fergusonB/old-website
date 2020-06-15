@@ -65,7 +65,17 @@ let enchantList = ["Accelerating", "AnimaConduitMelee", "AnimaConduitRanged", "B
 
             <br> 
             {#if item.enchantments}
-                <select>
+            Enchantments: 
+            <br>
+                {#each item.enchantments as en}
+                     {#if en.level > 0}
+                          {en.id} {en.level}
+                          <br>
+                     {/if}
+                {/each}
+
+
+                <select >
                 {#each enchantList as enl}
                      <option value={enl}>{enl}</option>
                 {/each}
