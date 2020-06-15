@@ -69,34 +69,17 @@ let enchantList = ["Accelerating", "AnimaConduitMelee", "AnimaConduitRanged", "B
             <br>
                 {#each item.enchantments as en}
                      {#if en.level > 0}
-                          {en.id} {en.level}
-                          <br>
+                <select bind:value={en.id}>
+                {#each enchantList as enl}
+                     <option value={enl}>{enl}</option>
+                {/each}
+                </select>
+                <input bind:value={en.level} type="number" min={0} max={3}/>
+                <br>
+
                      {/if}
                 {/each}
 
-
-                <select >
-                {#each enchantList as enl}
-                     <option value={enl}>{enl}</option>
-                {/each}
-                </select>
-                <input type="number" min={0} max={3}/>
-                <br>
-
-                <select>
-                {#each enchantList as enl}
-                     <option value={enl}>{enl}</option>
-                {/each}
-                </select>
-                <input type="number" min={0} max={3}/>
-                <br>
-                
-                <select>
-                {#each enchantList as enl}
-                     <option value={enl}>{enl}</option>
-                {/each}
-                </select>
-                <input type="number" min={0} max={3}/>
             
             {/if}
 
