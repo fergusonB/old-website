@@ -15,11 +15,15 @@ const save = (i, ip,ei,el,j) => {
 
         temp[0].items[i].power = ip
 
+        try{
+            temp[0].items[i].enchantments[j].id = ei
+            temp[0].items[i].enchantments[j].level=el
+            console.log('enchants updated')
+        }
+        catch{
+            console.log('power updated')
+        }
 
-        temp[0].items[i].enchantments[j].id = ei
-        console.log(ei)
-        temp[0].items[i].enchantments[j].level=el
-        console.log(el)
 
 
 
@@ -28,7 +32,6 @@ const save = (i, ip,ei,el,j) => {
         temp = temp.join('\n')
         localStorage.dungeons = temp
         data = localStorage.dungeons
-        alert('Saved!')
     }
     else{
         alert('Error, please refresh the page.')

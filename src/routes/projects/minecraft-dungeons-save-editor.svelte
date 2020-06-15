@@ -53,6 +53,10 @@ To get this file from the Switch, you need to have a hacked console, and a data 
 There are plenty of resources online so I will not go into them here.
 <br>
 
+Need some <a rel="prefetch" href="https://ferguson.work/projects/minecraft-dungeons-save-editor/sample/" target="_blank"  >sample data?</a>
+
+<br>
+
 
 <textarea style="width:50%;height:5em;" bind:value={data}/>
 <br>
