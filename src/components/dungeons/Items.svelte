@@ -6,7 +6,7 @@ export let data
 
 
 
-const save = (i, ip) => {
+const save = (i, ip,ei,el,j) => {
     if (process.browser && valid){
         let temp = localStorage.dungeons
         temp = temp.split('\n')
@@ -14,6 +14,14 @@ const save = (i, ip) => {
 
 
         temp[0].items[i].power = ip
+
+
+        temp[0].items[i].enchantments[j].id = ei
+        console.log(ei)
+        temp[0].items[i].enchantments[j].level=el
+        console.log(el)
+
+
 
         
         temp[0] = JSON.stringify(temp[0])
@@ -58,7 +66,7 @@ let enchantList = ["Accelerating", "AnimaConduitMelee", "AnimaConduitRanged", "B
             <br>
             Approx. Power: {Math.round(9.98633 * item.power - 9.39419)}
             <br>
-            <input bind:value={item.power} min={1.445555555555555} max={11.755555555555555}  step={0.000000000000001} type="range"/>
+            <input on:change={()=>save(i,item.power)} bind:value={item.power} min={1.445555555555555} max={11.755555555555555}  step={0.000000000000001} type="range"/>
             <br>
              {item.power}
             <br>
@@ -67,15 +75,16 @@ let enchantList = ["Accelerating", "AnimaConduitMelee", "AnimaConduitRanged", "B
             {#if item.enchantments}
             Enchantments: 
             <br>
-                {#each item.enchantments as en}
+                {#each item.enchantments as en,j}
                      {#if en.level > 0}
-                <select bind:value={en.id}>
+                <select on:change={()=>setTimeout(() => { save(i,item.power,en.id,en.level,j) }, 100)} bind:value={en.id}>
                 {#each enchantList as enl}
-                     <option value={enl}>{enl}</option>
+                     <option  value={enl}>{enl}</option>
                 {/each}
                 </select>
-                <input bind:value={en.level} type="number" min={0} max={3}/>
-                <br>
+                <input on:change={()=>save(i,item.power,en.id,en.level,j)} bind:value={en.level} type="number" min={0} max={3}/>
+
+
 
                      {/if}
                 {/each}
@@ -83,7 +92,6 @@ let enchantList = ["Accelerating", "AnimaConduitMelee", "AnimaConduitRanged", "B
             
             {/if}
 
-            <button on:click|preventDefault={()=>save(i,item.power)} style="float:right;">Save</button>
         </div>
         {/each}
     </div>
