@@ -45,7 +45,7 @@ $:emer = emeralds
 
 <h2>Emeralds</h2>
 <p>
-<input style="background-color:{col}" bind:value={emer} type="number">
-<button on:click={modEmeralds(emer)} >Edit</button>
+<input on:change={modEmeralds(emer)} style="background-color:{col}" bind:value={emer} type="number">
+
 </p>
 

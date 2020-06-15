@@ -54,6 +54,7 @@ let enchantList = ["Accelerating", "AnimaConduitMelee", "AnimaConduitRanged", "B
     width:90%;
 
 }
+
 </style>
 
 <p>
@@ -67,16 +68,14 @@ let enchantList = ["Accelerating", "AnimaConduitMelee", "AnimaConduitRanged", "B
             <br>
             {item.rarity}
             <br>
-            Approx. Power: {Math.round(9.98633 * item.power - 9.39419)}
+            Power: {Math.round(9.98633 * item.power - 9.39419)} | {item.power}
             <br>
             <input on:change={()=>save(i,item.power)} bind:value={item.power} min={1.445555555555555} max={11.755555555555555}  step={0.000000000000001} type="range"/>
             <br>
-             {item.power}
-            <br>
+             
 
             <br> 
             {#if item.enchantments}
-            Enchantments: 
             <br>
                 {#each item.enchantments as en,j}
                      {#if en.level > 0}
@@ -86,6 +85,7 @@ let enchantList = ["Accelerating", "AnimaConduitMelee", "AnimaConduitRanged", "B
                 {/each}
                 </select>
                 <input on:change={()=>save(i,item.power,en.id,en.level,j)} bind:value={en.level} type="number" min={0} max={3}/>
+                <br>
 
 
 
