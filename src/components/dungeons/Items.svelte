@@ -3,7 +3,8 @@
 export let display = []
 export let valid
 export let data
-let powerSet = []
+
+
 
 const save = (i, ip) => {
     if (process.browser && valid){
@@ -26,74 +27,7 @@ const save = (i, ip) => {
     }
 }
 
-let enchantList = [
-  'Thundering',
-  'Echo',
-  'Prospector',
-  'Swirling',
-  'Freezing',
-  'RadianceMelee',
-  'FireTrail',
-  'HealthSynergy',
-  'Snowing',
-  'Celerity',
-  'GravityPulse',
-  'FinalShout',
-  'Accelerating',
-  'RadianceRanged',
-  'WildRage',
-  'Punch',
-  'ChainReaction',
-  'Gravity',
-  'Unset',
-  'Rampaging',
-  'FireAspect',
-  'Weakening',
-  'Smiting',
-  'SpeedSynergy',
-  'Chilling',
-  'Unchanting',
-  'PoisonedRanged',
-  'FuseShot',
-  'Recycler',
-  'Thorns',
-  'Swiftfooted',
-  'Protection',
-  'Frenzied',
-  'SpiritSpeed',
-  'PotionFortification',
-  'Supercharge',
-  'RapidFire',
-  'TempoTheft',
-  'Cowardice',
-  'Chains',
-  'Shockwave',
-  'Burning',
-  'Stunning',
-  'GravityMelee',
-  'Deflecting',
-  'BonusShot',
-  'Power',
-  'MultiShot',
-  'Explorer',
-  'Leeching',
-  'Exploding',
-  'Looting',
-  'Piercing',
-  'CriticalHit',
-  'Infinity',
-  'Growing',
-  'Committed',
-  'PoisonedMelee',
-  'Sharpness',
-  'Ricochet',
-  'AnimaConduitRanged',
-  'AnimaConduitMelee',
-  'FoodReserves',
-  'SurpriseGift',
-  'Electrified',
-  'SoulSiphon'
-]
+let enchantList = ["Accelerating", "AnimaConduitMelee", "AnimaConduitRanged", "BonusShot", "Burning", "Celerity", "ChainReaction", "Chains", "Chilling", "Committed", "Cowardice", "CriticalHit", "Deflecting", "Echo", "Electrified", "Exploding", "Explorer", "FinalShout", "FireAspect", "FireTrail", "FoodReserves", "Freezing", "Frenzied", "FuseShot", "Gravity", "GravityMelee", "GravityPulse", "Growing", "HealthSynergy", "Infinity", "Leeching", "Looting", "MultiShot", "Piercing", "PoisonedMelee", "PoisonedRanged", "PotionFortification", "Power", "Prospector", "Protection", "Punch", "RadianceMelee", "RadianceRanged", "Rampaging", "RapidFire", "Recycler", "Ricochet", "Sharpness", "Shockwave", "Smiting", "Snowing", "SoulSiphon", "SpeedSynergy", "SpiritSpeed", "Stunning", "Supercharge", "SurpriseGift", "Swiftfooted", "Swirling", "TempoTheft", "Thorns", "Thundering", "Unchanting", "Unset", "Weakening", "WildRage"]
 
 </script>
 
@@ -131,15 +65,29 @@ let enchantList = [
 
             <br> 
             {#if item.enchantments}
-                {#each item.enchantments as enchants,i}
-                    {#if enchants.level > 0}
-                         {enchants.id} {enchants.level}
-                         <br>
-                    {/if}
+                <select>
+                {#each enchantList as enl}
+                     <option value={enl}>{enl}</option>
                 {/each}
+                </select>
+                <input type="number" min={0} max={3}/>
+                <br>
 
+                <select>
+                {#each enchantList as enl}
+                     <option value={enl}>{enl}</option>
+                {/each}
+                </select>
+                <input type="number" min={0} max={3}/>
+                <br>
                 
-
+                <select>
+                {#each enchantList as enl}
+                     <option value={enl}>{enl}</option>
+                {/each}
+                </select>
+                <input type="number" min={0} max={3}/>
+            
             {/if}
 
             <button on:click|preventDefault={()=>save(i,item.power)} style="float:right;">Save</button>
