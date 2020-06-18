@@ -28,6 +28,12 @@ $: if (process.browser){
     }
 }
 
+const checkEmpty = (data) =>{
+    if (data === ''){
+        location.reload()
+    }
+}
+
 
 
 
@@ -58,7 +64,7 @@ Need some <a rel="prefetch" href="https://ferguson.work/projects/minecraft-dunge
 <br>
 
 
-<textarea style="width:50%;height:5em;" bind:value={data}/>
+<textarea style="width:50%;height:5em;" bind:value={data} on:change={()=>checkEmpty(data)}/>
 <br>
 The edits will update this text area. You can simply paste it back over the save file contents once you have made your changes.
 <br>
