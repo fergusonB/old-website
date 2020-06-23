@@ -34,7 +34,9 @@ const save = (i, ip,ei,el,j) => {
         data = localStorage.dungeons
     }
     else{
-        alert('Error, please refresh the page.')
+        alert('Error, clearing data and refreshing the page.')
+        localStorage.dungeons = ''
+        location.reload()
     }
 }
 
