@@ -32,6 +32,8 @@
   <p>
     Please check out some of my <a rel="prefetch" href="/projects">projects</a> or my <a rel="prefetch" href="/blog">blog</a>.
     <br />
+    <br />
+    
     <br>
   </p>
 </h2>
