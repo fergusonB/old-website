@@ -14,9 +14,7 @@ const posts = [
 	html:`
 	
 	<article>
-	<p>
-		Today I will go over how you can set up a brand new, clean developing environment that will closely mirror the system that you will end up deploying to.
-	</p>
+
 	<h2>Getting Started</h2>
 	<h3>Requirements</h3>
 	<p>The only requirements here are a computer running Windows 10, an internet connection, and about 30 minutes of free time.</p>
@@ -77,9 +75,6 @@ const posts = [
 		</ul>
 		You're done, you can start a new project within your Linux VSCode. <br>
 		<br>
-		You can also import existing projects fairly easily.
-		<br>
-		For example, install node and npm, set your github name and username, clone the project you're working on and log in, and <code>npm i</code> to install the packages. All done!
 	</p>
 	`
 },
