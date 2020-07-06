@@ -64,7 +64,7 @@ Please paste the contents from 'out.json' here and press go to generate a new ch
 Click <button on:click={()=>{
   fetch('https://ferguson.work/api/imdb/')
   .then(response => response.json())
-  .then(data => userData = data);}}>here</button> to see a Game of Thrones example.
+  .then(data => userData = JSON.parse(data));}}>here</button> to see a Game of Thrones example.
 <br>
 </p>
 <p>
