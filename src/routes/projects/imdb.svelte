@@ -56,15 +56,12 @@
 
 <h1>IMDB Show Ratings</h1>
 
-<p>This takes output from my project <a target="_blank" href="https://github.com/fergusonB/Puppeteer-IMDB-Scraper"> here</a>. It requires node, npm, and Puppeteer</p>
+<p>This takes output from my project <a target="_blank" rel="preload" href="https://github.com/fergusonB/Puppeteer-IMDB-Scraper"> here</a>. It requires node, npm, and Puppeteer</p>
 
 <p>
 Please paste the contents from 'out.json' here and press go to generate a new chart.
 <br>
-Click <button on:click={()=>{
-  fetch('https://ferguson.work/api/imdb/')
-  .then(response => response.json())
-  .then(data => userData = JSON.parse(data));}}>here</button> to see a Game of Thrones example.
+Click <a target="_blank" rel="preload" href="https://ferguson.work/api/imdb/"> here</a> to see a Game of Thrones example.
 <br>
 </p>
 <p>
