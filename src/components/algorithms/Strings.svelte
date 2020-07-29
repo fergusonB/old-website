@@ -7,7 +7,7 @@
     };
 
     String.prototype.bf_palindrome = function () {
-        let str = this.toLowerCase();
+        let str = this
         let left = 0;
         let right = str.length - 1;
         while (left < right) {
@@ -20,7 +20,7 @@
         return true;
     };
 
-    let palindromeString = "Repaper";
+    let palindromeString = "rotator";
 </script>
 
 <p>All of these extend the built in String object.</p>
@@ -34,7 +34,7 @@
 
 <h3>Check for Palindrome</h3>
 <p>
-    Checks if a string is a palindrome.
+    Checks a single string, looks for exact palindrome.
     <br />
     <input
         style={palindromeString.bf_palindrome() ? 'background-color:lightgreen;' : 'background-color:white;'}
