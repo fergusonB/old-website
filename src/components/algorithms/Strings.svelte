@@ -3,7 +3,7 @@
         palindrome: false,
     };
 
-    String.prototype.palindrome = function () {
+    String.prototype.bf_palindrome = function () {
         let str = this.toLowerCase();
         let left = 0;
         let right = str.length - 1;
@@ -16,6 +16,8 @@
         }
         return true;
     };
+
+
 
     let palindromeString = "Repaper";
 </script>
@@ -30,7 +32,7 @@
         on:click={() => (palindromeString = '')}
         bind:value={palindromeString}
         type="text" />
-    {palindromeString.palindrome() ? `${palindromeString} is a palindrome.` : `${palindromeString} is not palindrome.`}
+    {palindromeString.bf_palindrome() ? `${palindromeString} is a palindrome.` : `${palindromeString} is not palindrome.`}
     <br />
     <button on:click={() => (showHide.palindrome = !showHide.palindrome)}>
         Show / Hide Code
@@ -44,10 +46,8 @@
         <br />
         Space: O(1)
         <br />
-        <pre>{String.prototype.palindrome}</pre>
+        <pre>{String.prototype.bf_palindrome}</pre>
         <br />
     {/if}
 </p>
 
-<h3>Caesar Cipher</h3>
-<p />

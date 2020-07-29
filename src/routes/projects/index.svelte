@@ -19,6 +19,12 @@
     </a>
   </li>
 
+  <li>
+    <a rel="prefetch" href="projects/algorithms">
+      Common Algorithms Library + Optimal Time/Space Complexity Reference
+    </a>
+  </li>
+
     <li>
     <a rel="prefetch" href="projects/observer">
       The Observer (WIP)
