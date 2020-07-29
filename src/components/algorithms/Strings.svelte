@@ -4,7 +4,6 @@
 
     $: showHide = {
         palindrome: false,
-        caesar:false
     };
 
     String.prototype.bf_palindrome = function () {
@@ -50,7 +49,7 @@
     <br />
     {#if showHide.palindrome}
         Usage:
-        <code>String.palindrome()</code>
+        <code>String.bf_palindrome()</code>
         <br />
         Time: O(n)
         <br />

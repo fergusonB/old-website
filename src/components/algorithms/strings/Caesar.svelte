@@ -1,28 +1,40 @@
 <script>
-    let text = 'Enter Phrase'
-    let shift = 3
+    let text = "Enter Phrase";
+    let textd = "Hqwhu Skudvh";
+    let shift = 3;
+    let shiftd = 3;
 
-    String.prototype.bf_caesarEncrypt = function(num){
-        if (isNaN(num)) return 'Usage: [String].bf_caesarEncrypt([number to shift])'
-        let str = this
-        const key = num%26
-        const shiftedLetters = []
-        const getLetter = (letter,key)=>{
-            const newLetter = letter.charCodeAt() + key
-            return newLetter <=122 ? String.fromCharCode(newLetter) : String.fromCharCode(96+(newLetter%122))
+    let show = false
+
+    String.prototype.bf_caesar = function (num) {
+        let text = this.toLowerCase();
+        let alphabet = "abcdefghijklmnopqrstuvwxyz";
+        let encrypted = [];
+        for (let letter of text) {
+            let i = alphabet.indexOf(letter)
+            if ( i > -1)
+                encrypted.push(alphabet[(i + num) % 26]);
+            else encrypted.push(letter);
         }
-        for (let letter of str){
-            shiftedLetters.push(getLetter(letter,key))
-        }
-        return shiftedLetters.join('')
-        
-    }
-    
+        return encrypted.join("");
+    };
+
 
 </script>
 
-<h4>Encrypt</h4>
-<input on:click={()=>text = ''} bind:value={text} type="text" >
-<input bind:value={shift} type="number">
+
+<input on:click={() => (text = '')} bind:value={text} type="text" />
+<input bind:value={shift} type="number" />
+<br />
+{text.bf_caesar(shift)}
+<br />
+<button on:click={()=>show = !show} >Show/Hide Code</button>
+<br />
+{#if show}
+Usage: <code>String.bf_caesar([number to encrypt][negative number to decrypt])</code>
 <br>
-{text.bf_caesarEncrypt(shift)}
+Time: O(n)
+<br>
+Space: O(n)
+<pre>{String.prototype.bf_caesar}</pre>
+{/if}
