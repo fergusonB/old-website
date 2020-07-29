@@ -9,7 +9,7 @@ import Strings from "../../components/algorithms/Strings.svelte";
 
 
 let show = {
-    strings: false
+    strings: true
 }
 
 </script>

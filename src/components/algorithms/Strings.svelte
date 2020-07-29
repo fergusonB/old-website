@@ -1,6 +1,10 @@
 <script>
+
+    import Caesar from "../../components/algorithms/strings/Caesar.svelte"
+
     $: showHide = {
         palindrome: false,
+        caesar:false
     };
 
     String.prototype.bf_palindrome = function () {
@@ -17,18 +21,24 @@
         return true;
     };
 
-
-
     let palindromeString = "Repaper";
 </script>
 
 <p>All of these extend the built in String object.</p>
+
+<h3>Caesar</h3>
+
+<p><Caesar/></p>
+
+
+
 
 <h3>Check for Palindrome</h3>
 <p>
     Checks if a string is a palindrome.
     <br />
     <input
+        style={palindromeString.bf_palindrome() ? 'background-color:lightgreen;' : 'background-color:white;'}
         on:click={() => (palindromeString = '')}
         bind:value={palindromeString}
         type="text" />
@@ -50,4 +60,3 @@
         <br />
     {/if}
 </p>
-
