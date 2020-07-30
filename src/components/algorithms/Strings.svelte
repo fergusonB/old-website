@@ -2,10 +2,12 @@
 
     import Caesar from "../../components/algorithms/strings/Caesar.svelte"
     import Palindrome from "../../components/algorithms/strings/Palindrome.svelte"
+    import PalindromicSubstring from "../../components/algorithms/strings/PalindromicSubstring.svelte"
 
     let show = {
-        caesar: true,
-        palindrome: true
+        caesar: false,
+        palindrome: false,
+        palindromic: false
     }
 
 </script>
@@ -18,7 +20,12 @@
 {/if}
 
 
+<h3 on:click={()=>show.palindromic = !show.palindromic}>Palindromic Substring ▼</h3>
 
+{#if show.palindromic}
+<p> <PalindromicSubstring/>
+</p>
+{/if}
 
 
 <h3 on:click={()=>show.palindrome = !show.palindrome}>Palindrome ▼</h3>
