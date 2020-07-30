@@ -9,7 +9,7 @@
     String.prototype.bf_caesar = function (num) {
         if (isNaN(num)) return 'Usage: String.bf_caesar([number to encrypt][negative number to decrypt])'
         let text = this
-        let alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        let alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
         let encrypted = [];
         for (let letter of text) {
             let i = alphabet.indexOf(letter)%26;
@@ -19,7 +19,8 @@
         return encrypted.join("");
     };
 </script>
-
+Caesar cipher, positive number encryps, negative number decrypts.
+<br>
 <input on:click={() => (text = '')} bind:value={text} type="text" />
 <input bind:value={shift} type="number" />
 <br />
