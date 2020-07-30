@@ -29,7 +29,7 @@ String.prototype.bf_longestPalindromicSubstring = function(){
 </script>
 Returns the longest substring that is a palindrome.
 <br>
-<input bind:value={str} type="text">
+<input bind:value={str}  on:click={()=>str = ''} type="text">
 <br>
 {str.bf_longestPalindromicSubstring()}
 <br>
