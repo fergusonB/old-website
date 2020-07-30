@@ -1,5 +1,6 @@
 <script>
     let str = 'Are you using the kayak?'
+    let show = false
 
 String.prototype.bf_longestPalindromicSubstring = function(){
     let text = this
@@ -31,3 +32,20 @@ Returns the longest substring that is a palindrome.
 <input bind:value={str} type="text">
 <br>
 {str.bf_longestPalindromicSubstring()}
+<br>
+
+<button on:click={() => (show  = !show)}>
+    Show / Hide Code
+</button>
+<br />
+{#if show}
+    Usage:
+    <code>String.bf_longestPalindromicSubstring()</code>
+    <br />
+    Time: O(n^2)
+    <br />
+    Space: O(1)
+    <br />
+    <pre>{String.prototype.bf_longestPalindromicSubstring}</pre>
+    <br />
+{/if}
