@@ -1,53 +1,31 @@
 <script>
+    import Caesar from "../../components/algorithms/strings/Caesar.svelte";
+    import Palindrome from "../../components/algorithms/strings/Palindrome.svelte";
+    import PalindromicSubstring from "../../components/algorithms/strings/PalindromicSubstring.svelte";
+    import GroupAnagrams from "../../components/algorithms/strings/GroupAnagrams.svelte";
 
-    import Caesar from "../../components/algorithms/strings/Caesar.svelte"
-    import Palindrome from "../../components/algorithms/strings/Palindrome.svelte"
-    import PalindromicSubstring from "../../components/algorithms/strings/PalindromicSubstring.svelte"
-    import GroupAnagrams from "../../components/algorithms/strings/GroupAnagrams.svelte"
-
-    let show = {
-        caesar: false,
-        palindrome: false,
-        palindromic: false,
-        groupAnagrams: true
-
-    }
-
-
+    const objs = [
+        { component: GroupAnagrams, title: "Group Anagrams" },
+        { component: PalindromicSubstring, title: "Palindromic Substring" },
+        { component: Caesar, title: "Caesar Cipher" },
+        { component: Palindrome, title: "Palindrome" },
+    ];
 </script>
 
 <style>
-    h3{
-        cursor: pointer;
-        user-select: none;
+    .styling {
+        padding: 20px;
     }
 </style>
 
-<h3 on:click={()=>show.groupAnagrams = !show.groupAnagrams}>Group Anagrams ▼</h3> 
-{#if show.groupAnagrams}
-<p><GroupAnagrams/></p>
-{/if}
-
-
-
-<h3 on:click={()=>show.caesar = !show.caesar}>Caesar ▼</h3> 
-{#if show.caesar}
-<p><Caesar/></p>
-{/if}
-
-
-<h3 on:click={()=>show.palindromic = !show.palindromic}>Palindromic Substring ▼</h3>
-
-{#if show.palindromic}
-<p> <PalindromicSubstring/>
-</p>
-{/if}
-
-
-<h3 on:click={()=>show.palindrome = !show.palindrome}>Palindrome ▼</h3>
-{#if show.palindrome}
-<p>
-    <Palindrome/>
-    </p>
-    
-{/if}
+{#each objs as item, i}
+    <div
+        style={ !(i%2) ? 'background-color:lightgrey;' : 'backround-color:white;'}>
+        <div class="styling">
+            <h3>{item.title}</h3>
+            <p>
+                <svelte:component this={item.component} />
+            </p>
+        </div>
+    </div>
+{/each}
