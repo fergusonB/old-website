@@ -2,7 +2,7 @@
 
     let show = false
 
-    let input = 'yo,act,flop,tac,foo,cat,oy,olfp'
+    let input = 'tar,angel,save,brag,inch,chin,rat,vase,glean,desserts,stressed'
     $: formatted = input.split(',')
 
 

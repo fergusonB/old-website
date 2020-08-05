@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: Camphor, Open Sans, Segoe UI, sans-serif;
+  font-family: "Segoe UI Web (West European)",Segoe UI,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
   font-size: 14px;
   line-height: 1.5;
   color: #121212;
@@ -42,25 +42,80 @@ code {
 }
 
 .card {
-  background: white;
-  color:rgb(0, 0, 0);
-
-
-  border-radius: 4px;
-
-
-
-
-  margin: 0 auto 20px;
-
-  margin-bottom: 20px;
-
-
-  overflow: hidden;
-  padding: 16px;
-  box-shadow: 1px 1px 4px 1px rgba(51,51,51,.2);
+  --background-color: #faf9f8;
+  --text-color: #333;
+  --inline-code-background-color: #f1f1fe;
+  --link-color: #235a97;
+  --raised-background-color: #fff;
+  --alt-text-color: #000;
+  --raised-box-shadow: 0 1.6px 3.6px 0 rgba(0,0,0,0.132),0 0.3px 0.9px 0 rgba(0,0,0,0.108);
+  --sidebar-background-color: #eee;
+  --sidebar-list-active-background-color: #e3e8ec;
+  --sidebar-list-background-color: #e4e4e4;
+  --sidebar-link-border-color: #000;
+  --sidebar-item-border-color: #dfdfdf;
+  --sidebar-active-button-background-color: #dfdfdf;
+  --playground-divider: $ts-bg-selection-grey;
+  --playground-dropdown-bg: #fff;
+  --playground-dropdown-shadow: 0 6px 12px rgba(0,0,0,0.175);
+  --playground-dropdown-border: #f2f2f2;
+  --playground-toolbar-hover-bg: #f2f2f2;
+  --playground-dragbar-bg: #fff;
+  --playground-dragbar-border: #c4c4c4;
+  --playground-pre-color: #000;
+  --playground-pre-bg: #f1f1f1;
+  --footer-arrow-color: $ts-dark-bg-for-foreground-colo;
+  --fade-gradient: linear-gradient(0deg,#fff,hsla(0,0%,100%,0.2));
+  font-size: 16px;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Segoe UI Web (West European)",Segoe UI,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+  box-shadow: var(--raised-box-shadow);
+  background-color: var(--raised-background-color);
+  color: var(--alt-text-color);
+  max-width: 960px;
+  margin: 1rem auto;
+  padding: .4rem 2rem 2rem;
 }
 .card:hover{
   box-shadow: 1px 1px 8px 1px rgba(51,51,51,.2);
 }
 
+
+pre{
+  font-size: 16px;
+line-height: 1.4;
+--background-color: #262626;
+--text-color: #fff;
+--inline-code-background-color: #3a3a5c;
+--link-color: #719af4;
+--raised-background-color: #313131;
+--alt-text-color: #fff;
+--raised-box-shadow: 0 1.6px 3.6px 0 hsla(0,0%,100%,0.132),0 0.3px 0.9px 0 hsla(0,0%,100%,0.108);
+--sidebar-background-color: #2a2a2b;
+--sidebar-list-active-background-color: #28323a;
+--sidebar-list-background-color: #353434;
+--sidebar-link-border-color: #fff;
+--sidebar-item-border-color: #3e3e3e;
+--sidebar-active-button-background-color: #4e4e4f;
+--playground-divider: #f2f2f2;
+--playground-dropdown-bg: #313131;
+--playground-dropdown-shadow: 0 6px 12px hsla(0,0%,58%,0.175);
+--playground-dropdown-border: #000;
+--playground-toolbar-hover-bg: #262626;
+--playground-dragbar-bg: #28323a;
+--playground-dragbar-border: #fff;
+--playground-pre-color: #fff;
+--playground-pre-bg: #1e1e1e;
+--footer-arrow-color: $ts-light-bg-grey-highlight-color;
+--fade-gradient: linear-gradient(0deg,#313131,rgba(49,49,49,0.2));
+-webkit-font-smoothing: antialiased;
+background-color: #fff;
+color: #000;
+padding: 12px;
+border-left: 1px solid #999;
+border-bottom: 1px solid #999;
+margin-bottom: 3rem;
+overflow: auto;
+position: relative;
+}
