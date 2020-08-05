@@ -10,21 +10,17 @@
         { component: PalindromicSubstring, title: "Palindromic Substring" },
         { component: Caesar, title: "Caesar Cipher" },
         { component: Palindrome, title: "Palindrome" },
-        { component: LongestSubstringNoDuplication, title: "Longest Substring Without Duplication"}
+        {
+            component: LongestSubstringNoDuplication,
+            title: "Longest Substring Without Duplication",
+        },
     ];
 </script>
 
-<style>
-    .styling {
-        padding: 20px;
-    }
-
-</style>
-
 {#each objs as item, i}
     <div
-        style={ !(i%2) ? 'background-color:#f2f2f2;' : 'backround-color:white;'}>
-        <div class="styling">
+        style={!(i % 2) ? 'background-color:#f2f2f2;' : 'background-color:white;'}>
+        <div style="padding:20px;">
             <h3>{item.title}</h3>
             <p>
                 <svelte:component this={item.component} />
