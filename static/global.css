@@ -2,7 +2,7 @@ body {
     margin: 0;
     font-family: "Segoe UI Web (West European)", Segoe UI, -apple-system,
         BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
-    font-size: 14px;
+    font-size: 1em;
     line-height: 1.5;
     color: #121212;
     background-color: white;
@@ -111,25 +111,9 @@ button {
 }
 /* buttons, input, kitchen sink (foundation) */
 button:hover {
-    font-weight: normal;
-    -webkit-font-smoothing: antialiased;
-    box-sizing: inherit;
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0 0 1rem 0;
-    padding: 0.85em 1em;
-    border: 1px solid transparent;
-    border-radius: 0;
-    transition: background-color 0.25s ease-out, color 0.25s ease-out;
-    font-family: inherit;
-    font-size: 0.9rem;
-    line-height: 1;
-    text-align: center;
-    cursor: pointer;
-    outline: 0;
+
     background-color: black;
-    color: #fefefe;
-    text-decoration: none;
+
 }
 input{
   -webkit-font-smoothing: antialiased;
