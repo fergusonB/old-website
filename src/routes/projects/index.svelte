@@ -31,6 +31,11 @@
     </a>
   </li>
 
+  <li>
+    <a rel="prefetch" href="projects/minecraft-dungeons-save-editor">
+      Dungeons Save Editor
+    </a>
+  </li>
 
 
 </ul>
@@ -50,11 +55,7 @@
     </a>
   </li>
 
-        <li>
-    <a rel="prefetch" href="projects/minecraft-dungeons-save-editor">
-      Dungeons Editor
-    </a>
-  </li>
+
 
 
   <li>
