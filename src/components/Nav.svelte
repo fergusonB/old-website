@@ -1,8 +1,19 @@
 <script>
   export let segment;
+
+  let screenWideEnough = true
+  if (process.browser){
+    screenWideEnough = screen.width < 351
+  }
+
+
+
 </script>
 
 <style>
+
+
+
   nav {
 
     font-weight: 400;
@@ -62,7 +73,6 @@
 
   }
 
-
 </style>
 
 <nav>
@@ -101,6 +111,7 @@
       </a>
     </li>
 
+    {#if !screenWideEnough}
     <li>
       <a href="https://github.com/fergusonB" target="_blank" rel="noreferrer">
         <img alt="github" src="./github.svg" />
@@ -115,6 +126,11 @@
         <img alt="linkedin" src="./linkedin.svg" />
       </a>
     </li>
+    {/if}
+
+
   </ul>
+
+
 
 </nav>
