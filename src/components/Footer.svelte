@@ -6,6 +6,9 @@
     }
     footer{
 
+
+        
+
         
         color:white;
         display:flex;
@@ -20,7 +23,12 @@
 
         justify-content: center;
 
+
+
+
     }
+
+    
 
 li{
     list-style-type: none;
@@ -28,6 +36,7 @@ li{
 
 
 </style>
+<div style="padding:2em;"></div>
 
 <footer>
 
