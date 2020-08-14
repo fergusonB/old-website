@@ -1,7 +1,6 @@
 <style>
-    h3{
+    h4{
         padding:10px;
-        color:#b3bfc6;
 
     }
     footer{
@@ -40,9 +39,9 @@ li{
 
 <footer>
 
-    <nav class="footer-links" aria-labelledby="footer-links" >
+    <nav  aria-labelledby="footer-links" >
         <div>
-            <h3><strong>Navigation</strong></h3>
+            <h4><strong>Navigation</strong></h4>
         <ul>
           <li><a href="https://ferguson.work/about">About</a></li>
           <li><a href="https://ferguson.work/blog">Blog</a></li>
@@ -53,7 +52,7 @@ li{
 </nav>
 
     <nav aria-labelledby="footer-social-media" >
-        <h3><strong>Social Media</strong></h3>
+        <h4><strong>Social Media</strong></h4>
     <div>
         <ul>
           <li><a href="https://github.com/fergusonB">GitHub</a></li>
