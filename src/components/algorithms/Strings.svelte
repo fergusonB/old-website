@@ -4,6 +4,7 @@
     import PalindromicSubstring from "../../components/algorithms/strings/PalindromicSubstring.svelte";
     import GroupAnagrams from "../../components/algorithms/strings/GroupAnagrams.svelte";
     import LongestSubstringNoDuplication from "../../components/algorithms/strings/LongestSubstringNoDuplication.svelte";
+    import UnderscoreSubstring from "../../components/algorithms/strings/UnderscoreSubstring.svelte"
 
     const objs = [
         { component: GroupAnagrams, title: "Group Anagrams" },
@@ -14,12 +15,25 @@
             component: LongestSubstringNoDuplication,
             title: "Longest Substring Without Duplication",
         },
+        {component: UnderscoreSubstring, title:"Underscore Substring"}
     ];
+
+    let count = 0
 </script>
 
+<style>
+    .colored{
+        background-color: #ddd;
+        overflow:auto;
+        width:100%;
+    }
+</style>
+
+
 {#each objs as item, i}
+
     <div
-        style={!(i % 2) ? 'background-color:#f2f2f2;' : 'background-color:white;'}>
+        class={!(i%2) ? "colored" : ""}> 
         <div style="padding:20px;">
             <h3>{item.title}</h3>
             <p>
@@ -28,3 +42,4 @@
         </div>
     </div>
 {/each}
+
