@@ -24,8 +24,6 @@
 <style>
     .colored{
         background-color: #ddd;
-        overflow:auto;
-        width:100%;
     }
 </style>
 
