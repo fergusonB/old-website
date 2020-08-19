@@ -7,6 +7,7 @@
     import UnderscoreSubstring from "../../components/algorithms/strings/UnderscoreSubstring.svelte"
 
     const objs = [
+        {component: UnderscoreSubstring, title:"Underscore Substring"},
         { component: GroupAnagrams, title: "Group Anagrams" },
         { component: PalindromicSubstring, title: "Palindromic Substring" },
         { component: Caesar, title: "Caesar Cipher" },
@@ -14,8 +15,8 @@
         {
             component: LongestSubstringNoDuplication,
             title: "Longest Substring Without Duplication",
-        },
-        {component: UnderscoreSubstring, title:"Underscore Substring"}
+        }
+        
     ];
 
     let count = 0
