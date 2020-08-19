@@ -23,6 +23,10 @@
 .episode:hover{
     border: 1px solid black;
 }
+.tableContainer{
+  overflow:scroll;
+  height:50vh;
+}
 
 /* Tooltip container */
 .tooltip {
@@ -70,7 +74,7 @@ Click <a target="_blank" rel="preload" href="https://ferguson.work/api/imdb/"> h
 </p>
 
 
-
+<div class="tableContainer">
 {#each Object.keys(data) as season,i}
     <div class="season">
     <div class="seasonBox">
@@ -90,6 +94,7 @@ Click <a target="_blank" rel="preload" href="https://ferguson.work/api/imdb/"> h
     
     </div>
 {/each}
+</div>
 
 
 
