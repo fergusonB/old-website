@@ -115,6 +115,10 @@
     white-space: nowrap;
     text-overflow: ellipsis;
   }
+
+  .card{
+    margin-right: 1em;
+  }
 </style>
 
 <h2 style="text-align:center;">Food</h2>
