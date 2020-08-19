@@ -165,7 +165,6 @@
       <div
         class="card {new Date(food.Expires).getTime() - new Date(food.Date).getTime() < 604800000 ? `red` : new Date(food.Expires).getTime() - new Date(food.Date).getTime() < 2404800000 ? `yellow` : `temp`}"
         style="filter: drop-shadow(5px 0px {food.Color});">
-        Item:
         <span
           class="text"
           contenteditable="true"
@@ -174,7 +173,7 @@
           {food.Item}
         </span>
         <br />
-        Quantity:
+        
         <span
           class="text"
           contenteditable="true"
