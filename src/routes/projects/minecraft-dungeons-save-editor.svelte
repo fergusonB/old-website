@@ -40,10 +40,10 @@ const checkEmpty = (data) =>{
 </script>
 
 <svelte:head>
-  <title>MineCraft Dungeons Save Editor</title>
+  <title>Dungeons Save Editor</title>
 </svelte:head>
 
-<h1>MineCraft Dungeons Save Editor</h1>
+<h1>Dungeons Save Editor</h1>
 <p>
 This editor was designed for the Switch version of the game.
 <br>
