@@ -32,5 +32,5 @@
   </div>
 
 </main>
-<Footer/>
+
 </div>

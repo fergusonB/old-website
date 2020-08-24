@@ -141,6 +141,7 @@
             <br />
             {#each item.enchantments as en, j}
               {#if en.level > 0}
+                <!-- svelte-ignore a11y-no-onchange -->
                 <select
                   on:change={() => setTimeout(() => {
                       save(i, item.power, en.id, en.level, j);
