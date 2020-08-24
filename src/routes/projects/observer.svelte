@@ -3,7 +3,7 @@ import Task from "../../components/observer/Task.svelte";
 import Food from "../../components/observer/Food.svelte";
 
 const state = {
-  task: false,
+  task: true,
   food: false
 }
 
