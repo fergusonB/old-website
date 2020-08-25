@@ -1,7 +1,19 @@
 <script lang="typescript">
     import Plate from "../../components/observer/Task/Plate.svelte";
 
-    $: plates = [{ title: "To Do" }, { title: "Doing" }, { title: "Done" }];
+    let plates = [{ title: "To Do" }, { title: "Doing" }, { title: "Done" }]
+   
+
+    if (process.browser){
+        
+    if (localStorage.task === undefined){
+        localStorage.task = JSON.stringify([{ title: "To Do" }, { title: "Doing" }, { title: "Done" }])
+    }
+    else{
+        plates = JSON.parse(localStorage.task)
+    }
+    }
+    
 
     const newPlate = {
         text: "Add another plate",
@@ -10,6 +22,7 @@
             if (newPlate.text !== "") {
                 plates = [...plates, { title: newPlate.text }];
                 newPlate.text = "";
+                localStorage.task = JSON.stringify(plates)
             } else newPlate.text = "Add another plate";
         },
         enterKey: (e) => {
@@ -17,6 +30,10 @@
                 newPlate.create();
             }
         },
+
+        delete: ()=>{
+            
+        }
     };
 </script>
 
@@ -51,7 +68,10 @@
         <div class="card plate">
             <span
                 class="bin"
-                on:click={() => (plates = plates.filter((x) => x !== plate))}>
+                on:click={() => {
+                    (plates = plates.filter((x) => x !== plate))
+                    localStorage.task = JSON.stringify(plates)
+                }}>
                 🗑️
             </span>
             <Plate {plate} />
