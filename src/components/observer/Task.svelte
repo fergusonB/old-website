@@ -37,8 +37,8 @@
 
 <div class="panel">
 
-    {#each plates as plate}
-        <Plate title={plate.title} data={plate} />
+    {#each plates as plate,i}
+        <Plate data={plate} />
     {/each}
     <div class="newPlate card">
         <input

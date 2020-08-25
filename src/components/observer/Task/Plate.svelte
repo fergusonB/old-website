@@ -1,5 +1,4 @@
 <script lang="typescript">
-    export let title = "Placeholder";
     export let notes = [];
     export let data;
 
@@ -41,7 +40,7 @@
 
 <div class="card plate">
 
-    <h3>{title}</h3>
+    <h3>{data.title}</h3>
 
     {#each notes as note}
         <div class="card">{note.text}</div>
