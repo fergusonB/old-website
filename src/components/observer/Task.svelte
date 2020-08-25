@@ -31,14 +31,16 @@
         margin-top: 0px;
         height: 65vh;
     }
+
 </style>
 
 <h2>Tasks</h2>
 
 <div class="panel">
 
-    {#each plates as plate,i}
-        <Plate data={plate} />
+    {#each plates as plate}
+        <Plate {plate}  />
+       
     {/each}
     <div class="newPlate card">
         <input

@@ -1,6 +1,6 @@
 <script lang="typescript">
     let notes = []
-    export let data;
+    export let plate;
 
     const newNote = {
         text: "Add a new note",
@@ -9,7 +9,7 @@
             if (newNote.text !== "") {
                 notes = [...notes, { text: newNote.text }];
                 newNote.text = "";
-                data.notes = notes;
+                plate.notes = notes;
             }
         },
 
@@ -29,7 +29,7 @@
         flex: 1;
         overflow: scroll;
     }
-    input {
+    input { 
         width: 90%;
     }
     h3 {
@@ -43,7 +43,7 @@
 
 <div class="card plate">
 
-    <h3>{data.title}</h3>
+    <h3>{plate.title}</h3>
 
     {#each notes as note}
         <div class="card">
