@@ -8,6 +8,7 @@
         create: ()=>{
             if (newNote.text !== ''){
                 notes = [...notes,{text:newNote.text}]
+                newNote.text = 'Add a new note'
 
             } 
             else newNote.text = 'Add a new note'
@@ -20,9 +21,9 @@
 
     
     .plate{
-        height:99%;
-        min-width:300px;
-        max-width:300px;
+        height:65vh;
+        min-width:250px;
+        max-width:250px;
         flex:1;
         overflow:scroll;
     }
@@ -42,7 +43,7 @@
     <h3>{title}</h3>
 
     {#each notes as note}
-        <div>{note.text}</div>
+        <div class="card">{note.text}</div>
         
     {/each}
     <input on:click={()=>newNote.text = ''} on:blur={()=>newNote.create()} bind:value={newNote.text} type="text">

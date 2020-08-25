@@ -5,7 +5,7 @@
     
 
     $:   plates = [
-        { title: "fuck" }
+        { title: "To Do" },{title:"Doing"},{title:"Done"}
     ];
 
    
@@ -34,7 +34,9 @@
         overflow: scroll;
     }
     .newPlate {
-        min-width: 300px;
+        min-width: 250px;
+        margin-top: 0px;
+        height:65vh;
     }
 </style>
 
