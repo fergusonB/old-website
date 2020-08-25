@@ -2,12 +2,7 @@
     import Plate from "../../components/observer/Task/Plate.svelte";
 
     $:   plates = [
-        { title: "fuck" },
-        { title: "holy" },
-        { title: "three" },
-        { title: "four" },
-        { title: "five" },
-        { title: "six" },
+        { title: "fuck", notes:[{text:'test'},{text:'test2'}] }
     ];
 
     const newPlate = {
@@ -15,7 +10,7 @@
 
         create: ()=>{
             if (newPlate.text !== ''){
-                plates = [...plates,{title:newPlate.text}]
+                plates = [...plates,{title:newPlate.text, notes:[]}]
             }
             else newPlate.text = 'Add another plate'
             
@@ -42,8 +37,8 @@
 <div class="panel">
 
     {#each plates as plate}
-        <Plate title={plate.title} />
+        <Plate title={plate.title} notes={plate.notes} />
     {/each}
-    <div class="newPlate card"><input on:click={()=>newPlate.text=''} on:blur={()=>newPlate.create()} bind:value={newPlate.text} type="text"></div>
+    <div class="newPlate card"><input on:click={()=>newPlate.text=''}  on:blur={()=>newPlate.create()} bind:value={newPlate.text} type="text"></div>
 
 </div>
