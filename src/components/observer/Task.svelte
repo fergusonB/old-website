@@ -1,16 +1,22 @@
 <script lang="typescript">
+
     import Plate from "../../components/observer/Task/Plate.svelte";
 
+    
+
     $:   plates = [
-        { title: "fuck", notes:[{text:'test'},{text:'test2'}] }
+        { title: "fuck" }
     ];
+
+   
 
     const newPlate = {
         text:'Add another plate',
 
         create: ()=>{
             if (newPlate.text !== ''){
-                plates = [...plates,{title:newPlate.text, notes:[]}]
+                plates = [...plates,{title:newPlate.text}]
+                newPlate.text = 'Add another plate'
             }
             else newPlate.text = 'Add another plate'
             
@@ -37,7 +43,7 @@
 <div class="panel">
 
     {#each plates as plate}
-        <Plate title={plate.title} notes={plate.notes} />
+        <Plate title={plate.title}  />
     {/each}
     <div class="newPlate card"><input on:click={()=>newPlate.text=''}  on:blur={()=>newPlate.create()} bind:value={newPlate.text} type="text"></div>
 

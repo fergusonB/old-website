@@ -8,8 +8,7 @@
         create: ()=>{
             if (newNote.text !== ''){
                 notes = [...notes,{text:newNote.text}]
-                console.log(notes)
-                console.log(newNote.text)
+
             } 
             else newNote.text = 'Add a new note'
             
