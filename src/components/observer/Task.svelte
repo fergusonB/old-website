@@ -31,7 +31,16 @@
         margin-top: 0px;
         height: 65vh;
     }
-
+    .bin {
+        float: right;
+    }
+    .plate {
+        height: 65vh;
+        min-width: 250px;
+        max-width: 250px;
+        flex: 1;
+        overflow: scroll;
+    }
 </style>
 
 <h2>Tasks</h2>
@@ -39,8 +48,14 @@
 <div class="panel">
 
     {#each plates as plate}
-        <Plate {plate}  />
-       
+        <div class="card plate">
+            <span
+                class="bin"
+                on:click={() => (plates = plates.filter((x) => x !== plate))}>
+                🗑️
+            </span>
+            <Plate {plate} />
+        </div>
     {/each}
     <div class="newPlate card">
         <input
