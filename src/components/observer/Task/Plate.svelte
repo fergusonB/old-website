@@ -1,6 +1,7 @@
 <script lang="typescript">
     export let title = "Placeholder";
     export let notes = [];
+    export let data;
 
     const newNote = {
         text: "Add a new note",
@@ -9,8 +10,8 @@
             if (newNote.text !== "") {
                 notes = [...notes, { text: newNote.text }];
                 newNote.text = "";
-                
-            } 
+                data.notes = notes;
+            }
         },
 
         enterKey: (e) => {
@@ -45,7 +46,6 @@
     {#each notes as note}
         <div class="card">{note.text}</div>
     {/each}
-
 
     <input
         on:click={() => (newNote.text = '')}
