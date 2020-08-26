@@ -32,9 +32,14 @@
         background-color: #ddd;
         text-align: center;
     }
-    span {
+    .bin {
         float: right;
+        user-select:none;
     }
+    .bin:hover{
+        cursor:pointer
+    }
+
 </style>
 
 <h3>{plate.title}</h3>
@@ -42,7 +47,7 @@
 {#each notes as note}
     <div class="card">
         {note.text}
-        <span on:click={() => {
+        <span class="bin" on:click={() => {
             (notes = notes.filter((x) => x !== note))
             plate.notes = notes
             $plates=$plates

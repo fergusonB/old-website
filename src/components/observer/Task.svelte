@@ -37,6 +37,10 @@
     }
     .bin {
         float: right;
+        user-select:none;
+    }
+    .bin:hover{
+        cursor:pointer
     }
     .plate {
         height: 65vh;
