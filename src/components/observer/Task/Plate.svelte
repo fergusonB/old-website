@@ -1,6 +1,7 @@
 <script lang="typescript">
         let notes = [];
     export let plate;
+    import {plates} from '../stores.js'
 
 
     const newNote = {
@@ -11,6 +12,7 @@
                 notes = [...notes, { text: newNote.text }];
                 newNote.text = "";
                 plate.notes = notes;
+                $plates=$plates
             }
         },
 
@@ -40,7 +42,11 @@
 {#each notes as note}
     <div class="card">
         {note.text}
-        <span on:click={() => (notes = notes.filter((x) => x !== note))}>
+        <span on:click={() => {
+            (notes = notes.filter((x) => x !== note))
+            plate.notes = notes
+            $plates=$plates
+        }}>
             🗑️
         </span>
     </div>

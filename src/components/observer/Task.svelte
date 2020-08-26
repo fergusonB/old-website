@@ -1,7 +1,7 @@
 <script lang="typescript">
     import Plate from "../../components/observer/Task/Plate.svelte";
+    import {plates} from './stores.js'
 
-    let plates = [{ title: "To Do" }, { title: "Doing" }, { title: "Done" }]
 
     
 
@@ -10,7 +10,7 @@
 
         create: () => {
             if (newPlate.text !== "") {
-                plates = [...plates, { title: newPlate.text }];
+                $plates = [...$plates, { title: newPlate.text }];
                 newPlate.text = "";
             } else newPlate.text = "Add another plate";
         },
@@ -51,12 +51,12 @@
 
 <div class="panel">
 
-    {#each plates as plate}
+    {#each $plates as plate}
         <div class="card plate">
             <span
                 class="bin"
                 on:click={() => {
-                    (plates = plates.filter((x) => x !== plate))
+                    ($plates = $plates.filter((x) => x !== plate))
 
                 }}>
                 🗑️
