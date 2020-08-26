@@ -1,6 +1,7 @@
 <script lang="typescript">
-    let notes = [];
+        let notes = [];
     export let plate;
+
 
     const newNote = {
         text: "Add a new note",
