@@ -53,7 +53,7 @@
 <h3>{plate.title}</h3>
 
 {#each notes as note}
-    <div class="note card" on:click={()=>{
+    <div class="note card" on:click|self={()=>{
         note.clicked = !note.clicked
             
     }}>
