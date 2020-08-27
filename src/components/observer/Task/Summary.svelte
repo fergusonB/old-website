@@ -39,6 +39,13 @@
     }
     .summaryPanel {
         display: block;
+        width: 80%;
+        max-width: 500px;
+    }
+    textarea{
+        width:100%;
+        max-width: 500px;
+
     }
 </style>
 
@@ -50,7 +57,7 @@
         <h4>Summary:</h4>
         
         <p>
-            <textarea bind:value={summ.text} name="summary" cols="30" rows="10" on:blur={()=>summ.updateSummary()}/>
+            <textarea bind:value={summ.text} rows="10" name="summary" on:blur={()=>summ.updateSummary()}/>
 
         </p>
         {JSON.stringify(note)}

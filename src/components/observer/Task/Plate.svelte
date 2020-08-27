@@ -46,6 +46,7 @@
     }
     .note:hover{
         cursor: pointer;
+        background-color: #ddd;
     }
 
 </style>
