@@ -2,6 +2,7 @@
         let notes = [];
     export let plate;
     import {plates} from '../stores.js'
+    import Summary from './Summary.svelte'
 
 
     const newNote = {
@@ -33,11 +34,18 @@
         text-align: center;
     }
     .bin {
-        float: right;
+
         user-select:none;
     }
     .bin:hover{
         cursor:pointer
+    }
+    .note{
+    display:inline-block;
+    width:70%;
+    }
+    .note:hover{
+        cursor: pointer;
     }
 
 </style>
@@ -45,16 +53,24 @@
 <h3>{plate.title}</h3>
 
 {#each notes as note}
-    <div class="card">
+    <div class="note card" on:click={()=>{
+        note.clicked = !note.clicked
+            
+    }}>
+
         {note.text}
-        <span class="bin" on:click={() => {
-            (notes = notes.filter((x) => x !== note))
-            plate.notes = notes
-            $plates=$plates
-        }}>
-            🗑️
-        </span>
+
     </div>
+    <span class="bin" on:click={() => {
+        (notes = notes.filter((x) => x !== note))
+        plate.notes = notes
+        $plates=$plates
+    }}>
+        🗑️
+    </span>
+    {#if note.clicked}
+    <Summary {note}/>
+{/if}
 {/each}
 
 <input
@@ -63,3 +79,4 @@
     on:keydown={(e) => newNote.enterKey(e)}
     bind:value={newNote.text}
     type="text" />
+
