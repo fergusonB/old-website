@@ -1,8 +1,9 @@
 <script lang="typescript">
-        let notes = [];
+
     export let plateNumber;
     import {plates} from '../stores.js'
     import Summary from './Summary.svelte'
+    
     
     if ($plates[plateNumber].notes === undefined){
         $plates[plateNumber].notes = []
@@ -57,20 +58,18 @@
 
 {#each $plates[plateNumber].notes as note,j}
     <div class="note card" on:click|self={()=>{
-        note.clicked = !note.clicked
+        note.clicked = !note.clicked 
             
     }}>
-
+        
         {note.text}
         <span class="bin" on:click|self={() => {
-            (notes = notes.filter((x) => x !== note))
-            $plates[plateNumber].notes = notes
-            $plates=$plates
+            $plates[plateNumber].notes =  $plates[plateNumber].notes.filter((x) => x !== note)
         }}>
             🗑️
         </span>
 <br>
-        {#if note.summary}
+        {#if note.summary }
         📝
         {/if}
 
