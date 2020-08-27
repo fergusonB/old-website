@@ -34,15 +34,14 @@
         text-align: center;
     }
     .bin {
-
+        float:right;
         user-select:none;
     }
-    .bin:hover{
-        cursor:pointer
-    }
+
     .note{
     display:inline-block;
     width:70%;
+    overflow: hidden;
     }
     .note:hover{
         cursor: pointer;
@@ -60,17 +59,25 @@
     }}>
 
         {note.text}
+        <span class="bin" on:click|self={() => {
+            (notes = notes.filter((x) => x !== note))
+            plate.notes = notes
+            $plates=$plates
+        }}>
+            🗑️
+        </span>
+<br>
+        {#if note.summary}
+        📝
+    {/if}
 
     </div>
-    <span class="bin" on:click={() => {
-        (notes = notes.filter((x) => x !== note))
-        plate.notes = notes
-        $plates=$plates
-    }}>
-        🗑️
-    </span>
+
+
+
     {#if note.clicked}
-    <Summary {note}/>
+    <Summary bind:note={note}/>
+
 {/if}
 {/each}
 

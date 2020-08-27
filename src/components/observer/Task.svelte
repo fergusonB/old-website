@@ -28,7 +28,7 @@
     .panel {
         display: flex;
         align-items: center;
-        overflow: scroll;
+        overflow-x:scroll;
     }
     .newPlate {
         min-width: 250px;
@@ -47,7 +47,7 @@
         min-width: 250px;
         max-width: 250px;
         flex: 1;
-        overflow: scroll;
+        overflow-y: scroll;
     }
 </style>
 

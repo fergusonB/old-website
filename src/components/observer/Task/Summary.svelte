@@ -2,6 +2,8 @@
     import { plates } from "../stores.js";
     export let note;
 
+    let title = ''
+
     const summ = {
         text : '',
 
@@ -15,11 +17,18 @@
         updateSummary: ()=>{
             note.summary = summ.text
             summ.save()
+        },
+        updateTitle: ()=>{
+            note.text = title
+            summ.save()
         }
     };
 
     if (note.summary){
         summ.text = note.summary
+    }
+    if (note.text){
+        title = note.text
     }
 </script>
 
@@ -41,6 +50,7 @@
         display: block;
         width: 80%;
         max-width: 500px;
+        z-index: 2;
     }
     textarea{
         width:100%;
@@ -49,10 +59,10 @@
     }
 </style>
 
-<div class="summary">
+<div class="summary" on:click|self={()=>summ.exit()}>
     <div class="summaryPanel card">
         <button style="float:right;" on:click={() => summ.exit()}>❌</button>
-        <h3>Note: {note.text}</h3>
+        <h3>Note:</h3><input bind:value={title} on:blur={()=>summ.updateTitle()} type="text">
 
         <h4>Summary:</h4>
         
