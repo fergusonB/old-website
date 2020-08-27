@@ -4,17 +4,17 @@
     import {plates} from '../stores.js'
     import Summary from './Summary.svelte'
     
-
+    if ($plates[plateNumber].notes === undefined){
+        $plates[plateNumber].notes = []
+    }
 
     const newNote = {
         text: "Add a new note",
 
         create: () => {
             if (newNote.text !== "") {
-                notes = [...notes, { text: newNote.text }];
+                $plates[plateNumber].notes = [...$plates[plateNumber].notes, { text: newNote.text }];
                 newNote.text = "";
-                $plates[plateNumber].notes = notes;
-                $plates=$plates
             }
         },
 
@@ -24,6 +24,7 @@
             }
         },
     };
+
 
 </script>
 
@@ -54,7 +55,7 @@
 
 <h3>{$plates[plateNumber].title}</h3>
 
-{#each notes as note,j}
+{#each $plates[plateNumber].notes as note,j}
     <div class="note card" on:click|self={()=>{
         note.clicked = !note.clicked
             
@@ -90,3 +91,4 @@
     bind:value={newNote.text}
     type="text" />
 
+{JSON.stringify($plates[plateNumber].notes)}
