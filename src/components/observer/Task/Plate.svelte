@@ -1,8 +1,9 @@
 <script lang="typescript">
         let notes = [];
-    export let plate;
+    export let plateNumber;
     import {plates} from '../stores.js'
     import Summary from './Summary.svelte'
+    
 
 
     const newNote = {
@@ -12,7 +13,7 @@
             if (newNote.text !== "") {
                 notes = [...notes, { text: newNote.text }];
                 newNote.text = "";
-                plate.notes = notes;
+                $plates[plateNumber].notes = notes;
                 $plates=$plates
             }
         },
@@ -23,6 +24,7 @@
             }
         },
     };
+
 </script>
 
 <style>
@@ -50,9 +52,9 @@
 
 </style>
 
-<h3>{plate.title}</h3>
+<h3>{$plates[plateNumber].title}</h3>
 
-{#each notes as note}
+{#each notes as note,j}
     <div class="note card" on:click|self={()=>{
         note.clicked = !note.clicked
             
@@ -61,7 +63,7 @@
         {note.text}
         <span class="bin" on:click|self={() => {
             (notes = notes.filter((x) => x !== note))
-            plate.notes = notes
+            plates[plateNumber].notes = notes
             $plates=$plates
         }}>
             🗑️
@@ -76,7 +78,7 @@
 
 
     {#if note.clicked}
-    <Summary bind:note={note}/>
+    <Summary {plateNumber} noteNumber={j}/>
 
 {/if}
 {/each}

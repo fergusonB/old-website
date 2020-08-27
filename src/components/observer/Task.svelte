@@ -50,7 +50,7 @@
 
 <div class="panel">
 
-    {#each $plates as plate}
+    {#each $plates as plate,i}
         <div class="card plate">
             <span
                 class="bin"
@@ -59,7 +59,7 @@
                 }}>
                 🗑️
             </span>
-            <Plate {plate} />
+            <Plate plateNumber={i}/>
         </div>
     {/each}
     <div class="newPlate card">
@@ -72,3 +72,4 @@
     </div>
 
 </div>
+{JSON.stringify($plates)}

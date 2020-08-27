@@ -1,7 +1,8 @@
 <script lang="typescript">
     import { plates } from "../stores.js";
-    export let note;
-
+    export let plateNumber
+    export let noteNumber;
+   
     let title = ''
 
     const summ = {
@@ -11,24 +12,24 @@
             $plates = $plates;
         },
         exit: () => {
-            note.clicked = !note.clicked;
+            $plates[plateNumber].notes[noteNumber].clicked = !$plates[plateNumber].notes[noteNumber].clicked;
             summ.save();
         },
         updateSummary: ()=>{
-            note.summary = summ.text
+            $plates[plateNumber].notes[noteNumber].summary = summ.text
             summ.save()
         },
         updateTitle: ()=>{
-            note.text = title
+            $plates[plateNumber].notes[noteNumber].text = title
             summ.save()
         }
     };
 
-    if (note.summary){
-        summ.text = note.summary
+    if ($plates[plateNumber].notes[noteNumber].summary){
+        summ.text = $plates[plateNumber].notes[noteNumber].summary
     }
-    if (note.text){
-        title = note.text
+    if ($plates[plateNumber].notes[noteNumber].text){
+        title = $plates[plateNumber].notes[noteNumber].text
     }
 </script>
 
@@ -62,7 +63,7 @@
 <div class="summary" on:click|self={()=>summ.exit()}>
     <div class="summaryPanel card">
         <button style="float:right;" on:click={() => summ.exit()}>❌</button>
-        <h3>Note:</h3><input bind:value={title} on:blur={()=>summ.updateTitle()} type="text">
+        <h3>Notes:</h3><input bind:value={title} on:blur={()=>summ.updateTitle()} type="text">
 
         <h4>Summary:</h4>
         
@@ -70,6 +71,6 @@
             <textarea bind:value={summ.text} rows="10" name="summary" on:blur={()=>summ.updateSummary()}/>
 
         </p>
-        {JSON.stringify(note)}
+
     </div>
 </div>
