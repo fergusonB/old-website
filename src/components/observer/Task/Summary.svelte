@@ -1,30 +1,58 @@
 <script lang="typescript">
-    import {plates} from '../stores.js'
+    import { plates } from "../stores.js";
     export let note;
 
+    const summ = {
+        text : '',
 
-    const summary = {
-        save: ()=>{
-            $plates=$plates
+        save: () => {
+            $plates = $plates;
+        },
+        exit: () => {
+            note.clicked = !note.clicked;
+            summ.save();
+        },
+        updateSummary: ()=>{
+            note.summary = summ.text
+            summ.save()
         }
-    }
+    };
 
+    if (note.summary){
+        summ.text = note.summary
+    }
 </script>
 
 <style>
-
+    .summary {
+        display: flex;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        background-color: #ddd;
+        opacity: 0.9;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+        align-items: center;
+        justify-content: center;
+    }
+    .summaryPanel {
+        display: block;
+    }
 </style>
 
+<div class="summary">
+    <div class="summaryPanel card">
+        <button style="float:right;" on:click={() => summ.exit()}>❌</button>
+        <h3>Note: {note.text}</h3>
 
-<h3>Note: {note.text}</h3>
+        <h4>Summary:</h4>
+        
+        <p>
+            <textarea bind:value={summ.text} name="summary" cols="30" rows="10" on:blur={()=>summ.updateSummary()}/>
 
-<h4> Summary:</h4>
-<p>
-   <textarea name="summary"  cols="30" rows="10"></textarea>
-
-</p>
-
-
-<div class="summary" >
-{JSON.stringify(note)}
+        </p>
+        {JSON.stringify(note)}
+    </div>
 </div>
