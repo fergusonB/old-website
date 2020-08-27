@@ -38,8 +38,7 @@
         position: fixed;
         top: 0px;
         left: 0px;
-        background-color: #ddd;
-        opacity: 0.9;
+        background-color: rgba(221,221,221,0.7);
         height: 100%;
         width: 100%;
         z-index: 1;
@@ -55,6 +54,7 @@
     textarea{
         width:100%;
         max-width: 500px;
+        min-width:100%;
 
     }
 </style>

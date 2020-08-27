@@ -1,9 +1,6 @@
 <script lang="typescript">
     import Plate from "../../components/observer/Task/Plate.svelte";
-    import {plates} from './stores.js'
-
-
-    
+    import { plates } from "./stores.js";
 
     const newPlate = {
         text: "Add another plate",
@@ -19,8 +16,6 @@
                 newPlate.create();
             }
         },
-
-
     };
 </script>
 
@@ -28,7 +23,7 @@
     .panel {
         display: flex;
         align-items: center;
-        overflow-x:scroll;
+        overflow-x: scroll;
     }
     .newPlate {
         min-width: 250px;
@@ -37,10 +32,10 @@
     }
     .bin {
         float: right;
-        user-select:none;
+        user-select: none;
     }
-    .bin:hover{
-        cursor:pointer
+    .bin:hover {
+        cursor: pointer;
     }
     .plate {
         height: 65vh;
@@ -60,8 +55,7 @@
             <span
                 class="bin"
                 on:click={() => {
-                    ($plates = $plates.filter((x) => x !== plate))
-
+                    $plates = $plates.filter((x) => x !== plate);
                 }}>
                 🗑️
             </span>
@@ -78,4 +72,3 @@
     </div>
 
 </div>
-

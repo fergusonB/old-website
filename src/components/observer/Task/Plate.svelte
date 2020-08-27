@@ -40,7 +40,7 @@
 
     .note{
     display:inline-block;
-    width:70%;
+    width:85%;
     overflow: hidden;
     }
     .note:hover{
@@ -69,7 +69,7 @@
 <br>
         {#if note.summary}
         📝
-    {/if}
+        {/if}
 
     </div>
 
