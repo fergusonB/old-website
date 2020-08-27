@@ -13,17 +13,19 @@
 
 <h2>Projects</h2>
 <ul>
+
+  
+  <li>
+    <a rel="prefetch" href="projects/observer">
+      The Observer
+    </a>
+  </li>
   <li>
     <a rel="prefetch" href="projects/imdb">
       IMDB Ratings Table Generator 
     </a>
   </li>
 
-    <li>
-    <a rel="prefetch" href="projects/observer">
-      The Observer (WIP)
-    </a>
-  </li>
 
   <li>
     <a rel="prefetch" href="projects/minecraft-dungeons-save-editor">
