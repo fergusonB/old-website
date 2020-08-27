@@ -63,7 +63,7 @@
         {note.text}
         <span class="bin" on:click|self={() => {
             (notes = notes.filter((x) => x !== note))
-            plates[plateNumber].notes = notes
+            $plates[plateNumber].notes = notes
             $plates=$plates
         }}>
             🗑️

@@ -30,13 +30,7 @@
         margin-top: 0px;
         height: 65vh;
     }
-    .bin {
-        float: right;
-        user-select: none;
-    }
-    .bin:hover {
-        cursor: pointer;
-    }
+
     .plate {
         height: 65vh;
         min-width: 250px;
@@ -52,13 +46,6 @@
 
     {#each $plates as plate,i}
         <div class="card plate">
-            <span
-                class="bin"
-                on:click={() => {
-                    $plates = $plates.filter((x) => x !== plate);
-                }}>
-                🗑️
-            </span>
             <Plate plateNumber={i}/>
         </div>
     {/each}
