@@ -38,6 +38,13 @@
         flex: 1;
         overflow-y: scroll;
     }
+    .bin {
+        float: right;
+        user-select:none;
+    }
+    .bin:hover{
+        cursor:pointer
+    }
 </style>
 
 <h2>Tasks</h2>
@@ -46,6 +53,14 @@
 
     {#each $plates as plate,i}
         <div class="card plate">
+            <span
+            class="bin"
+            on:click={() => {
+                ($plates = $plates.filter((x) => x !== plate))
+
+            }}>
+            🗑️
+        </span>
             <Plate plateNumber={i}/>
         </div>
     {/each}
