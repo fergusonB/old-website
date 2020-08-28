@@ -14,6 +14,7 @@
 
         create: () => {
             if (newNote.text !== "") {
+                //@ts-ignore
                 $plates[plateNumber].notes = [...$plates[plateNumber].notes, { text: newNote.text }];
                 newNote.text = "";
             }
