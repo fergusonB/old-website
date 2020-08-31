@@ -7,6 +7,7 @@
 
         create: () => {
             if (newPlate.text !== "") {
+                //@ts-ignore
                 $plates = [...$plates, { title: newPlate.text }];
                 newPlate.text = "";
             } else newPlate.text = "Add another plate";
