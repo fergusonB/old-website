@@ -6,8 +6,7 @@ export let noteNumber
 
 let show = false;
 
-const colors = ["red", "pink", "purple", "deepPurple", "indigo", "blue", "lightBlue", "cyan", "teal", "green", "lightGreen"]
-
+const colors =["red", "pink", "purple", "deepPurple", "indigo", "blue", "lightBlue", "cyan", "teal", "green", "lightGreen", "lime", "yellow", "amber", "orange", "deepOrange"]
 const colorData = {
   "red": [
     "#d50000",
@@ -63,10 +62,33 @@ const colorData = {
     "#64dd17",
     "#9cff57",
     "#1faa00"
+  ],
+  "lime": [
+    "#aeea00",
+    "#e4ff54",
+    "#79b700"
+  ],
+  "yellow": [
+    "#ffd600",
+    "#ffff52",
+    "#c7a500"
+  ],
+  "amber": [
+    "#ffab00",
+    "#ffdd4b",
+    "#c67c00"
+  ],
+  "orange": [
+    "#ff6d00",
+    "#ff9e40",
+    "#c43c00"
+  ],
+  "deepOrange": [
+    "#dd2c00",
+    "#ff6434",
+    "#a30000"
   ]
 }
-
-
 
 
 </script>
@@ -91,7 +113,8 @@ const colorData = {
     <div class="colors">
         {#each colors as color}
             <div on:click|self={()=>{
-                console.log(color)
+                $plates[plateNumber].notes[noteNumber].colors = colorData[color]
+                show = !show
             }} style={`background-color:${colorData[color][0]}`} class="colorBlock"/>
         {/each}
         </div>

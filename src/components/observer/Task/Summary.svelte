@@ -5,7 +5,8 @@
     import Colors from './Colors.svelte';
 
 
-   
+   $:backgroundColors = $plates[plateNumber].notes[noteNumber].colors || ['white','white','black']
+
     let title = ''
 
     const summ = {
@@ -42,19 +43,21 @@
         position: fixed;
         top: 0px;
         left: 0px;
-        background-color: rgba(221,221,221,0.7);
         height: 100%;
         width: 100%;
         z-index: 1;
         align-items: center;
         justify-content: center;
+        opacity:.9;
     }
     .summaryPanel {
         display: block;
         width: 80%;
         max-width: 500px;
         z-index: 2;
+
     }
+
     textarea{
         width:100%;
         max-width: 500px;
@@ -62,20 +65,25 @@
         min-height:20em;
 
     }
+
 </style>
 
-<div class="summary" on:click|self={()=>summ.exit()}>
-    <div class="summaryPanel card">
+<div class="summary" on:click|self={()=>summ.exit()} style={`background-color:${backgroundColors[1]};`}>
+    <div style={`background-color:${backgroundColors[0]};`}  class="summaryPanel card">
         <button style="float:right;" on:click={() => summ.exit()}>❌</button>
-        <h3>Notes:</h3><input bind:value={title} on:blur={()=>summ.updateTitle()} type="text">
+        <h3>Notes:</h3><input  style={`color:${backgroundColors[2]};`} bind:value={title} on:blur={()=>summ.updateTitle()} type="text">
 
         <h4>Summary:</h4>
         
         <p>
-            <textarea bind:value={summ.text} rows="10" name="summary" on:blur={()=>summ.updateSummary()}/>
+            <textarea style={`color:${backgroundColors[2]};`} bind:value={summ.text} rows="10" name="summary" on:blur={()=>summ.updateSummary()}/>
 
         </p>
+        <p>
         <Colors {plateNumber} {noteNumber}/>
+    </p>
 
     </div>
 </div>
+
+{backgroundColors}
