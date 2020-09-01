@@ -57,12 +57,13 @@
         background-color: #ddd;
     }
 
+
 </style>
 
 <h3>{$plates[plateNumber].title}</h3>
 
 {#each $plates[plateNumber].notes as note,j}
-    <div class="note card" on:click|self={()=>{
+    <div style={`background-color:${note.colors ? note.colors[1]: 'white'};`} class="note card" on:click|self={()=>{
         note.clicked = !note.clicked 
             
     }}>
