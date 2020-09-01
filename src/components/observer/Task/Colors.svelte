@@ -6,7 +6,7 @@ export let noteNumber
 
 let show = false;
 
-const colors =["red", "pink", "purple", "deepPurple", "indigo", "blue", "lightBlue", "cyan", "teal", "green", "lightGreen", "lime", "yellow", "amber", "orange", "deepOrange"]
+// 0:normal, 1:light, 2:dark
 const colorData = {
   "red": [
     "#d50000",
@@ -88,6 +88,12 @@ const colorData = {
     "#ff6434",
     "#a30000"
   ]
+}
+//
+
+const colors = []
+for (let each in colorData){
+    colors.push(each)
 }
 
 
