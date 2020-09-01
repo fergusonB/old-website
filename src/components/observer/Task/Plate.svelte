@@ -9,6 +9,10 @@
         $plates[plateNumber].notes = []
     }
 
+
+
+
+
     const newNote = {
         text: "Add a new note",
 

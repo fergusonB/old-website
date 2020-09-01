@@ -2,6 +2,9 @@
     import { plates } from "../stores.js";
     export let plateNumber
     export let noteNumber;
+    import Colors from './Colors.svelte';
+
+
    
     let title = ''
 
@@ -72,6 +75,7 @@
             <textarea bind:value={summ.text} rows="10" name="summary" on:blur={()=>summ.updateSummary()}/>
 
         </p>
+        <Colors {plateNumber} {noteNumber}/>
 
     </div>
 </div>
