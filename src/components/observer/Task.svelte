@@ -1,6 +1,26 @@
 <script lang="typescript">
     import Plate from "../../components/observer/Task/Plate.svelte";
     import { plates } from "./stores.js";
+    import {afterUpdate} from 'svelte';
+   
+   
+    if (process.browser){
+        if (localStorage.task === undefined){
+            localStorage.task = JSON.stringify($plates)
+        }
+        else{
+            $plates = JSON.parse(localStorage.task)
+        }
+        afterUpdate(() => {
+            localStorage.task = JSON.stringify($plates)
+	});
+       
+
+    }
+   
+    
+
+
 
 
 
@@ -81,3 +101,4 @@
     </div>
 
 </div>
+
