@@ -69,11 +69,6 @@
     .bin:hover {
         cursor: pointer;
     }
-
-    h3 {
-        background-color: #ddd;
-        text-align: center;
-    }
 </style>
 
 <h2>
@@ -88,7 +83,7 @@
 
 <div class="panel">
     {#each $plates as plate, i}
-        <div class="card plate" >
+        <div class="card plate" draggable={true} on:dragstart={()=>dragOne = i} on:dragenter={()=>dragTwo = i} on:dragend={()=>swapPlates()}>
             <span
                 class="bin"
                 on:click={() => {
@@ -98,7 +93,6 @@
                 }}>
                 🗑️
             </span>
-            <h3 draggable={true} on:dragstart={()=>dragOne = i} on:dragenter={()=>dragTwo = i} on:dragend={()=>swapPlates()}>{$plates[i].title}</h3>
             <Plate plateNumber={i} />
         </div>
     {/each}

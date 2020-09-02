@@ -33,7 +33,10 @@
     input {
         width: 90%;
     }
-
+    h3 {
+        background-color: #ddd;
+        text-align: center;
+    }
     .bin {
         float: right;
         user-select: none;
@@ -50,7 +53,7 @@
     }
 </style>
 
-
+<h3 >{$plates[plateNumber].title} </h3>
 
 {#each $plates[plateNumber].notes as note, j}
     <div
