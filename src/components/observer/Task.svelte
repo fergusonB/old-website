@@ -3,6 +3,17 @@
     import { plates } from "./stores.js";
     import { afterUpdate } from "svelte";
 
+    let dragOne
+    let dragTwo
+
+    const swapPlates = ()=>{
+        let temp = $plates[dragOne]
+        $plates[dragOne] = $plates[dragTwo]
+        $plates[dragTwo] = temp
+
+    }
+
+
     if (process.browser) {
         if (localStorage.task === undefined) {
             localStorage.task = JSON.stringify($plates);
@@ -72,7 +83,7 @@
 
 <div class="panel">
     {#each $plates as plate, i}
-        <div class="card plate">
+        <div class="card plate" draggable={true} on:dragstart={()=>dragOne = i} on:dragenter={()=>dragTwo = i} on:dragend={()=>swapPlates()}>
             <span
                 class="bin"
                 on:click={() => {
