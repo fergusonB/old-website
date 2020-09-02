@@ -96,4 +96,3 @@
     bind:value={newNote.text}
     type="text" />
 
-{JSON.stringify($plates[plateNumber].notes)}

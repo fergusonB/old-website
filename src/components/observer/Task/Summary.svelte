@@ -61,6 +61,8 @@
         width: 80%;
         max-width: 500px;
         z-index: 2;
+        max-height: 90%;
+        overflow-y:scroll;
     }
 
     textarea {
