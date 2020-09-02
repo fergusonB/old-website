@@ -79,7 +79,10 @@
         📝
         {/if}
         {#if note.checklist}
-        ✅
+            {#if note.checklist.length > 0}
+            ✅
+            {/if}
+           
         {/if}
 
     </div>

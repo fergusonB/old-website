@@ -2,6 +2,16 @@
     import Plate from "../../components/observer/Task/Plate.svelte";
     import { plates } from "./stores.js";
     import {afterUpdate} from 'svelte';
+
+
+    
+    // add the ability to hit enter when entering a task list
+    //add confirmation dialogue to trash cans
+    //add title to checklist
+    //add labels to input for lighthouse score / check lighthouse
+    //make all the innerhtml ediatable
+    //make the buttons to switch between food and task a tab
+    //due dates
    
    
     if (process.browser){
