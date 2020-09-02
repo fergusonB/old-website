@@ -5,7 +5,6 @@
 
 
     
-    // add the ability to hit enter when entering a task list
     //add confirmation dialogue to trash cans
     //add title to checklist
     //add labels to input for lighthouse score / check lighthouse

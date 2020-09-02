@@ -71,6 +71,9 @@
         {/each}
     </p>
     <input
+    on:keydown={(e) =>{
+        if (e.keyCode === 13) checklist.add() 
+    } }
         on:click={() => {
             inputField = '';
         }}
