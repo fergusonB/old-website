@@ -3,6 +3,7 @@
     export let plateNumber;
     export let noteNumber;
     import Colors from "./Colors.svelte";
+    import Checklist from './Checklist.svelte'
 
     $: backgroundColors = $plates[plateNumber].notes[noteNumber].colors || [
         "white",
@@ -96,8 +97,9 @@
         </p>
         <p>
             <Colors {plateNumber} {noteNumber} />
+            <Checklist/>
         </p>
     </div>
 </div>
 
-{backgroundColors}
+
