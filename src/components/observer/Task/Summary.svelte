@@ -3,7 +3,7 @@
     export let plateNumber;
     export let noteNumber;
     import Colors from "./Colors.svelte";
-    import Checklist from './Checklist.svelte'
+    import Checklist from "./Checklist.svelte";
 
     $: backgroundColors = $plates[plateNumber].notes[noteNumber].colors || [
         "white",
@@ -62,7 +62,7 @@
         max-width: 500px;
         z-index: 2;
         max-height: 90%;
-        overflow-y:scroll;
+        overflow-y: scroll;
     }
 
     textarea {
@@ -99,9 +99,7 @@
         </p>
         <p>
             <Colors {plateNumber} {noteNumber} />
-            <Checklist {plateNumber} {noteNumber}/>
+            <Checklist {plateNumber} {noteNumber} />
         </p>
     </div>
 </div>
-
-

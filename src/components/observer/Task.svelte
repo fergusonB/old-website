@@ -1,36 +1,18 @@
 <script lang="typescript">
     import Plate from "../../components/observer/Task/Plate.svelte";
     import { plates } from "./stores.js";
-    import {afterUpdate} from 'svelte';
+    import { afterUpdate } from "svelte";
 
-
-    
-    
-    
-    //make all the innerhtml ediatable
-
-    //due dates
-   
-   
-    if (process.browser){
-        if (localStorage.task === undefined){
-            localStorage.task = JSON.stringify($plates)
-        }
-        else{
-            $plates = JSON.parse(localStorage.task)
+    if (process.browser) {
+        if (localStorage.task === undefined) {
+            localStorage.task = JSON.stringify($plates);
+        } else {
+            $plates = JSON.parse(localStorage.task);
         }
         afterUpdate(() => {
-            localStorage.task = JSON.stringify($plates)
-	});
-       
-
+            localStorage.task = JSON.stringify($plates);
+        });
     }
-   
-    
-
-
-
-
 
     const newPlate = {
         text: "Add another plate",
@@ -48,9 +30,6 @@
             }
         },
     };
-
-    
-
 </script>
 
 <style>
@@ -74,47 +53,44 @@
     }
     .bin {
         float: right;
-        user-select:none;
+        user-select: none;
     }
-    .bin:hover{
-        cursor:pointer
+    .bin:hover {
+        cursor: pointer;
     }
-
 </style>
 
-<h2>Tasks <span on:click={()=>{
-    if (window.confirm("Do you want to reset everything?")) { 
-    delete localStorage.task
-    location.reload()
-    }
-}}>🗑️</span></h2>
+<h2>
+    Tasks <span
+        on:click={() => {
+            if (window.confirm('Do you want to reset everything?')) {
+                delete localStorage.task;
+                location.reload();
+            }
+        }}>🗑️</span>
+</h2>
 
 <div class="panel">
-
-    {#each $plates as plate,i}
+    {#each $plates as plate, i}
         <div class="card plate">
             <span
-            class="bin"
-            on:click={() => {
-                if (window.confirm("Do you really want delete this plate?")) { 
-                    ($plates = $plates.filter((x) => x !== plate))
-                }
-
-            }}>
-            🗑️
-        </span>
-            <Plate plateNumber={i}/>
+                class="bin"
+                on:click={() => {
+                    if (window.confirm('Do you really want delete this plate?')) {
+                        $plates = $plates.filter((x) => x !== plate);
+                    }
+                }}>
+                🗑️
+            </span>
+            <Plate plateNumber={i} />
         </div>
     {/each}
     <div class="newPlate card">
         <input
-        
             on:click={() => (newPlate.text = '')}
             on:keypress={(e) => newPlate.enterKey(e)}
             on:blur={() => newPlate.create()}
             bind:value={newPlate.text}
             type="text" />
     </div>
-
 </div>
-
