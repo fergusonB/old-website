@@ -7,7 +7,7 @@
 
     // 0:normal, 1:light, 2:dark
     const colorData = {
-        white: ["#FFFFFF", "#ddd", "#000000"],
+        white: ["#FFFFFF", "#FFFFFF", "#000000"],
         red: ["#d50000", "#ff5131", "#9b0000"],
         pink: ["#c51162", "#fd558f", "#8e0038"],
         purple: ["#aa00ff", "#e254ff", "#7200ca"],
