@@ -5,7 +5,7 @@
 
 
     
-    //add confirmation dialogue to trash cans
+    
     //add title to checklist
     //add labels to input for lighthouse score / check lighthouse
     //make all the innerhtml ediatable
@@ -84,8 +84,10 @@
 </style>
 
 <h2>Tasks <span on:click={()=>{
+    if (window.confirm("Do you want to reset everything?")) { 
     delete localStorage.task
     location.reload()
+    }
 }}>🗑️</span></h2>
 
 <div class="panel">
@@ -95,7 +97,9 @@
             <span
             class="bin"
             on:click={() => {
-                ($plates = $plates.filter((x) => x !== plate))
+                if (window.confirm("Do you really want delete this plate?")) { 
+                    ($plates = $plates.filter((x) => x !== plate))
+                }
 
             }}>
             🗑️

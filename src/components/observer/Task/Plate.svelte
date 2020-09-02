@@ -70,7 +70,9 @@
         
         {note.text}
         <span class="bin" on:click|self={() => {
+            if (window.confirm("Delete this note?")) { 
             $plates[plateNumber].notes =  $plates[plateNumber].notes.filter((x) => x !== note)
+            }
         }}>
             🗑️
         </span>

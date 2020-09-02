@@ -29,9 +29,11 @@
         },
 
         delete: () => {
+            if (window.confirm("Delete this checklist?")) { 
             checklist.list = [];
             checklist.exists = false;
             checklist.save();
+            }
         },
 
         save: () => {
