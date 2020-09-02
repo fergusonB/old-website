@@ -11,7 +11,7 @@
         list: [],
 
         add: () => {
-            if (inputField !== "" && inputField !=="Write a new item here.") {
+            if (inputField !== "" && inputField !== "Write a new item here.") {
                 checklist.list = [
                     ...checklist.list,
                     { name: inputField, checked: false },
@@ -29,16 +29,18 @@
         },
 
         delete: () => {
-            if (window.confirm("Delete this checklist?")) { 
-            checklist.list = [];
-            checklist.exists = false;
-            checklist.save();
+            if (window.confirm("Delete this checklist?")) {
+                checklist.list = [];
+                checklist.exists = false;
+                checklist.save();
             }
         },
 
         save: () => {
             $plates[plateNumber].notes[noteNumber].checklist = checklist.list;
         },
+
+        showChecked:true
     };
 
     if ($plates[plateNumber].notes[noteNumber].checklist !== undefined) {
@@ -59,30 +61,47 @@
 </style>
 
 {#if checklist.exists}
- <h4>Checklist:</h4>
+    <h4>Checklist:</h4>
     <br />
     <progress value={checklist.progress()} />
     <span on:click|self={() => checklist.delete()}>🗑️</span>
 
     <p>
         {#each checklist.list as item, i}
-            <span
-                on:click={() => (item.checked = !item.checked)}
-                class={item.checked ? 'checked checkitem' : 'checkitem'}>{item.name}
-            </span>
-            <br />
+
+        {#if checklist.showChecked}
+        <span
+        on:click={() => (item.checked = !item.checked)}
+        class={item.checked ? 'checked checkitem' : 'checkitem'}>{item.name}
+    </span>
+    <br />
+        {:else}
+        {#if !item.checked}
+        <span
+        on:click={() => (item.checked = !item.checked)}
+        class={item.checked ? 'checked checkitem' : 'checkitem'}>{item.name}
+    </span>
+    <br />
+        {/if}
+
+        {/if}
+
+
+
         {/each}
     </p>
     <input
-    on:keydown={(e) =>{
-        if (e.keyCode === 13) checklist.add() 
-    } }
+        on:keydown={(e) => {
+            if (e.keyCode === 13) checklist.add();
+        }}
         on:click={() => {
             inputField = '';
         }}
         bind:value={inputField}
         type="text" />
-    <button on:click={() => checklist.add()}>Add Item</button>
+    <button on:click={() => checklist.add()}>Add Item</button> 
+    <button on:click={()=>checklist.showChecked = !checklist.showChecked}>{checklist.showChecked ? 'Hide checked' : 'Show checked'}</button>
+
 {:else}
     <button on:click={() => (checklist.exists = true)}>Create Checklist</button>
 {/if}
