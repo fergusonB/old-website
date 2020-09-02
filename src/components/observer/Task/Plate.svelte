@@ -78,6 +78,9 @@
         {#if note.summary }
         📝
         {/if}
+        {#if note.checklist}
+        ✅
+        {/if}
 
     </div>
 

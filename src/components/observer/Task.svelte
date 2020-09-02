@@ -2,6 +2,8 @@
     import Plate from "../../components/observer/Task/Plate.svelte";
     import { plates } from "./stores.js";
 
+
+
     const newPlate = {
         text: "Add another plate",
 
@@ -18,6 +20,9 @@
             }
         },
     };
+
+    
+
 </script>
 
 <style>
@@ -46,6 +51,7 @@
     .bin:hover{
         cursor:pointer
     }
+
 </style>
 
 <h2>Tasks</h2>
@@ -75,4 +81,3 @@
     </div>
 
 </div>
-{JSON.stringify($plates)}
