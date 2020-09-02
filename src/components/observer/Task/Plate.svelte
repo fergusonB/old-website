@@ -1,5 +1,6 @@
 <script lang="typescript">
     export let plateNumber;
+
     import { plates } from "../stores.js";
     import Summary from "./Summary.svelte";
 
@@ -27,6 +28,17 @@
             }
         },
     };
+
+    let noteOne
+    let noteTwo
+
+    const swapNotes= ()=>{
+        let tmp = $plates[noteOne[0]].notes[noteOne[1]]
+        $plates[noteOne[0]].notes[noteOne[1]] = $plates[noteTwo[0]].notes[noteTwo[1]]
+        $plates[noteTwo[0]].notes[noteTwo[1]] = tmp
+    }
+
+
 </script>
 
 <style>
@@ -57,6 +69,9 @@
 
 {#each $plates[plateNumber].notes as note, noteNumber}
     <div
+    draggable={true} on:dragstart={()=>noteOne=[plateNumber,noteNumber]}
+     on:dragenter={()=>noteTwo=[plateNumber,noteNumber]}
+      on:dragend={()=>swapNotes()}
         style={`background-color:${note.colors ? note.colors[1] : 'white'};`}
         class="note card"
         on:click|self={() => {
