@@ -59,6 +59,7 @@
 </style>
 
 {#if checklist.exists}
+ <h4>Checklist:</h4>
     <br />
     <progress value={checklist.progress()} />
     <span on:click|self={() => checklist.delete()}>🗑️</span>
