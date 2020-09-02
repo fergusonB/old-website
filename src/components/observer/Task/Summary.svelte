@@ -69,7 +69,7 @@
         width: 100%;
         max-width: 500px;
         min-width: 100%;
-        min-height: 20em;
+        min-height: 10em;
     }
 </style>
 
@@ -99,7 +99,7 @@
         </p>
         <p>
             <Colors {plateNumber} {noteNumber} />
-            <Checklist/>
+            <Checklist {plateNumber} {noteNumber}/>
         </p>
     </div>
 </div>
