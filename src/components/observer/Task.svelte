@@ -7,9 +7,8 @@
     
     
     
-    //add labels to input for lighthouse score / check lighthouse
     //make all the innerhtml ediatable
-    //make the buttons to switch between food and task a tab
+
     //due dates
    
    
@@ -109,6 +108,7 @@
     {/each}
     <div class="newPlate card">
         <input
+        
             on:click={() => (newPlate.text = '')}
             on:keypress={(e) => newPlate.enterKey(e)}
             on:blur={() => newPlate.create()}
