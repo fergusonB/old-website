@@ -55,7 +55,7 @@
 
 <h3 >{$plates[plateNumber].title} </h3>
 
-{#each $plates[plateNumber].notes as note, j}
+{#each $plates[plateNumber].notes as note, noteNumber}
     <div
         style={`background-color:${note.colors ? note.colors[1] : 'white'};`}
         class="note card"
@@ -80,7 +80,7 @@
     </div>
 
     {#if note.clicked}
-        <Summary {plateNumber} noteNumber={j} />
+        <Summary {plateNumber} {noteNumber}/>
     {/if}
 {/each}
 
