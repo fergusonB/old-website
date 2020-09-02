@@ -74,7 +74,10 @@
 
 </style>
 
-<h2>Tasks</h2>
+<h2>Tasks <span on:click={()=>{
+    delete localStorage.task
+    location.reload()
+}}>🗑️</span></h2>
 
 <div class="panel">
 
