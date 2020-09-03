@@ -81,6 +81,7 @@
         class="note card"
         on:click|self={() => {
             note.clicked = !note.clicked;
+            $dragTask = false
         }}>
         {note.text}
         <span

@@ -1,5 +1,5 @@
 <script lang="typescript">
-    import { plates } from "../stores.js";
+    import { plates, dragTask } from "../stores.js";
     export let plateNumber;
     export let noteNumber;
     import Colors from "./Colors.svelte";
@@ -24,6 +24,7 @@
                 plateNumber
             ].notes[noteNumber].clicked;
             summ.save();
+            $dragTask = true
         },
         updateSummary: () => {
             $plates[plateNumber].notes[noteNumber].summary = summ.text;
