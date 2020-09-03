@@ -56,6 +56,7 @@
         align-items: center;
         justify-content: center;
         opacity: 0.9;
+        cursor:auto;
     }
     .summaryPanel {
         display: block;
@@ -64,6 +65,7 @@
         z-index: 2;
         max-height: 90%;
         overflow-y: scroll;
+        cursor:auto;
     }
 
     textarea {

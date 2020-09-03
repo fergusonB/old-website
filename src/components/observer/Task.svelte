@@ -65,7 +65,9 @@
         max-width: 250px;
         flex: 1;
         overflow-y: scroll;
+        cursor:grab;
     }
+
     .bin {
         float: right;
         user-select: none;
