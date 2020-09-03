@@ -87,9 +87,12 @@
         }}>🗑️</span>
 </h2>
 
-<div class="panel">
+<div  class="panel">
     {#each $plates as plate, i}
-        <div class="card plate" draggable={$dragTask ? true : false} on:dragstart={()=>dragOne = i} on:dragenter={()=>dragTwo = i} on:dragend={()=>swapPlates()}>
+        <div 
+        on:dragover|preventDefault
+    on:dragend|preventDefault
+        class="card plate" draggable={$dragTask ? true : false} on:dragstart={()=>dragOne = i} on:dragenter={()=>dragTwo = i} on:drop={()=>swapPlates()}>
             <span
                 class="bin"
                 on:click={() => {
