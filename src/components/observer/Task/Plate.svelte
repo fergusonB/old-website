@@ -44,6 +44,9 @@
     }
 
 
+
+
+
 </script>
 
 <style>
@@ -110,9 +113,7 @@
 {/each}
 
 <input
-    on:dragenter={()=>{$plates[plateNumber].notes = [...$plates[plateNumber].notes.filter(x=>x!== $plates[$note1[0]].notes[$note1[1]]),$plates[$note1[0]].notes[$note1[1]]]
 
-    }}
     
     on:click={() => (newNote.text = '')}
     on:blur={() => newNote.create()}

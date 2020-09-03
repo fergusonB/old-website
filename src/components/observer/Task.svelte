@@ -112,3 +112,4 @@
     </div>
 </div>
 
+{JSON.stringify($plates)}
