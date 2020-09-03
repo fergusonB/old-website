@@ -4,3 +4,5 @@ export let plates = writable([{ title: "To Do", notes:[{clicked:false,text:'Clic
 
 export let note1 = writable([]);
 export let note2 = writable([]);
+
+export let dragTask = writable(true)

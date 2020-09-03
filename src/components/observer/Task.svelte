@@ -1,15 +1,19 @@
 <script lang="typescript">
     import Plate from "../../components/observer/Task/Plate.svelte";
-    import { plates } from "./stores.js";
+    import { plates, dragTask } from "./stores.js";
     import { afterUpdate } from "svelte";
 
     let dragOne
     let dragTwo
 
     const swapPlates = ()=>{
-        let temp = $plates[dragOne]
+        if ($dragTask){ 
+            let temp = $plates[dragOne]
         $plates[dragOne] = $plates[dragTwo]
         $plates[dragTwo] = temp
+
+        }
+
 
     }
 
@@ -83,7 +87,7 @@
 
 <div class="panel">
     {#each $plates as plate, i}
-        <div class="card plate" draggable={true} on:dragstart={()=>dragOne = i} on:dragenter={()=>dragTwo = i} on:dragend={()=>swapPlates()}>
+        <div class="card plate" draggable={$dragTask ? true : false} on:dragstart={()=>dragOne = i} on:dragenter={()=>dragTwo = i} on:dragend={()=>swapPlates()}>
             <span
                 class="bin"
                 on:click={() => {

@@ -1,7 +1,7 @@
 <script lang="typescript">
     export let plateNumber;
 
-    import { plates,note1,note2 } from "../stores.js";
+    import { plates,note1,note2, dragTask } from "../stores.js";
     import Summary from "./Summary.svelte";
 
     if ($plates[plateNumber].notes === undefined) {
@@ -35,6 +35,8 @@
         let tmp = $plates[$note1[0]].notes[$note1[1]]
         $plates[$note1[0]].notes[$note1[1]] = $plates[$note2[0]].notes[$note2[1]]
         $plates[$note2[0]].notes[$note2[1]] = tmp
+        
+        setTimeout(()=>$dragTask = true,0) 
     }
 
 
@@ -68,7 +70,11 @@
 
 {#each $plates[plateNumber].notes as note, noteNumber}
     <div
-    draggable={true} on:dragstart={()=>$note1=[plateNumber,noteNumber]}
+    draggable={true} on:dragstart={()=>{
+        $dragTask = false
+        $note1=[plateNumber,noteNumber]
+    
+    }}
      on:dragenter={()=>$note2=[plateNumber,noteNumber]}
       on:dragend={()=>swapNotes()}
         style={`background-color:${note.colors ? note.colors[1] : 'white'};`}
