@@ -77,6 +77,8 @@
 
 {#each $plates[plateNumber].notes as note, noteNumber}
     <div
+    on:dragover|preventDefault
+    on:dragend|preventDefault
     draggable={true} on:dragstart={()=>{
         $dragTask = false
         $note1=[plateNumber,noteNumber]
@@ -112,9 +114,19 @@
     {/if}
 {/each}
 
-<input
 
+<input
+    on:dragover|preventDefault
+    on:dragend|preventDefault
     
+    on:drop={()=>{
+        if (!(plateNumber === $note1[0])){
+            $plates[plateNumber].notes = [...$plates[plateNumber].notes,$plates[$note1[0]].notes[$note1[1]]]
+            $plates[$note1[0]].notes = [...$plates[$note1[0]].notes.filter(x=>x!==$plates[$note1[0]].notes[$note1[1]])]
+        }
+
+    }}
+
     on:click={() => (newNote.text = '')}
     on:blur={() => newNote.create()}
     on:keydown={(e) => newNote.enterKey(e)}
