@@ -1,7 +1,9 @@
 <script lang="typescript">
     export let plateNumber;
 
+
     import { plates,note1,note2, dragTask } from "../stores.js";
+    import {afterUpdate} from 'svelte';
     import Summary from "./Summary.svelte";
 
     if ($plates[plateNumber].notes === undefined) {
@@ -31,6 +33,8 @@
 
 
     const swapNotes= ()=>{
+
+
 
         let tmp = $plates[$note1[0]].notes[$note1[1]]
         $plates[$note1[0]].notes[$note1[1]] = $plates[$note2[0]].notes[$note2[1]]
@@ -106,6 +110,10 @@
 {/each}
 
 <input
+    on:dragenter={()=>{$plates[plateNumber].notes = [...$plates[plateNumber].notes.filter(x=>x!== $plates[$note1[0]].notes[$note1[1]]),$plates[$note1[0]].notes[$note1[1]]]
+
+    }}
+    
     on:click={() => (newNote.text = '')}
     on:blur={() => newNote.create()}
     on:keydown={(e) => newNote.enterKey(e)}
