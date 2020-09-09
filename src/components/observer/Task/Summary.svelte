@@ -87,6 +87,7 @@
         <h3>Notes:</h3><input
             style={`color:${backgroundColors[2]};`}
             bind:value={title}
+            placeholder = 'You might want to name this.'
             on:blur={() => summ.updateTitle()}
             type="text" />
 
@@ -94,6 +95,7 @@
 
         <p>
             <textarea
+                placeholder='Add some additional detail here.'
                 style={`color:${backgroundColors[2]};`}
                 bind:value={summ.text}
                 rows="10"
