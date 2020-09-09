@@ -11,7 +11,7 @@
     }
 
     const newNote = {
-        text: "Add a new note",
+        text: "",
 
         create: () => {
             if (newNote.text !== "") {
@@ -116,6 +116,7 @@
 
 
 <input
+placeholder='Add a new note'
     on:dragover|preventDefault|self
     on:dragend|preventDefault|self
     

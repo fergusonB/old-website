@@ -30,14 +30,14 @@
     }
 
     const newPlate = {
-        text: "Add another plate",
+        text: "",
 
         create: () => {
             if (newPlate.text !== "") {
                 //@ts-ignore
                 $plates = [...$plates, { title: newPlate.text }];
                 newPlate.text = "";
-            } else newPlate.text = "Add another plate";
+            } else newPlate.text = "";
         },
         enterKey: (e) => {
             if (e.keyCode === 13) {
@@ -107,6 +107,7 @@
     {/each}
     <div class="newPlate card">
         <input
+        placeholder = 'Add a new Plate'
             on:click={() => (newPlate.text = '')}
             on:keypress={(e) => newPlate.enterKey(e)}
             on:blur={() => newPlate.create()}
