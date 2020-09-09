@@ -73,7 +73,7 @@
     }
 </style>
 
-<h3 >{$plates[plateNumber].title} </h3>
+<h3> <span contenteditable="true" bind:innerHTML={$plates[plateNumber].title} >{$plates[plateNumber].title}</span> </h3>
 
 {#each $plates[plateNumber].notes as note, noteNumber}
     <div
