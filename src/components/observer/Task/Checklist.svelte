@@ -3,7 +3,7 @@
     export let plateNumber;
     export let noteNumber;
 
-    let inputField = "Write a new item here.";
+    let inputField = "";
 
     const checklist = {
         exists: false,
@@ -11,7 +11,7 @@
         list: [],
 
         add: () => {
-            if (inputField !== "" && inputField !== "Write a new item here.") {
+            if (inputField !== "") {
                 checklist.list = [
                     ...checklist.list,
                     { name: inputField, checked: false },
@@ -92,13 +92,16 @@
     </p>
     <input
         on:keydown={(e) => {
-            if (e.keyCode === 13) checklist.add();
+            if (e.keyCode === 13){
+                checklist.add();
+                inputField = ''
+            } 
         }}
         on:click={() => {
             inputField = '';
         }}
         bind:value={inputField}
-        type="text" />
+        type="text" placeholder="Write a new item here" />
     <button on:click={() => checklist.add()}>Add Item</button> 
     <button on:click={()=>checklist.showChecked = !checklist.showChecked}>{checklist.showChecked ? 'Hide checked' : 'Show checked'}</button>
 
