@@ -78,7 +78,7 @@
 
 <div
     class="summary"
-    on:click|self={() => summ.exit()}
+    on:mousedown|self={() => summ.exit()}
     style={`background-color:${backgroundColors[1]};`}>
     <div
         style={`background-color:${backgroundColors[0]};`}
