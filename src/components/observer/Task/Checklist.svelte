@@ -40,7 +40,7 @@
             $plates[plateNumber].notes[noteNumber].checklist = checklist.list;
         },
 
-        showChecked:true
+        showChecked: true,
     };
 
     if ($plates[plateNumber].notes[noteNumber].checklist !== undefined) {
@@ -50,13 +50,29 @@
 </script>
 
 <style>
+
+    .checkitem{
+        display:inline-flex;
+
+        width:98%;
+        border:0px;
+        margin:0px;
+        padding:5px;
+
+        background-color:whitesmoke ;
+
+    }
     .checkitem:hover {
         cursor: pointer;
-        background-color: #ddd;
+
     }
     .checked {
         opacity: 0.5;
         text-decoration: line-through;
+    }
+    .alternating{
+        background-color:#ddd;
+
     }
 </style>
 
@@ -66,45 +82,38 @@
     <progress value={checklist.progress()} />
     <span on:click|self={() => checklist.delete()}>🗑️</span>
 
-    <p>
         {#each checklist.list as item, i}
-
-        {#if checklist.showChecked}
-        <span
-        on:click={() => (item.checked = !item.checked)}
-        class={item.checked ? 'checked checkitem' : 'checkitem'}>{item.name}
-    </span>
-    <br />
-        {:else}
-        {#if !item.checked}
-        <span
-        on:click={() => (item.checked = !item.checked)}
-        class={item.checked ? 'checked checkitem' : 'checkitem'}>{item.name}
-    </span>
-    <br />
-        {/if}
-
-        {/if}
-
-
-
+            {#if checklist.showChecked}
+                <div
+                    on:click={() => (item.checked = !item.checked)}
+                    class:alternating={i%2} class={item.checked ? 'checked  checkitem' : '  checkitem'}>{item.name}
+    </div>
+                <br />
+            {:else if !item.checked}
+                <div
+                    on:click={() => (item.checked = !item.checked)}
+                    class={item.checked ? 'checked  checkitem' : '  checkitem'}>{item.name}
+</div>
+                <br />
+            {/if}
         {/each}
-    </p>
+
     <input
         on:keydown={(e) => {
-            if (e.keyCode === 13){
+            if (e.keyCode === 13) {
                 checklist.add();
-                inputField = ''
-            } 
+                inputField = '';
+            }
         }}
         on:click={() => {
             inputField = '';
         }}
         bind:value={inputField}
-        type="text" placeholder="Write a new item here" />
-    <button on:click={() => checklist.add()}>Add Item</button> 
-    <button on:click={()=>checklist.showChecked = !checklist.showChecked}>{checklist.showChecked ? 'Hide checked' : 'Show checked'}</button>
-
+        type="text"
+        placeholder="Write a new item here" />
+    <button on:click={() => checklist.add()}>Add Item</button>
+    <button
+        on:click={() => (checklist.showChecked = !checklist.showChecked)}>{checklist.showChecked ? 'Hide checked' : 'Show checked'}</button>
 {:else}
     <button on:click={() => (checklist.exists = true)}>Create Checklist</button>
 {/if}
