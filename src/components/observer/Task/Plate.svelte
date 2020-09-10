@@ -71,9 +71,12 @@
         cursor: pointer;
         background-color: #ddd;
     }
+    .content-edit-text{
+        cursor:text;
+    }
 </style>
 
-<h3> <span contenteditable="true" bind:innerHTML={$plates[plateNumber].title} >{$plates[plateNumber].title}</span> </h3>
+<h3> <span class="content-edit-text" contenteditable="true" bind:innerHTML={$plates[plateNumber].title} >{$plates[plateNumber].title}</span> </h3>
 
 {#each $plates[plateNumber].notes as note, noteNumber}
     <div
