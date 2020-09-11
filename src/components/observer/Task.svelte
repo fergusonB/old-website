@@ -45,6 +45,13 @@
             }
         },
     };
+
+    //create link
+    let link = 'Waiting...'
+    afterUpdate(()=>{
+        link = `/projects/observer/${btoa(JSON.stringify($plates))}`
+    })
+
 </script>
 
 <style>
@@ -84,7 +91,7 @@
                 delete localStorage.task;
                 location.reload();
             }
-        }}>🗑️</span>
+        }}>🗑️</span> <a href={link}>URL for copy of board</a>
 </h2>
 
 <div  class="panel">
