@@ -21,11 +21,18 @@
     
     onMount(()=>{
         slug = atob(slug)
-        localStorage.task = slug
+
+        if (slug.startsWith('[') && slug.endsWith(']')){
+            localStorage.task = slug
+        }
+
+
+        
         goto('projects/observer')
     } 
     )
     
 </script>
+
 
 
