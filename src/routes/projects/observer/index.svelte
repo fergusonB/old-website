@@ -1,6 +1,6 @@
 <script>
-import Task from "../../components/observer/Task.svelte";
-import Food from "../../components/observer/Food.svelte";
+import Task from "../../../components/observer/Task.svelte";
+import Food from "../../../components/observer/Food.svelte";
 
 const state = {
   task: true,
