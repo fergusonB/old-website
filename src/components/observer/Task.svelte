@@ -91,8 +91,9 @@
                 delete localStorage.task;
                 location.reload();
             }
-        }}>🗑️</span> <a href={link}>URL for copy of board</a>
+        }}>🗑️</span>
 </h2>
+
 
 <div  class="panel">
     {#each $plates as plate, i}
@@ -123,3 +124,4 @@
     </div>
 </div>
 
+<a href={link}>Data is automatically saved to this device; however, you may copy this link to share this board with new devices. </a>
