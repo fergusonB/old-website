@@ -46,11 +46,7 @@
         },
     };
 
-    //create link
-    let link = 'Waiting...'
-    afterUpdate(()=>{
-        link = `/projects/observer/${btoa(JSON.stringify($plates))}`
-    })
+
 
 </script>
 
@@ -124,4 +120,3 @@
     </div>
 </div>
 
-<a href={link}>Data is automatically saved to this device; however, you may copy this link to share this board with new devices. </a>
