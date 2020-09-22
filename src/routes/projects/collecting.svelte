@@ -1,12 +1,16 @@
 <script lang="typescript">
-    import {onMount,afterUpdate} from 'svelte';
+    import { onMount } from "svelte";
+
+    let data = [];
 
     onMount(async () => {
-		const res = await fetch(`https://pokeapi.co/api/v2/pokemon-form/1`);
-        data = [await res.json()]
-        console.log(data)
-	});
-
+        if (localStorage.pokeAPIdata) {
+            data = JSON.parse(localStorage.pokeAPIdata);
+        } else {
+            const res = await fetch(`https://pokeapi.co/api/v2/pokemon-form/1`);
+            data = [await res.json()];
+        }
+    });
 
     const eventHandling = {
         doubleClick: (post) => {
@@ -21,31 +25,26 @@
         },
     };
 
-    let data = [
-        
-    ];
-
     // START Infinite scroll
     let scrollY;
     let innerHeight;
 
-    let currentPokemon = 2
-    let timer
-    let previousScroll = 0
+    $: currentPokemon = data.length + 1;
+    let timer;
+    let previousScroll = 0;
     const moreData = async () => {
-
-        clearTimeout(timer)
-        timer =  setTimeout(async()=>{
-        if (scrollY > previousScroll){
-            const res = await fetch(`https://pokeapi.co/api/v2/pokemon-form/${currentPokemon}`);
-        data = [...data,await res.json()]
-        currentPokemon+=1
-        previousScroll = scrollY
-        }
-
-        },250)
-
-
+        clearTimeout(timer);
+        timer = setTimeout(async () => {
+            if (scrollY > previousScroll) {
+                const res = await fetch(
+                    `https://pokeapi.co/api/v2/pokemon-form/${currentPokemon}`
+                );
+                data = [...data, await res.json()];
+                localStorage.pokeAPIdata = JSON.stringify(data);
+                currentPokemon += 1;
+                previousScroll = scrollY;
+            }
+        }, 250);
     };
     // END Infinite scroll
 
@@ -104,27 +103,23 @@
     </div>
 {/if}
 
-{#if data.length >= 1}
-{#each data as post}
-<div
-    on:dblclick|preventDefault={() => (post = eventHandling.doubleClick(post))}
-    class:liked={post['liked']}
-    class="post">
-    <img
-        class="postImage"
-        src={ post.sprites.front_default}
-        alt={post.name} />
-    <div>
-        <p>
-         img
-        </p>
-        <p>Likes:likes</p>
+{#if data.length > 0}
+    {#each data as post}
+        <div
+            on:dblclick|preventDefault={() => (post = eventHandling.doubleClick(post))}
+            class:liked={post['liked']}
+            class="post">
+            <img
+                class="postImage"
+                src={post.sprites.front_default}
+                alt={post.name} />
+            <div>
+                <p>img</p>
+                <p>Likes:likes</p>
 
-        Comments: <br />
-
-    </div>
-</div>
-<hr />
-{/each}
-
+                Comments: <br />
+            </div>
+        </div>
+        <hr />
+    {/each}
 {/if}
