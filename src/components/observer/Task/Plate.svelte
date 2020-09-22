@@ -49,10 +49,9 @@
     input {
         width: 90%;
     }
-    h3 {
-        background-color: #ddd;
-        text-align: center;
-    }
+
+
+
     .bin {
         float: right;
         user-select: none;
@@ -62,34 +61,43 @@
         display: inline-block;
         width: 85%;
         overflow: hidden;
+
     }
     .note:hover {
         cursor: pointer;
         background-color: #ddd;
     }
     .content-edit-text {
+
         cursor: text;
+        font-size: 1.5em;
+        text-align: center;
+
+        text-decoration: overline;
+
+
     }
 </style>
 
-<h3>
+
     <span
         class="content-edit-text"
         contenteditable="true"
         bind:innerHTML={$plates[plateNumber].title}>{$plates[plateNumber].title}</span>
-</h3>
+       
+
 
 {#each $plates[plateNumber].notes as note, noteNumber}
     <div
         on:dragover|preventDefault|self
         on:dragend|preventDefault|self
         draggable={true}
-        on:dragstart={() => {
+        on:dragstart|self={() => {
             $dragTask = false;
             $note1 = [plateNumber, noteNumber];
         }}
-        on:dragenter={() => ($note2 = [plateNumber, noteNumber])}
-        on:dragend={() => swapNotes()}
+        on:dragenter|self={() => ($note2 = [plateNumber, noteNumber])}
+        on:dragend|self={() => swapNotes()}
         style={`background-color:${note.colors ? note.colors[1] : 'white'};`}
         class="note card"
         on:click|self={() => {

@@ -94,9 +94,9 @@
 <div  class="panel">
     {#each $plates as plate, i}
         <div 
-        on:dragover|preventDefault
-    on:dragend|preventDefault
-        class="card plate" draggable={$dragTask ? true : false} on:dragstart={()=>dragOne = i} on:dragenter={()=>dragTwo = i} on:drop={()=>swapPlates()}>
+        on:dragover|preventDefault|self
+    on:dragend|preventDefault|self
+        class="card plate" draggable={$dragTask ? true : false} on:dragstart|self={()=>dragOne = i} on:dragenter|self={()=>dragTwo = i} on:drop={()=>swapPlates()}>
             <span
                 class="bin"
                 on:click={() => {
