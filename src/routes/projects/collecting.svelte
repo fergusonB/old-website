@@ -1,86 +1,67 @@
 <script lang="typescript">
+    import {onMount,afterUpdate} from 'svelte';
+
+    onMount(async () => {
+		const res = await fetch(`https://pokeapi.co/api/v2/pokemon-form/1`);
+        data = [await res.json()]
+        console.log(data)
+	});
 
 
+    const eventHandling = {
+        doubleClick: (post) => {
+            if (post["liked"]) {
+                post.likes -= 1;
+                post["liked"] = false;
+            } else {
+                post["liked"] = true;
+                post.likes = post.likes + 1;
+            }
+            return post;
+        },
+    };
 
     let data = [
-        {
-            user: { name: "Brenden", icon: "icon1.png" },
-            title: "Snowy Trees",
-            media: "1.png",
-            comments: [
-                { user: "brenden", text: "These are my favorite trees.", likes: 10 },
-                { user: "brenda", text: "I also enjoy these trees.", likes: 3 },
-            ],
-            likes: 10,
-            saved: false,
-            tagged: ["Brenden", "Brenda"],
-            location: ["Swiss Alps", 46.4776442,8.6307331],
-        },
-        {
-            user: { name: "Brenda", icon: "2.png" },
-            title: "Anchor",
-            media: "2.png",
-            comments: [
-                { user: "Gregg", text: "That's a fine anchor.", likes: 1 },
-                { user: "Tatiana", text: "Totally nautical.", likes: 8 },
-            ],
-            likes: 40,
-            saved: true,
-            tagged: ["Brenda,","Gregg", "Tatiana"],
-            location: ["Harbor", 33.461779, -117.698863],
-        },
-        {
-            user: { name: "Caris", icon: "3.png" },
-            title: "Leaves",
-            media: "3.png",
-            comments: [
-                { user: "Abby", text: "Great leaves.", likes: 35 },
-                { user: "Brenda", text: "I like the bird", likes: 50 },
-            ],
-            likes: 82,
-            saved: false,
-            tagged: ["Caris"],
-            location: ["Disneyland", 33.805625, -117.920085],
-        },
+        
     ];
 
     // START Infinite scroll
     let scrollY;
     let innerHeight;
 
+    let currentPokemon = 2
+    let timer
+    let previousScroll = 0
+    const moreData = async () => {
 
-    const moreData = () => {
-        if (
-            (scrollY % innerHeight) / innerHeight > 0.8 ||
-            data.length < 5 ||
-            scrollY % innerHeight === innerHeight
-        ) {
-            data = [...data, data[data.length%3]];
+        clearTimeout(timer)
+        timer =  setTimeout(async()=>{
+        if (scrollY > previousScroll){
+            const res = await fetch(`https://pokeapi.co/api/v2/pokemon-form/${currentPokemon}`);
+        data = [...data,await res.json()]
+        currentPokemon+=1
+        previousScroll = scrollY
         }
+
+        },250)
+
+
     };
     // END Infinite scroll
 
-    // START Check if on our page
-    let onPage = true
-    const handleMouseenter = ()=>{
-        onPage = true
-    }
-    const handleMouseleave = () =>{
-        onPage = false
-    }
+    // START check if on our page
+    let onPage = true;
+    const handleMouseenter = () => {
+        onPage = true;
+    };
+    const handleMouseleave = () => {
+        onPage = false;
+    };
 
     // END Check if on our page
 </script>
 
-<svelte:window bind:innerHeight bind:scrollY on:scroll={moreData} />
-
-<svelte:body
-    on:mouseenter={handleMouseenter}
-    on:mouseleave={handleMouseleave} />
-
-
 <style>
-
     .post {
         display: grid;
         justify-content: center;
@@ -89,11 +70,8 @@
         width: 400px;
         height: 400px;
     }
-    .icon {
-        width: 20px;
-        height: 20px;
-    }
-    .onPage{
+
+    .onPage {
         display: flex;
         position: fixed;
         top: 0px;
@@ -109,40 +87,44 @@
         font-size: 5em;
         text-align: center;
     }
-
+    .liked {
+        background-color: lightgreen;
+    }
 </style>
 
+<svelte:window bind:innerHeight bind:scrollY on:scroll={moreData} />
+
+<svelte:body
+    on:mouseenter={handleMouseenter}
+    on:mouseleave={handleMouseleave} />
 {#if !onPage}
-     <div class="onPage">I see you're losing interest.
-         <br> Let me get your attention back.</div>
+    <div class="onPage">
+        I see you're losing interest. <br /> Let me get your attention back with
+        this notification.
+    </div>
 {/if}
 
-
+{#if data.length >= 1}
 {#each data as post}
-    <div class="post">
-        <img
-            class="postImage"
-            src={'collecting/' + post.media}
-            alt={post.title} />
-        <div>
-            <p>
-                <img
-                    class="icon"
-                    src={'collecting/' + post.user.icon}
-                    alt={post.user.name} />{post.user.name} | Location: {post.location}
-            </p>
-            <p>Likes: {post.likes}</p>
+<div
+    on:dblclick|preventDefault={() => (post = eventHandling.doubleClick(post))}
+    class:liked={post['liked']}
+    class="post">
+    <img
+        class="postImage"
+        src={ post.sprites.front_default}
+        alt={post.name} />
+    <div>
+        <p>
+         img
+        </p>
+        <p>Likes:likes</p>
 
-            Comments: <br />
-            {#each post.comments as comment, i}
-                <p>
-                    {comment.user}
-                    <br />{comment.text}
+        Comments: <br />
 
-                    <br /> Likes: {comment.likes}
-                </p>
-            {/each}
-        </div>
     </div>
-    <hr />
+</div>
+<hr />
 {/each}
+
+{/if}
