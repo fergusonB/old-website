@@ -47,7 +47,8 @@
             
         {:else}
             <h2>Long Break</h2>
-            <Timer time={10} />
+            <p><Timer time={10} /></p>
+            
         {/if}
     </div>
 </div>

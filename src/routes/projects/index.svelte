@@ -52,6 +52,12 @@
   </li>
 
 
+  <li>
+    <a rel="prefetch" href="projects/pomodoro">
+      Pomodoro Timer
+    </a>
+  </li>
+
 
 
   <li>
@@ -66,14 +72,5 @@
     </a>
   </li>
 
-    <li>
-    <a rel="prefetch" href="projects/rock-paper-scissors">
-      Rock, Paper, Scissors
-    </a>
-  </li>
-    <li>
-    <a rel="prefetch" href="projects/tic-tac-toe">
-      Tic Tac Toe
-    </a>
-  </li>
+
 </ul>

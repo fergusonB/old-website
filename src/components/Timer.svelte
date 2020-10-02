@@ -1,41 +1,47 @@
 <script lang="typescript">
-    export let time:number;
-    time = time*60
+    import { onMount } from "svelte";
 
-    const initial:number = time;
+    let sound: HTMLAudioElement;
+    onMount(() => {
+        sound = new Audio("beep.mp3");
+    });
 
-    let countdown
-    const countDown = ()=>{
-        countdown = setInterval(()=>{
-            if (time > 0){
-                time--
+    export let time: number;
+    time = time * 60;
+
+    const initial: number = time;
+
+    let countdown;
+    let beeping;
+    const countDown = () => {
+        countdown = setInterval(() => {
+            if (time > 0) {
+                time--;
+            } else {
+                stop();
+                beeping = setInterval(() => sound.play(), 200);
             }
-            else {
-                stop()
+        }, 1000);
+    };
+    const stop = () => clearInterval(countdown);
 
-                
-            }
-            
-            
-        },1000)
-    }
-    const stop = ()=> clearInterval(countdown)
+    const reset = () => {
+        stop();
+        time = initial;
+    };
 
-    const reset = ()=>{
-        stop()
-        time = initial
-    }
-
-    $:convertedTime = `${Math.floor(time/60)}:${Math.floor(time%60) < 10 ? '0' + Math.floor(time%60) : Math.floor(time%60)}`
-
-
-
+    $: convertedTime = `${Math.floor(time / 60)}:${
+        Math.floor(time % 60) < 10
+            ? "0" + Math.floor(time % 60)
+            : Math.floor(time % 60)
+    }`;
 </script>
 
+<svelte:window on:mousemove={() => clearInterval(beeping)} />
 
 <h2>{convertedTime}</h2>
 
-<br>
+<br />
 
 <button on:click={countDown}>Start</button>
 
