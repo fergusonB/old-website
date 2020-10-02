@@ -1,15 +1,15 @@
-<script context="module">
+<script context="module" lang="ts">
   export function preload({ params, query }) {
     return this.fetch(`blog.json`)
-      .then(r => r.json())
-      .then(posts => {
+      .then((r: { json: () => any; }) => r.json())
+      .then((posts: { slug: string; title: string, html: any }[]) => {
         return { posts };
       });
   }
 </script>
 
-<script>
-  export let posts;
+<script lang="ts">
+  export let posts: { slug: string; title: string, html: any }[];
 </script>
 
 <style>

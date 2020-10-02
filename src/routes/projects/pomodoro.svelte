@@ -3,7 +3,9 @@
 </svelte:head>
 <script lang="typescript">
 
-    let state = 'work';
+    let state:string = 'work';
+
+
 
 
 
