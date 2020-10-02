@@ -1,44 +1,53 @@
-<svelte:head>
-  <title>Pomodoro Timer</title>
-</svelte:head>
 <script lang="typescript">
+    import Timer from "../../components/Timer.svelte";
 
-    let state:string = 'work';
-
-
-
-
-
+    let state: string = "work";
 </script>
+
 <style>
+    .pomo {
+        display: grid;
+        justify-content: center;
+        text-align: center;
+    }
 
-.pomo{
-    display:flex;
-}
-
-
+    .selected {
+        color: lightgreen;
+    }
 </style>
 
+<svelte:head>
+    <title>Pomodoro Timer</title>
+</svelte:head>
 <div class="pomo">
+    <p>
+        <button
+            class:selected={state === 'work'}
+            on:click={() => (state = 'work')}>Work</button>
+        <button
+            class:selected={state === 'break'}
+            on:click={() => (state = 'break')}>Break</button>
+        <button
+            class:selected={state === 'long break'}
+            on:click={() => (state = 'long break')}>Long Break</button>
+    </p>
 
-<button on:click={()=>state='work'}>Work</button> 
-<button on:click={()=>state='break'}>Break</button>
-<button on:click={()=>state='long break'}>Long Break</button>
+    <div>
+        {#if state === 'work'}
+            <h2>Work</h2>
 
-{#if state === 'work'}
-     <!-- content here -->
-{:else if  state === 'break'}
-     <!-- else if content here -->
-{:else}
-     <!-- else content here -->
-{/if}
-<h2>Work</h2>
-
-
-
-<h2>Short Break</h2>
-
-
-<h2>Long Break</h2>
-
+            <p>
+                <Timer time={25} />
+            </p>
+        {:else if state === 'break'}
+            <h2>Short Break</h2>
+            <p>
+                <Timer time={5} />
+            </p>
+            
+        {:else}
+            <h2>Long Break</h2>
+            <Timer time={10} />
+        {/if}
+    </div>
 </div>
