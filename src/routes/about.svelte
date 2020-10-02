@@ -18,16 +18,6 @@
 
 <p>I'm Brenden.</p>
 
-
-<p>
-  I've been creating websites and tools for 15 years. 
-  <br>
-  What started as just some simple drag and drop editing on Geocities led me to Dreamweaver, Wordpress, and finally to working with HTML and javascript on their own, and with frameworks. 
-  <br>
-
-
-</p>
-
 <p>
   I've always loved the internet and building things.
   <br>
