@@ -30,6 +30,13 @@
         time = initial;
     };
 
+    const windowTimerOver = ()=>{
+        if (time === 0) {
+        clearInterval(beeping)
+        reset()
+    }
+    }
+
     $: convertedTime = `${Math.floor(time / 60)}:${
         Math.floor(time % 60) < 10
             ? "0" + Math.floor(time % 60)
@@ -37,7 +44,7 @@
     }`;
 </script>
 
-<svelte:window on:mousemove={() => clearInterval(beeping)} />
+<svelte:window on:mousemove={windowTimerOver} />
 
 <h2>{convertedTime}</h2>
 
@@ -47,4 +54,4 @@
 
 <button on:click={stop}>Pause</button>
 
-<button on:click={reset}>Restart</button>
+<button on:click={reset}>Reset</button>

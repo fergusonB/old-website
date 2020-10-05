@@ -16,6 +16,10 @@
 <article>
 <h1>About Me</h1>
 
+<!--add information on intj  / the other dp or something, maybe something about typing - just stuff that would make me stand out a little
+identity is no way tied to these but it should give some more color than a standard interview would provide
+-->
+
 <p>I'm Brenden.</p>
 
 <p>
