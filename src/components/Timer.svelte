@@ -1,5 +1,6 @@
 <script lang="typescript">
     import { onMount } from "svelte";
+    import { onDestroy } from 'svelte';
 
     let sound: HTMLAudioElement;
     onMount(() => {
@@ -42,6 +43,8 @@
             ? "0" + Math.floor(time % 60)
             : Math.floor(time % 60)
     }`;
+
+    onDestroy(()=>{stop()})
 </script>
 
 <svelte:window on:mousemove={windowTimerOver} />
