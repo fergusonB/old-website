@@ -39,6 +39,8 @@
             <p>
                 <Timer time={25} />
             </p>
+
+            <!-- add stuff here to count pomodoro, key takeaways from the pomodoro session or what was accomplished, best time to plant a tree-->
         {:else if state === 'break'}
             <h2>Short Break</h2>
             <p>
