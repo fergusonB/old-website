@@ -35,6 +35,11 @@ const checkEmpty = (data) =>{
 }
 
 
+const getSampleData=async()=>{
+    let res = await fetch('./dungeonsdata.txt')
+    data = await res.text()
+}
+
 
 
 </script>
@@ -59,7 +64,7 @@ To get this file from the Switch, you need to have a hacked console, and a data 
 There are plenty of resources online so I will not go into them here.
 <br>
 
-Need some <a rel="prefetch" href="https://ferguson.work/projects/minecraft-dungeons-save-editor/sample/" target="_blank"  >sample data?</a>
+Need some <a href='Click here to load sample data8' on:click|preventDefault={getSampleData} >sample data?</a>
 
 <br>
 
