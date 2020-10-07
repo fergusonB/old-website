@@ -66,11 +66,7 @@
     </a>
   </li>
 
-  <li>
-    <a rel="prefetch" href="projects/youtube-blacklist">
-      Youtube Blacklisted / Demonetized Word Finder
-    </a>
-  </li>
+
 
 
 </ul>
