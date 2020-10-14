@@ -17,7 +17,7 @@
 
     }
 
-
+    // @ts-ignore
     if (process.browser) {
         if (localStorage.task === undefined) {
             localStorage.task = JSON.stringify($plates);
