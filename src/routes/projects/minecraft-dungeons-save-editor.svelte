@@ -54,8 +54,11 @@ const downloadSave = ()=>{
         alert('Invalid file\nPlease upload your character file.')
     }
     
+}
 
-    
+const clearData = () =>{
+    delete localStorage.dungeons
+    location.reload()
 }
 
 
@@ -90,7 +93,7 @@ Need some <a href='Click here to load sample data' on:click|preventDefault={getS
 
 <input type="file" bind:files on:change={fileUpload}>
 <br>
-<button on:click={downloadSave}>Download modified save</button>
+<button on:click={downloadSave}>Download modified save</button>  <button on:click={clearData}>Clear Data</button>
 
 
 <br>
