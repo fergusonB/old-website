@@ -1,72 +1,47 @@
+<script>
+    import { fade } from "svelte/transition";
+
+    let projects = [
+        { title: "The Observer", href: "projects/observer" },
+        { title: "IMDB Ratings Table Generator", href: "projects/imdb" },
+        {
+            title: "Dungeons Save Editor",
+            href: "projects/minecraft-dungeons-save-editor",
+        },
+    ];
+    let exercises = [
+        { title: "Quick Statistics Reference", href: "projects/statistics" },
+        { title: "Pomodoro Timer", href: "projects/pomodoro" },
+        { title: "OSRS DPS Calc", href: "projects/osrs-dps-calculator" },
+    ];
+</script>
+
 <style>
-  ul {
-    margin: 0 0 1em 0;
-    line-height: 1.5;
-  }
+    ul {
+        margin: 0 0 1em 0;
+        line-height: 1.5;
+    }
 </style>
 
 <svelte:head>
-  <title>Projects</title>
+    <title>Projects</title>
 </svelte:head>
+<div in:fade>
+    <h1>Recent Projects</h1>
 
-<h1>Recent Projects</h1>
+    <h2>Projects</h2>
+    <ul>
+        {#each projects as project}
+            <li><a rel="prefetch" href={project.href}> {project.title} </a></li>
+        {/each}
+    </ul>
 
-<h2>Projects</h2>
-<ul>
-
-  
-  <li>
-    <a rel="prefetch" href="projects/observer">
-      The Observer
-    </a>
-  </li>
-  <li>
-    <a rel="prefetch" href="projects/imdb">
-      IMDB Ratings Table Generator 
-    </a>
-  </li>
-
-
-  <li>
-    <a rel="prefetch" href="projects/minecraft-dungeons-save-editor">
-      Dungeons Save Editor
-    </a>
-  </li>
-
-
-</ul>
-
-
-<h2>Exercises</h2>
-<ul>
-
-  <!-- we're using the non-standard `rel=prefetch` attribute to
-				tell Sapper to load the data for the page as soon as
-				the user hovers over the link or taps it, instead of
-				waiting for the 'click' event -->
-
-  <li>
-    <a rel="prefetch" href="projects/statistics">
-      Quick Statistics Reference
-    </a>
-  </li>
-
-
-  <li>
-    <a rel="prefetch" href="projects/pomodoro">
-      Pomodoro Timer
-    </a>
-  </li>
-
-
-
-  <li>
-    <a rel="prefetch" href="projects/osrs-dps-calculator">
-      OSRS DPS Calculator
-    </a>
-  </li>
-
-
-
-
-</ul>
+    <h2>Exercises</h2>
+    <ul>
+        {#each exercises as exercise}
+            <li>
+                <a rel="prefetch" href={exercise.href}> {exercise.title} </a>
+            </li>
+        {/each}
+    </ul>
+</div>

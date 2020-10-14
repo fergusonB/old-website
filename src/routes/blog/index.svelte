@@ -1,4 +1,6 @@
 <script context="module" lang="ts">
+ import {fade} from 'svelte/transition'
+  
   export function preload({ params, query }) {
     return this.fetch(`blog.json`)
       .then((r: { json: () => any; }) => r.json())
@@ -23,7 +25,7 @@
   <title>Blog</title>
 </svelte:head>
 
-<h1>Recent Articles</h1>
+<h1 in:fade>Recent Articles</h1>
 
 <ul>
   {#each posts as post}
@@ -32,7 +34,7 @@
 				the user hovers over the link or taps it, instead of
 				waiting for the 'click' event -->
 
-    <li>
+    <li in:fade>
       <a rel="prefetch" href="blog/{post.slug}">{post.title}</a>
     </li>
   {/each}

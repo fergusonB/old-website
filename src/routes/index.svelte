@@ -1,3 +1,7 @@
+<script>
+  import {fade} from 'svelte/transition'
+</script>
+
 <style>
   h1,
   h2,
@@ -27,8 +31,8 @@
   <title>Brenden Ferguson</title>
 </svelte:head>
 
-<h1>Hello! I'm Brenden.</h1>
-<h2>
+<h1 in:fade>Hello! I'm Brenden.</h1>
+<h2 in:fade>
   <p>
     Please check out some of my <a rel="prefetch" href="/projects">projects</a> or my <a rel="prefetch" href="/blog">blog</a>.
     <br />
