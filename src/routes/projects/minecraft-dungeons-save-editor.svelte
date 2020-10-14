@@ -1,14 +1,15 @@
 <script>
 
-
+import { saveAs } from 'file-saver';
 import Emeralds from "../../components/dungeons/Emeralds.svelte";
 
 import Items from "../../components/dungeons/Items.svelte";
 
-
+let files
 let data = []
 let valid = false
 let display = `Waiting for valid save`
+
 
 
 
@@ -28,18 +29,34 @@ $: if (process.browser){
     }
 }
 
-const checkEmpty = (data) =>{
-    if (data === ''){
-        location.reload()
-    }
-}
 
 
 const getSampleData=async()=>{
     let res = await fetch('./dungeonsdata.txt')
     data = await res.text()
+    
 }
 
+
+const fileUpload = async()=>{
+    data = await files[0].text()
+}
+
+
+const downloadSave = ()=>{
+    if (valid && files){
+        let filename = files[0].name
+        let contents = localStorage.dungeons
+        let download = new Blob([contents.toString()],{ type: "text/text" })
+        saveAs(download,filename)
+    }
+    else{
+        alert('Invalid file\nPlease upload your character file.')
+    }
+    
+
+    
+}
 
 
 </script>
@@ -58,22 +75,25 @@ Do not bring any items you make here online, I haven't integrated any kind of le
 </p>
 
 <p>
-To begin, paste the <strong>contents</strong> of a character file below (e.g. Character174B9BB908D803BDD4E3EE64BB9A4F84)
+To begin, upload a character file below (e.g. Character174B9BB908D803BDD4E3EE64BB9A4F84)
 <br>
 To get this file from the Switch, you need to have a hacked console, and a data tool like JKSV. 
 There are plenty of resources online so I will not go into them here.
+
+<br><br>
+Need some <a href='Click here to load sample data' on:click|preventDefault={getSampleData} >sample data?</a>
 <br>
 
-Need some <a href='Click here to load sample data8' on:click|preventDefault={getSampleData} >sample data?</a>
 
 <br>
 
 
-<textarea style="width:50%;height:5em;" bind:value={data} on:change={()=>checkEmpty(data)}/>
+<input type="file" bind:files on:change={fileUpload}>
 <br>
-The edits will update this text area. You can simply paste it back over the save file contents once you have made your changes.
-<br>
+<button on:click={downloadSave}>Download modified save</button>
 
+
+<br>
 <strong>Make sure you have a backup before making changes.</strong>
 </p>
 
