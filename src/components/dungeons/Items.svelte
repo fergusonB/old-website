@@ -1,7 +1,11 @@
 <script>
+  import { fly } from 'svelte/transition';
+
   export let display = [];
   export let valid;
   export let data;
+
+
 
   const save = (i, ip, ei, el, j) => {
     if (process.browser && valid) {
@@ -111,12 +115,15 @@
   }
 </style>
 
+
+
 <h2>Items</h2>
 <p>
   {#if process.browser && typeof display === 'object' && display.items.length > 0}
-    <div class="container">
+    <div  class="container">
       {#each display.items as item, i}
-        <div
+        <div in:fly="{{ y: -500, duration: 1000 }}" 
+        
           class="card"
           style={`background-color:${item.rarity === 'Unique' ? '#ff7500' : item.rarity === 'Rare' ? '#10a66c' : 'white'}`}>
           <h3>{item.equipmentSlot || `Item Slot ${i - 5}`}</h3>
