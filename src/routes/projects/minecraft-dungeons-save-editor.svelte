@@ -84,7 +84,7 @@ To get this file from the Switch, you need to have a hacked console, and a data 
 There are plenty of resources online so I will not go into them here.
 
 <br><br>
-Need some <a href='Click here to load sample data' on:click|preventDefault={getSampleData} >sample data?</a>
+<button on:click={getSampleData} >Sample Data</button>
 <br>
 
 
