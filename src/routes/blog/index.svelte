@@ -27,6 +27,9 @@
 
 <h1 in:fade>Recent Articles</h1>
 
+
+{#if posts.length > 0}
+   
 <ul>
   {#each posts as post}
     <!-- we're using the non-standard `rel=prefetch` attribute to
@@ -39,3 +42,7 @@
     </li>
   {/each}
 </ul>
+
+{:else}
+   <p>Nothing here yet.</p>
+{/if}
